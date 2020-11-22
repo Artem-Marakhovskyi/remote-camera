@@ -1,6 +1,6 @@
 using System;
 
-namespace RemoteCameraControl.Android.RemoteCameraControl.Logger
+namespace RemoteCameraControl.Logger
 {
 public class LogMessage
     {

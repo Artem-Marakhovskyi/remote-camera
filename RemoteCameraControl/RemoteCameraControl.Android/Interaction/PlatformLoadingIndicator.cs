@@ -6,7 +6,7 @@ using Android.Graphics.Drawables;
 using Android.Views;
 using Android.Widget;
 using Com.Airbnb.Lottie;
-using RemoteCameraControl.Android.RemoteCameraControl.Logger;
+using RemoteCameraControl.Logger;
 using RemoteCameraControl.RemoteCameraControl.Interaction;
 
 namespace RemoteCameraControl.Android.Interaction

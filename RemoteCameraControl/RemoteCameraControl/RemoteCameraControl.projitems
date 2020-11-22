@@ -9,6 +9,9 @@
     <Import_RootNamespace>RemoteCameraControl</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Blue\Bluetooth.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Blue\IBluetooth.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Bootstrap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Home\HomeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interaction\ActionSheetButtonModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interaction\Dialogs.cs" />
@@ -19,7 +22,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Interaction\IMultipleChoiceDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interaction\IPlatformLoadingIndicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interaction\LoadingIndicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Ioc\Resolver.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IO\FileService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IO\IFileService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logger\ConsoleLogSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logger\FileLogSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logger\ILogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logger\ILogSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logger\Logger.cs" />

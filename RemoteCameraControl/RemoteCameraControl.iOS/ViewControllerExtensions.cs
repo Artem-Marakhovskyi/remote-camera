@@ -1,4 +1,3 @@
-using RemoteCameraControl.Android.RemoteCameraControl.Logger;
 using UIKit;
 
 namespace RemoteCameraControl.iOS

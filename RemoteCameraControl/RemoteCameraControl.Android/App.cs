@@ -1,6 +1,4 @@
-using Acr.UserDialogs;
 using Android.App;
-using Plugin.CurrentActivity;
 
 namespace RemoteCameraControl.Android
 {
@@ -17,8 +15,7 @@ namespace RemoteCameraControl.Android
         {
             base.OnCreate();
             
-            UserDialogs.Init(this);
-            CrossCurrentActivity.Current.Init(this);
+            new DroidBootstrap(this).Execute();
         }
     }
 }

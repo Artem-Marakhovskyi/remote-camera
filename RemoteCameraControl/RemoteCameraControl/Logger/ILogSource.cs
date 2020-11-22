@@ -1,4 +1,4 @@
-namespace RemoteCameraControl.Android.RemoteCameraControl.Logger
+namespace RemoteCameraControl.Logger
 {
     public interface ILogSource
     {

@@ -239,10 +239,15 @@
           <HintPath>..\..\packages\Xamarin.Forms.4.5.0.657\lib\MonoAndroid90\Xamarin.Forms.Xaml.dll</HintPath>
           <Private>True</Private>
         </Reference>
+        <Reference Include="XLabs.IOC, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\XLabs.IoC.2.3.0-pre05\lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.IOC.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
         <Compile Include="ActivityBase.cs" />
         <Compile Include="App.cs" />
+        <Compile Include="DroidBootstrap.cs" />
         <Compile Include="HomeView.cs" />
         <Compile Include="Interaction\CancellableActionSheetFragment.cs" />
         <Compile Include="Interaction\CancellableActionSheetFragmentFactory.cs" />

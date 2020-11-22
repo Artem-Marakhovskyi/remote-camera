@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Airbnb.Lottie;
 using Foundation;
-using RemoteCameraControl.Android.RemoteCameraControl.Logger;
+using RemoteCameraControl.Logger;
 using RemoteCameraControl.RemoteCameraControl.Interaction;
 using UIKit;
 

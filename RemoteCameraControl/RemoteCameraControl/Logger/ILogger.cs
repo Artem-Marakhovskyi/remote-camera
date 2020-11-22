@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace RemoteCameraControl.Android.RemoteCameraControl.Logger
+namespace RemoteCameraControl.Logger
 {
     public interface ILogger
     {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RemoteCameraControl.RemoteCameraControl.Interaction
 {
-    public class Dialogs
+    public class Dialogs : IDialogs
     {
         private readonly IUserDialogs _dialogs;
         private readonly ILoadingIndicator _loadingIndicator;
