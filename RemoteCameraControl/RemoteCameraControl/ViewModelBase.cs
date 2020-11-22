@@ -1,4 +1,4 @@
-namespace RemoteCameraControl.Android.RemoteCameraControl
+namespace RemoteCameraControl
 {
     public class ViewModelBase : GalaSoft.MvvmLight.ViewModelBase
     {

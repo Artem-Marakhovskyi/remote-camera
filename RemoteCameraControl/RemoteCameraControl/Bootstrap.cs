@@ -1,13 +1,15 @@
 using Autofac;
 using Plugin.BLE;
 using Plugin.BLE.Abstractions.Contracts;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using RemoteCameraControl.Android.RemoteCameraControl.Permissions;
 using RemoteCameraControl.Blue;
 using RemoteCameraControl.Home;
 using RemoteCameraControl.IO;
+using RemoteCameraControl.Ioc;
 using RemoteCameraControl.Logger;
 using RemoteCameraControl.RemoteCameraControl.Interaction;
-using XLabs.Ioc;
 
 namespace RemoteCameraControl.Android.RemoteCameraControl
 {
@@ -18,13 +20,15 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
         
         public void Execute()
         {
+            Init();
+            
             ContainerBuilder = new ContainerBuilder();
 
             RegisterType<IBluetooth, Bluetooth>();
-            RegisterInstance<IBluetoothLE>(CrossBluetoothLE.Current);
     
             RegisterType<ILogger, Logger.Logger>();
             RegisterType<IPermissionsRequestor, PermissionsRequestor>();
+            RegisterInstance<IPermissions>(PermissionsImplementation.Current);
             RegisterType<IFileService, FileService>();
             RegisterType<IDialogs, Dialogs>();
             RegisterType<ILoadingIndicator, LoadingIndicator>();
@@ -33,7 +37,7 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
     
             
             RegisterPlatformSpecifics();
-            Resolver.SetResolver(new Ioc.Resolver(ContainerBuilder.Build(), Logger));
+            XLabs.Ioc.Resolver.SetResolver(new Resolver(ContainerBuilder.Build(), Logger));
         }
 
         private void Init()
@@ -63,7 +67,7 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
             logger.AddSource(new ServerLogSource());
             logger.AddSource(new AppCenterLogSource(LogLevel.Warning));
 #endif
-            logger.AddSource(new FileLogSource("Logs"));
+            //logger.AddSource(new FileLogSource("Logs"));
             Logger = logger;
         }
     }

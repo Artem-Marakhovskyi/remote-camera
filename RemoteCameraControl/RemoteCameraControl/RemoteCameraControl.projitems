@@ -10,7 +10,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Blue\Bluetooth.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Blue\BluetoothDevicesObserver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Blue\IBluetooth.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Blue\IBluetoothObserver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Bootstrap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Home\HomeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interaction\ActionSheetButtonModel.cs" />

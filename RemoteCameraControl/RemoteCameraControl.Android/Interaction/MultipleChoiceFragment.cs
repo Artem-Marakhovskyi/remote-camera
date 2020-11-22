@@ -40,7 +40,7 @@ public class MultipleChoiceFragment : DialogFragment, IMultipleChoiceDialog
             _title = title;
             _buttons = buttons;
             
-            Show(ActivityBase.CurrentActivity.FragmentManager, nameof(MultipleChoiceFragment));
+            Show(GalaSoft.MvvmLight.Views.ActivityBase.CurrentActivity.FragmentManager, nameof(MultipleChoiceFragment));
 
             return _taskCompletionSource.Task;
         }

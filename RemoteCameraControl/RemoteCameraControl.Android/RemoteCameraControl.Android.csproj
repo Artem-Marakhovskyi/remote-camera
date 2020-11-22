@@ -73,11 +73,21 @@
           <HintPath>..\..\packages\Plugin.CurrentActivity.2.1.0.4\lib\monoandroid44\Plugin.CurrentActivity.dll</HintPath>
           <Private>True</Private>
         </Reference>
+        <Reference Include="Plugin.Permissions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\Plugin.Permissions.5.0.0-beta\lib\monoandroid90\Plugin.Permissions.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
         <Reference Include="System" />
+        <Reference Include="System.Collections.Immutable, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+          <HintPath>..\..\packages\System.Collections.Immutable.5.0.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
         <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
           <HintPath>..\..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\netstandard1.3\System.Diagnostics.DiagnosticSource.dll</HintPath>
           <Private>True</Private>
         </Reference>
+        <Reference Include="System.Numerics" />
+        <Reference Include="System.Numerics.Vectors" />
         <Reference Include="System.Xml" />
         <Reference Include="System.Core" />
         <Reference Include="Mono.Android" />
@@ -132,10 +142,6 @@
         </Reference>
         <Reference Include="Xamarin.Android.Support.Vector.Drawable, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\..\packages\Xamarin.Android.Support.Vector.Drawable.28.0.0.3\lib\monoandroid90\Xamarin.Android.Support.Vector.Drawable.dll</HintPath>
-          <Private>True</Private>
-        </Reference>
-        <Reference Include="Xamarin.Essentials, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\packages\Xamarin.Essentials.1.5.3.2\lib\netstandard2.0\Xamarin.Essentials.dll</HintPath>
           <Private>True</Private>
         </Reference>
         <Reference Include="Xamarin.Android.Support.Annotations">
@@ -220,8 +226,9 @@
         <Reference Include="Xamarin.Android.Support.CustomTabs">
           <HintPath>..\..\packages\Xamarin.Android.Support.CustomTabs.28.0.0.3\lib\monoandroid90\Xamarin.Android.Support.CustomTabs.dll</HintPath>
         </Reference>
-        <Reference Include="Plugin.Permissions">
-          <HintPath>..\..\packages\Plugin.Permissions.6.0.1\lib\monoandroid90\Plugin.Permissions.dll</HintPath>
+        <Reference Include="Xamarin.Essentials, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\Xamarin.Essentials.1.2.0\lib\monoandroid90\Xamarin.Essentials.dll</HintPath>
+          <Private>True</Private>
         </Reference>
         <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\..\packages\Xamarin.Forms.4.5.0.657\lib\MonoAndroid90\Xamarin.Forms.Core.dll</HintPath>

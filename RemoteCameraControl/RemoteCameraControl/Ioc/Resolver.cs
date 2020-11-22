@@ -5,7 +5,7 @@ using Autofac;
 using RemoteCameraControl.Logger;
 using XLabs.Ioc;
 
-namespace RemoteCameraControl.Android.RemoteCameraControl.Ioc
+namespace RemoteCameraControl.Ioc
 {
     public class Resolver : IResolver
     {

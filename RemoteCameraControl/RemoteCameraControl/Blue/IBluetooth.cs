@@ -1,9 +1,13 @@
 using System.Threading.Tasks;
+using Plugin.BLE.Abstractions.Contracts;
 
 namespace RemoteCameraControl.Blue
 {
     public interface IBluetooth
     {
-        Task GetStatusAsync();
+        void StartDeviceObservation(IBluetoothObserver observer);
+        void FinishDeviceObservation();
+        
+        BluetoothState GetStatus();
     }
 }

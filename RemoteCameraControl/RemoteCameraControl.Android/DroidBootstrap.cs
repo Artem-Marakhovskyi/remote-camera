@@ -1,7 +1,9 @@
 using Acr.UserDialogs;
+using GalaSoft.MvvmLight.Views;
 using Plugin.CurrentActivity;
 using RemoteCameraControl.Android.Interaction;
 using RemoteCameraControl.Android.RemoteCameraControl;
+using RemoteCameraControl.Home;
 using RemoteCameraControl.RemoteCameraControl.Interaction;
 
 namespace RemoteCameraControl.Android
@@ -23,6 +25,17 @@ namespace RemoteCameraControl.Android
             RegisterType<ICancellableActionSheetDialogFactory, CancellableActionSheetFragmentFactory>();
             RegisterType<IMultipleChoiceDialog, MultipleChoiceFragment>();
             RegisterType<IPlatformLoadingIndicator, PlatformLoadingIndicator>();
+            
+            RegisterInstance<INavigationService>(GetConfiguredNavService());
+        }
+
+        private INavigationService GetConfiguredNavService()
+        {
+            var navigationService = new NavigationService();
+            
+            navigationService.Configure(nameof(HomeViewModel), typeof(HomeView));
+
+            return navigationService;
         }
     }
 }

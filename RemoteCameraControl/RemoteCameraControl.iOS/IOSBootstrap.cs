@@ -1,4 +1,6 @@
+using GalaSoft.MvvmLight.Views;
 using RemoteCameraControl.Android.RemoteCameraControl;
+using RemoteCameraControl.Home;
 using RemoteCameraControl.iOS.Interaction;
 using RemoteCameraControl.RemoteCameraControl.Interaction;
 
@@ -12,6 +14,18 @@ namespace RemoteCameraControl.iOS
             RegisterType<ICancellableActionSheetDialogFactory, CancellableActionSheetAlertFactory>();
             RegisterType<IMultipleChoiceDialog, MultipleChoiceAlert>();
             RegisterType<IPlatformLoadingIndicator, PlatformLoadingIndicator>();
+            
+            RegisterInstance<INavigationService>(GetConfiguredNavService());
+        }
+        
+        
+        private INavigationService GetConfiguredNavService()
+        {
+            var navigationService = new NavigationService();
+            
+            navigationService.Configure(nameof(HomeViewModel), typeof(HomeView));
+
+            return navigationService;
         }
     }
 }

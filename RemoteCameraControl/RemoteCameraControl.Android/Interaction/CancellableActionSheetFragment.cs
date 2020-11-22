@@ -32,9 +32,9 @@ namespace RemoteCameraControl.Android.Interaction
             _title = title;
             _cancel = cancel;
             _buttons = buttons;
-
-            Show(ActivityBase.CurrentActivity.FragmentManager, nameof(CancellableActionSheetFragment));
-
+                    
+            Show(GalaSoft.MvvmLight.Views.ActivityBase.CurrentActivity.FragmentManager, nameof(CancellableActionSheetFragment));
+            
             return _taskCompletionSource.Task;
         }
 
