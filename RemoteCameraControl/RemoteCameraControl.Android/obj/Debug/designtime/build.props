@@ -17,14 +17,14 @@ javasdkpath=/users/artem/library/developer/xamarin/jdk/microsoft_dist_openjdk_1.
 androidsequencepointsmode=none
 xamarinandroidversion=11.0.2-0
 monosymbolarchive=false
-androiduselatestplatformsdk=true
-targetframeworkversion=v10.0
+androiduselatestplatformsdk=false
+targetframeworkversion=v9.0
 androidcreatepackageperabi=
 androidgeneratejnimarshalmethods=false
 os=unix
 androidincludedebugsymbols=true
 androidpackagenamingpolicy=lowercasecrc64
-_nugetassetstimestamp=637416565944300934
+_nugetassetstimestamp=637416715843206687
 typemapkind=strings-asm
 androidsupportedabis=arm64-v8a
 armeabi-v7a

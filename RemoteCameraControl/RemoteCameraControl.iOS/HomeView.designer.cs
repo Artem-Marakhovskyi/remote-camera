@@ -8,18 +8,11 @@ using Foundation;
 
 namespace RemoteCameraControl.iOS
 {
-    [Register("ViewController")]
-    partial class ViewController
+    [Register("HomeView")]
+    partial class HomeView
     {
-        [Outlet] UIKit.UIButton Button { get; set; }
-
         void ReleaseDesignerOutlets()
         {
-            if (Button != null)
-            {
-                Button.Dispose();
-                Button = null;
-            }
         }
     }
 }

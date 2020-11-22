@@ -78,6 +78,23 @@
         <PlatformTarget>x86</PlatformTarget>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="Acr.UserDialogs, Version=7.1.0.466, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\Acr.UserDialogs.7.1.0.466\lib\xamarinios10\Acr.UserDialogs.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Autofac, Version=6.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da">
+          <HintPath>..\..\packages\Autofac.6.0.0\lib\netstandard2.1\Autofac.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="BTProgressHUD, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\BTProgressHUD.1.3.1\lib\xamarinios10\BTProgressHUD.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Lottie.iOS, Version=2.5.12.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\Com.Airbnb.iOS.Lottie.2.5.12\lib\xamarinios10\Lottie.iOS.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="OpenTK-1.0" />
         <Reference Include="Plugin.BLE, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\..\packages\Plugin.BLE.2.1.1\lib\Xamarin.iOS10\Plugin.BLE.dll</HintPath>
           <Private>True</Private>
@@ -86,10 +103,35 @@
           <HintPath>..\..\packages\Plugin.BLE.2.1.1\lib\Xamarin.iOS10\Plugin.BLE.Abstractions.dll</HintPath>
           <Private>True</Private>
         </Reference>
+        <Reference Include="Plugin.Permissions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\Plugin.Permissions.6.0.1\lib\xamarinios10\Plugin.Permissions.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
         <Reference Include="System" />
+        <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+          <HintPath>..\..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\netstandard1.3\System.Diagnostics.DiagnosticSource.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="System.Drawing.Common.dll" />
         <Reference Include="System.Xml" />
         <Reference Include="System.Core" />
+        <Reference Include="Xamarin.Essentials, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\Xamarin.Essentials.1.5.3.2\lib\xamarinios10\Xamarin.Essentials.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
         <Reference Include="Xamarin.iOS" />
+        <Reference Include="CommonServiceLocator">
+          <HintPath>..\..\packages\CommonServiceLocator.2.0.2\lib\netstandard2.0\CommonServiceLocator.dll</HintPath>
+        </Reference>
+        <Reference Include="GalaSoft.MvvmLight">
+          <HintPath>..\..\packages\MvvmLightLibs.5.4.1.1\lib\xamarin.ios10\GalaSoft.MvvmLight.dll</HintPath>
+        </Reference>
+        <Reference Include="GalaSoft.MvvmLight.Extras">
+          <HintPath>..\..\packages\MvvmLightLibs.5.4.1.1\lib\xamarin.ios10\GalaSoft.MvvmLight.Extras.dll</HintPath>
+        </Reference>
+        <Reference Include="GalaSoft.MvvmLight.Platform">
+          <HintPath>..\..\packages\MvvmLightLibs.5.4.1.1\lib\xamarin.ios10\GalaSoft.MvvmLight.Platform.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
         <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -108,12 +150,19 @@
         <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Interaction\CancellableActionSheetAlert.cs" />
+        <Compile Include="Interaction\CancellableActionSheetAlertFactory.cs" />
+        <Compile Include="Interaction\MultipleChoiceAlert.cs" />
+        <Compile Include="Interaction\PlatformLoadingIndicator.cs" />
         <Compile Include="Main.cs" />
         <Compile Include="AppDelegate.cs" />
-        <Compile Include="ViewController.cs" />
-        <Compile Include="ViewController.designer.cs">
-            <DependentUpon>ViewController.cs</DependentUpon>
+        <Compile Include="HomeView.cs" />
+        <Compile Include="HomeView.designer.cs">
+            <DependentUpon>HomeView.cs</DependentUpon>
         </Compile>
+        <Compile Include="ViewControllerBase.cs" />
+        <Compile Include="ViewControllerExtensions.cs" />
+        <Compile Include="ViewExtensions.cs" />
     </ItemGroup>
     <Import Project="..\RemoteCameraControl\RemoteCameraControl.projitems" Label="Shared" Condition="Exists('..\RemoteCameraControl\RemoteCameraControl.projitems')" />
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

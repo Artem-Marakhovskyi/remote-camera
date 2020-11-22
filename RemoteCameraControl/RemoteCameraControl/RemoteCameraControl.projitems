@@ -9,6 +9,24 @@
     <Import_RootNamespace>RemoteCameraControl</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)MyClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Home\HomeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interaction\ActionSheetButtonModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interaction\Dialogs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interaction\ICancellableActionSheetDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interaction\ICancellableActionSheetDialogFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interaction\IDialogs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interaction\ILoadingIndicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interaction\IMultipleChoiceDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interaction\IPlatformLoadingIndicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interaction\LoadingIndicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logger\ConsoleLogSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logger\ILogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logger\ILogSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logger\Logger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logger\LogLevel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logger\LogMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Permissions\IPermissionsRequestor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Permissions\PermissionsRequestor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModelBase.cs" />
   </ItemGroup>
 </Project>
