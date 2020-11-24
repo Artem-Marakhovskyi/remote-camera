@@ -30,27 +30,29 @@ namespace RemoteCameraControl.Blue
             _adapter.DeviceAdvertised += OnDeviceAdvertised;
             _adapter.DeviceConnected += OnDeviceConnected;
             _adapter.DeviceConnectionLost += OnDeviceConnectionLost;
+            _adapter.ScanMode = ScanMode.Balanced;
+            _adapter.ScanTimeout = 100;
             _adapter.StartScanningForDevicesAsync();
         }
 
         private void OnDeviceDisconnected(object sender, DeviceEventArgs e)
         {
-            
+            _observer.OnDeviceDisconnected(e.Device);
         }
 
         private void OnDeviceAdvertised(object sender, DeviceEventArgs e)
         {
-            throw new System.NotImplementedException();
+            _observer.OnDeviceDiscovered(e.Device);
         }
 
         private void OnDeviceConnected(object sender, DeviceEventArgs e)
         {
-            throw new System.NotImplementedException();
+            _observer.OnDeviceConnected(e.Device);
         }
 
         private void OnDeviceConnectionLost(object sender, DeviceErrorEventArgs e)
         {
-            throw new System.NotImplementedException();
+            _observer.OnDeviceDisconnected(e.Device);
         }
 
         public void FinishDeviceObservation()
@@ -70,14 +72,9 @@ namespace RemoteCameraControl.Blue
             return state;
         }
 
-        public BluetoothState GetStatusAsync()
-        {
-            throw new System.NotImplementedException();
-        }
-        
         private void OnDeviceDiscovered(object sender, DeviceEventArgs e)
         {
-            throw new System.NotImplementedException();
+            _observer.OnDeviceDiscovered(e.Device);
         }
     }
 }

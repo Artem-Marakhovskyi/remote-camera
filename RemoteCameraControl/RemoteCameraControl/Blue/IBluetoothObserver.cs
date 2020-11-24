@@ -1,18 +1,20 @@
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Collections.ObjectModel;
 using Plugin.BLE.Abstractions.Contracts;
 
 namespace RemoteCameraControl.Blue
 {
     public interface IBluetoothObserver
     {
-        IReadOnlyList<IDevice> ConnectedDevices { get; }
+        ObservableCollection<IDevice> ConnectedDevices { get; }
         
-        IReadOnlyList<IDevice> DiscoveredDevices { get; }
+        ObservableCollection<IDevice> DiscoveredDevices { get; }
             
-        void OnDeviceDiscovered();
+        void OnDeviceDiscovered(IDevice device);
         
-        void OnDeviceDisconnected();
+        void OnDeviceDisconnected(IDevice device);
 
-        void OnDeviceConnected();
+        void OnDeviceConnected(IDevice device);
     }
 }

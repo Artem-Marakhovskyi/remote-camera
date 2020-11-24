@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Plugin.BLE.Abstractions.Contracts;
 
@@ -7,28 +8,52 @@ namespace RemoteCameraControl.Blue
 {
     public class BluetoothDevicesObserver : IBluetoothObserver
     {   
-        public IReadOnlyList<IDevice> ConnectedDevices { get; } = ImmutableList<IDevice>.Empty;
-        public IReadOnlyList<IDevice> DiscoveredDevices { get; } = ImmutableList<IDevice>.Empty;
+        public ObservableCollection<IDevice> ConnectedDevices { get; private set; } = new ObservableCollection<IDevice>();
+        public ObservableCollection<IDevice> DiscoveredDevices { get; private set; } = new ObservableCollection<IDevice>();
 
-        public void OnDeviceDiscovered()
+        public void OnDeviceDiscovered(IDevice device)
         {
-            throw new System.NotImplementedException();
+            AddDeviceAsDiscovered(device);
         }
 
-        public void OnDeviceDisconnected()
+        public void OnDeviceDisconnected(IDevice device)
         {
-            throw new System.NotImplementedException();
+            RemoveDeviceFromConnected(device);
         }
 
-        public void OnDeviceConnected()
+        public void OnDeviceConnected(IDevice device)
         {
-            throw new System.NotImplementedException();
+            AddDeviceAsConnected(device);
+        }
+
+        private void AddDeviceAsDiscovered(IDevice device)
+        {
+            if (DiscoveredDevices.All(x => x.Id != device.Id))
+            {
+                DiscoveredDevices.Add(device);
+            }
+        }
+
+        private void RemoveDeviceFromConnected(IDevice device)
+        {
+            var d = ConnectedDevices.FirstOrDefault(x => x.Id == device.Id);
+            if (d != null)
+            {
+                ConnectedDevices.Remove(d);
+            }            
         }
 
         private void AddDeviceAsConnected(IDevice device)
         {
-            if (!ConnectedDevices.Any(x => x.Id == device.Id))
+            if (ConnectedDevices.All(x => x.Id != device.Id))
             {
+                ConnectedDevices.Add(device);
+            }
+
+            var d = DiscoveredDevices.FirstOrDefault(x => x.Id == device.Id);
+            if (d != null)
+            {
+                DiscoveredDevices.Remove(d);
             }
         }
     }

@@ -1,5 +1,9 @@
 using Android.App;
 using Android.OS;
+using Android.Support.Design.Widget;
+using Android.Support.V4.View;
+using Android.Widget;
+using GalaSoft.MvvmLight.Helpers;
 using RemoteCameraControl.Home;
 
 namespace RemoteCameraControl.Android
@@ -7,14 +11,41 @@ namespace RemoteCameraControl.Android
     [Activity(Label = "View for HomeViewModel", MainLauncher = true)]
     public class HomeView : ActivityBase<HomeViewModel>
     {
-        protected async override void OnCreate(Bundle bundle)
+        private TextView? _bluetoothStateTextView;
+
+        protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            
+            SetTheme(Android.Resource.Style.Theme_AppCompat);
             SetContentView(Resource.Layout.home_view);
 
-                var s = await ViewModel.GetStatusAsync();
+            _bluetoothStateTextView = FindViewById<TextView>(Resource.Id.bluetooth_state_text_view);
+            this.SetBinding(() => ViewModel.BluetoothState, () => _bluetoothStateTextView.Text, BindingMode.OneWay)
+                .ConvertSourceToTarget(x => $"Bluetooth state: {x}");
+
+        var viewPager = FindViewById<ViewPager>(Resource.Id.view_pager);
+            viewPager.Adapter = new HomeViewPagerAdapter(
+                SupportFragmentManager,
+                ViewModel.ConnectedDevices,
+                ViewModel.DiscoveredDevices);
+            viewPager.CurrentItem = 0;
         }
-        
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            
+            ViewModel.StartBluetoothProcessing();
+
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+            
+            
+            ViewModel.StopBluetoothProcessing();
+
+        }
     }
 }
