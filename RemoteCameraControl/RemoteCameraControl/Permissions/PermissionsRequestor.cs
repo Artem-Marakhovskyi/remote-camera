@@ -18,6 +18,7 @@ namespace RemoteCameraControl.Android.RemoteCameraControl.Permissions
         {
             await RequestPermissionAsync(Permission.Camera);
             await RequestPermissionAsync(Permission.MediaLibrary);
+            await RequestPermissionAsync(Permission.Location);
         }
         
 

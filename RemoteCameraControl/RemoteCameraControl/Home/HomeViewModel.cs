@@ -30,8 +30,9 @@ namespace RemoteCameraControl.Home
 
         public ObservableCollection<IDevice> DiscoveredDevices => _bluetoothObserver.DiscoveredDevices;
 
-        public void StartBluetoothProcessing()
+        public async Task StartBluetoothProcessing()
         {
+            await _permissionsRequestor.RequestInitiallyRequiredAsync();
             _bluetooth.StartDeviceObservation(_bluetoothObserver);
         }
         

@@ -31,12 +31,11 @@ namespace RemoteCameraControl.Android
             viewPager.CurrentItem = 0;
         }
 
-        protected override void OnResume()
+        protected async override void OnResume()
         {
             base.OnResume();
             
-            ViewModel.StartBluetoothProcessing();
-
+            await ViewModel.StartBluetoothProcessing();
         }
 
         protected override void OnPause()
