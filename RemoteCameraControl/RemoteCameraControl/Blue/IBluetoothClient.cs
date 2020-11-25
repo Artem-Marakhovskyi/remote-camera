@@ -3,7 +3,7 @@ using Plugin.BLE.Abstractions.Contracts;
 
 namespace RemoteCameraControl.Blue
 {
-    public interface IBluetoothConnector
+    public interface IBluetoothClient
     {
         Task ListenTo(IDevice device, object bluetoothDevice);
     }

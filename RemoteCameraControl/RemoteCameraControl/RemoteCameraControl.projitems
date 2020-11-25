@@ -13,7 +13,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Blue\Bluetooth.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Blue\BluetoothDevicesObserver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Blue\IBluetooth.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Blue\IBluetoothConnector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Blue\IBluetoothClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Blue\IBluetoothServer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Blue\IBluetoothObserver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Bootstrap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Home\HomeViewModel.cs" />

@@ -5,6 +5,7 @@ using Plugin.BLE;
 using Plugin.BLE.Abstractions;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.EventArgs;
+using RemoteCameraControl.Android;
 using RemoteCameraControl.Logger;
 
 namespace RemoteCameraControl.Blue
@@ -15,14 +16,14 @@ namespace RemoteCameraControl.Blue
         private ILogger _logger;
         private IAdapter _adapter;
         private IBluetoothObserver _observer;
-        private IBluetoothConnector _bluetoothConnector;
+        private IBluetoothServer _bluetoothServer;
 
         public Bluetooth(
             ILogger logger,
-            IBluetoothConnector bluetoothConnector)
+            IBluetoothServer bluetoothServer)
         {
             _logger = logger;
-            _bluetoothConnector = bluetoothConnector;
+            _bluetoothServer = bluetoothServer;
             _plugin = CrossBluetoothLE.Current;
             _adapter = _plugin.Adapter;
         }
@@ -77,12 +78,18 @@ namespace RemoteCameraControl.Blue
             return state;
         }
 
-        public Task ConnectToDeviceAsync(Guid deviceId)
+        public Task ListenToDeviceAsync(Guid deviceId)
         {
             var device = _observer.DiscoveredDevices.First(x => x.Id == deviceId);
-            return _bluetoothConnector.ListenTo(device, device.NativeDevice);
+            return _bluetoothServer.ListenTo(device, device.NativeDevice);
         }
-        
+
+        // public Task ConnectToDeviceAsync(Guid deviceId)
+        // {
+        //     var device = _observer.DiscoveredDevices.First(x => x.Id == deviceId);
+        //     return _bluetoothServer.ListenTo(device, device.NativeDevice);
+        // }
+
         private void OnDeviceDiscovered(object sender, DeviceEventArgs e)
         {
             _observer.OnDeviceDiscovered(e.Device);

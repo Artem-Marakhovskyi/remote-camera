@@ -435,7 +435,8 @@
     <ItemGroup>
         <Compile Include="ActivityBase.cs" />
         <Compile Include="App.cs" />
-        <Compile Include="BluetoothConnector.cs" />
+        <Compile Include="BluetoothClient.cs" />
+        <Compile Include="BluetoothServer.cs" />
         <Compile Include="ConnectedDevicesFragment.cs" />
         <Compile Include="DiscoveredDevicesFragment.cs" />
         <Compile Include="DroidBootstrap.cs" />

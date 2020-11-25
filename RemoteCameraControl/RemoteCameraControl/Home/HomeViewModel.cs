@@ -57,7 +57,7 @@ namespace RemoteCameraControl.Home
             StopBluetoothProcessing();
             try
             {
-                await _bluetooth.ConnectToDeviceAsync(deviceId);
+                await _bluetooth.ListenToDeviceAsync(deviceId);
             }
             catch (DeviceConnectionException e)
             {

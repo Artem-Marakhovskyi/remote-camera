@@ -28,7 +28,7 @@ namespace RemoteCameraControl.Android
             RegisterType<IMultipleChoiceDialog, MultipleChoiceFragment>();
             RegisterType<IPlatformLoadingIndicator, PlatformLoadingIndicator>();
             RegisterType<ILoadingIndicatorConfig, LoadingIndicatorConfig>();
-            RegisterType<IBluetoothConnector, BluetoothConnector>();
+            RegisterType<IBluetoothServer, BluetoothServer>();
             
             RegisterInstance<INavigationService>(GetConfiguredNavService());
         }

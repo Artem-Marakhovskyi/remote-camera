@@ -11,6 +11,8 @@ namespace RemoteCameraControl.Blue
         
         BluetoothState GetStatus();
 
-        Task ConnectToDeviceAsync(Guid deviceId);
+        Task ListenToDeviceAsync(Guid deviceId);
+        
+        Task ConnectToDeviceAsync(Guid deviceId);        
     }
 }
