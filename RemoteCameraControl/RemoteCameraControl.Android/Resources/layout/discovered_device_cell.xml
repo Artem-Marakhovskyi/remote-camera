@@ -5,8 +5,8 @@
               android:layout_height="wrap_content"
               android:padding="16dp">
 
-    <TextView android:layout_width="wrap_content" android:layout_height="80dp" android:id="@+id/discovered_device_name"/>
+    <TextView android:layout_width="wrap_content" android:maxWidth="200dp" android:layout_height="wrap_content" android:id="@+id/discovered_device_name"/>
     <View android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="2dp"/>
-    <Button android:layout_width="84dp" android:layout_height="48dp" android:id="@+id/connect_button"/>
+    <Button android:layout_width="84dp" android:layout_height="48dp" android:id="@+id/connect_button" android:text="Connect"/>
 
 </LinearLayout>

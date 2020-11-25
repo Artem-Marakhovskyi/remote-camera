@@ -1,4 +1,5 @@
 using Android.App;
+using Android.Bluetooth;
 using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
@@ -27,8 +28,16 @@ namespace RemoteCameraControl.Android
             viewPager.Adapter = new HomeViewPagerAdapter(
                 SupportFragmentManager,
                 ViewModel.ConnectedDevices,
-                ViewModel.DiscoveredDevices);
+                ViewModel.DiscoveredDevices,
+                ViewModel.ConnectToDeviceCommand,
+                ViewModel.DisconnectFromDeviceCommand);
             viewPager.CurrentItem = 0;
+//"64:BC:0C:E4:56:FD"
+            var s = GetSystemService(Service.BluetoothService);
+            // var address = s.Address;
+            // var name = s.Name;
+            // var state = s.State;
+            
         }
 
         protected async override void OnResume()

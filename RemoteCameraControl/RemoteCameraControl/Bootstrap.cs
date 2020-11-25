@@ -1,3 +1,4 @@
+using Acr.UserDialogs;
 using Autofac;
 using Plugin.BLE;
 using Plugin.BLE.Abstractions.Contracts;
@@ -37,6 +38,9 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
     
             
             RegisterPlatformSpecifics();
+            
+            RegisterInstance<IUserDialogs>(UserDialogs.Instance);
+            
             XLabs.Ioc.Resolver.SetResolver(new Resolver(ContainerBuilder.Build(), Logger));
         }
 

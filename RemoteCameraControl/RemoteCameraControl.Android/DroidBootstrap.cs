@@ -1,8 +1,10 @@
 using Acr.UserDialogs;
+using Android.Bluetooth;
 using GalaSoft.MvvmLight.Views;
 using Plugin.CurrentActivity;
 using RemoteCameraControl.Android.Interaction;
 using RemoteCameraControl.Android.RemoteCameraControl;
+using RemoteCameraControl.Blue;
 using RemoteCameraControl.Home;
 using RemoteCameraControl.RemoteCameraControl.Interaction;
 
@@ -25,6 +27,8 @@ namespace RemoteCameraControl.Android
             RegisterType<ICancellableActionSheetDialogFactory, CancellableActionSheetFragmentFactory>();
             RegisterType<IMultipleChoiceDialog, MultipleChoiceFragment>();
             RegisterType<IPlatformLoadingIndicator, PlatformLoadingIndicator>();
+            RegisterType<ILoadingIndicatorConfig, LoadingIndicatorConfig>();
+            RegisterType<IBluetoothConnector, BluetoothConnector>();
             
             RegisterInstance<INavigationService>(GetConfiguredNavService());
         }

@@ -1,9 +1,12 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
+using Android.Bluetooth;
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Helpers;
 using Plugin.BLE.Abstractions.Contracts;
 
@@ -13,14 +16,20 @@ namespace RemoteCameraControl.Android
     {
         private ObservableCollection<IDevice> _discoveredDevices;
         private TextView _noDevicesFoundTextView;
+        private RelayCommand<Guid> _connectToDeviceCommand;
 
-        public static DiscoveredDevicesFragment NewInstance(ObservableCollection<IDevice> discoveredDevices) 
+        public static DiscoveredDevicesFragment NewInstance(
+            ObservableCollection<IDevice> discoveredDevices,
+            RelayCommand<Guid> connectToDeviceCommand) 
         {
-            return new DiscoveredDevicesFragment(discoveredDevices);
+            return new DiscoveredDevicesFragment(discoveredDevices, connectToDeviceCommand);
         }
 
-        public DiscoveredDevicesFragment(ObservableCollection<IDevice> discoveredDevices)
+        public DiscoveredDevicesFragment(
+            ObservableCollection<IDevice> discoveredDevices,
+            RelayCommand<Guid> connectToDeviceCommand)
         {
+            _connectToDeviceCommand = connectToDeviceCommand;
             _discoveredDevices = discoveredDevices;
         }
         
@@ -46,7 +55,7 @@ namespace RemoteCameraControl.Android
             view =  view ?? LayoutInflater.Inflate(Resource.Layout.discovered_device_cell, null);
 
             var textView = view.FindViewById<TextView>(Resource.Id.discovered_device_name);
-            textView.Text = $"{device.Name}, state is {device.State}";
+            textView.Text = $"{device.Name ?? ((BluetoothDevice)device.NativeDevice).Address}, state is {device.State}";
 
             var connectButton = view.FindViewById<Button>(Resource.Id.connect_button);
             connectButton.Tag = device.Id.ToString();
@@ -58,7 +67,7 @@ namespace RemoteCameraControl.Android
 
         private void OnButtonClick(object sender, EventArgs e)
         {
-            
+            _connectToDeviceCommand.Execute(Guid.Parse(((Button)sender).Tag.ToString()));   
         }
     }
 }

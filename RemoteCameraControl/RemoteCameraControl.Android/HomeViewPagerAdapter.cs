@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Views;
+using GalaSoft.MvvmLight.Command;
 using Java.Lang;
 using Plugin.BLE.Abstractions.Contracts;
 using Object = Java.Lang.Object;
@@ -13,6 +14,8 @@ namespace RemoteCameraControl.Android
     {
         private ObservableCollection<IDevice> _discoveredDevices;
         private ObservableCollection<IDevice> _connectedDevices;
+        private RelayCommand<Guid> _disconnectFromDevice;
+        private RelayCommand<Guid> _connectToDevice;
 
         public HomeViewPagerAdapter(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
@@ -21,10 +24,14 @@ namespace RemoteCameraControl.Android
         public HomeViewPagerAdapter(
             FragmentManager fm,
             ObservableCollection<IDevice> connectedDevices,
-            ObservableCollection<IDevice> discoveredDevices) : base(fm)
+            ObservableCollection<IDevice> discoveredDevices,
+            RelayCommand<Guid> connectToDevice,
+            RelayCommand<Guid> disconnectFromDevice) : base(fm)
         {
             _connectedDevices = connectedDevices;
             _discoveredDevices = discoveredDevices;
+            _connectToDevice = connectToDevice;
+            _disconnectFromDevice = disconnectFromDevice;
         }
 
         public override int Count { get; } = 2;
@@ -33,11 +40,11 @@ namespace RemoteCameraControl.Android
         {
             if (position == 0)
             {
-                return ConnectedDevicesFragment.NewInstance(_connectedDevices);
+                return ConnectedDevicesFragment.NewInstance(_connectedDevices, _disconnectFromDevice);
             }
             else
             {
-                return DiscoveredDevicesFragment.NewInstance(_discoveredDevices);
+                return DiscoveredDevicesFragment.NewInstance(_discoveredDevices, _connectToDevice);
             }
         }
 

@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 
 namespace RemoteCameraControl.Android.RemoteCameraControl.Permissions
@@ -16,20 +17,20 @@ namespace RemoteCameraControl.Android.RemoteCameraControl.Permissions
         
         public async Task RequestInitiallyRequiredAsync()
         {
-            await RequestPermissionAsync(Permission.Camera);
-            await RequestPermissionAsync(Permission.MediaLibrary);
-            await RequestPermissionAsync(Permission.Location);
+            await RequestPermissionAsync<CameraPermission>();
+            await RequestPermissionAsync<MediaLibraryPermission>();
+            await RequestPermissionAsync<LocationPermission>();
         }
         
 
-        private async Task<PermissionStatus> RequestPermissionAsync(Permission permission)
+        private async Task<PermissionStatus> RequestPermissionAsync<T>() where T : BasePermission, new()
         {
-            var status = await _permissions.CheckPermissionStatusAsync(permission);
+            var status = await _permissions.CheckPermissionStatusAsync<T>();
 
             if (status == Plugin.Permissions.Abstractions.PermissionStatus.Granted) 
                 return status;
             
-            return (await _permissions.RequestPermissionsAsync(permission)).First().Value;
+            return await _permissions.RequestPermissionAsync<T>();
         }
     }
 }

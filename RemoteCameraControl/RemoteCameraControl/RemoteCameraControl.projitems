@@ -9,12 +9,15 @@
     <Import_RootNamespace>RemoteCameraControl</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AppContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Blue\Bluetooth.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Blue\BluetoothDevicesObserver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Blue\IBluetooth.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Blue\IBluetoothConnector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Blue\IBluetoothObserver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Bootstrap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Home\HomeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IAppContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interaction\ActionSheetButtonModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interaction\Dialogs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interaction\ICancellableActionSheetDialog.cs" />
@@ -36,6 +39,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Logger\LogMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Permissions\IPermissionsRequestor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Permissions\PermissionsRequestor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SelectMode\SelectModeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModelBase.cs" />
   </ItemGroup>
 </Project>

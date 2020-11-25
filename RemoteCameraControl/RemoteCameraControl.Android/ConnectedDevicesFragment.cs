@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Helpers;
 using Plugin.BLE.Abstractions.Contracts;
 
@@ -13,15 +14,21 @@ namespace RemoteCameraControl.Android
     {
         private ObservableCollection<IDevice> _connectedDevices;
         private TextView _noDevicesFoundTextView;
+        private RelayCommand<Guid> _disconnectFromDeviceCommand;
 
-        public static ConnectedDevicesFragment NewInstance(ObservableCollection<IDevice> connectedDevices) 
+        public static ConnectedDevicesFragment NewInstance(
+            ObservableCollection<IDevice> connectedDevices,
+            RelayCommand<Guid> disconnectFromDeviceCommand) 
         {
-            return new ConnectedDevicesFragment(connectedDevices);
+            return new ConnectedDevicesFragment(connectedDevices, disconnectFromDeviceCommand);
         }
 
-        public ConnectedDevicesFragment(ObservableCollection<IDevice> connectedDevices)
+        public ConnectedDevicesFragment(
+            ObservableCollection<IDevice> connectedDevices, 
+            RelayCommand<Guid> disconnectFromDeviceCommand)
         {
             _connectedDevices = connectedDevices;
+            _disconnectFromDeviceCommand = disconnectFromDeviceCommand;
         }
         
         public override View OnCreateView(
@@ -58,7 +65,7 @@ namespace RemoteCameraControl.Android
 
         private void OnButtonClick(object sender, EventArgs e)
         {
-            
+            _disconnectFromDeviceCommand.Execute(Guid.Parse(((Button)sender).Tag.ToString()));
         }
     }
 }

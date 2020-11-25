@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Plugin.BLE.Abstractions.Contracts;
 
@@ -9,5 +10,7 @@ namespace RemoteCameraControl.Blue
         void FinishDeviceObservation();
         
         BluetoothState GetStatus();
+
+        Task ConnectToDeviceAsync(Guid deviceId);
     }
 }
