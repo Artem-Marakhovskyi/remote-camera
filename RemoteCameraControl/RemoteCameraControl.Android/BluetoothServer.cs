@@ -14,9 +14,9 @@ using RemoteCameraControl.Logger;
 
 namespace RemoteCameraControl.Android
 {
-    public class BluetoothConnector : IBluetoothConnector
+    public class BluetoothServer : IBluetoothServer
     {
-        public BluetoothConnector(
+        public BluetoothServer(
             ILogger logger)
         {
             _logger = logger;
