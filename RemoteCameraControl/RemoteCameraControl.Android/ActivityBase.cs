@@ -7,27 +7,16 @@ using XLabs.Ioc;
 
 namespace RemoteCameraControl.Android
 {
-    public class ActivityBase<T> : AppCompatActivity where T: ViewModelBase
+    public class ActivityBase<T> : ActivityBase where T: ViewModelBase
     {
         protected T ViewModel { get; private set; }
         protected INavigationService NavigationService { get; private set; }
         
-        public static AppCompatActivity CurrentActivity { get; private set; }
-
-        internal string ActivityKey { get; private set; }
-
-        internal static string NextPageKey { get; set; }
-
         /// <summary>
         /// If possible, discards the current page and displays the previous page
         /// on the navigation stack.
         /// </summary>
-        public static void GoBack()
-        {
-            if (ActivityBase.CurrentActivity == null)
-                return;
-            ActivityBase.CurrentActivity.OnBackPressed();
-        }
+
 
         /// <summary>
         /// Overrides <see cref="M:Android.App.Activity.OnResume" />. If you override
@@ -37,7 +26,7 @@ namespace RemoteCameraControl.Android
         /// </summary>
         protected override void OnResume()
         {
-            CurrentActivity = this;
+            ActivityBase.CurrentActivity = this;
             if (string.IsNullOrEmpty(this.ActivityKey))
             {
                 this.ActivityKey = NextPageKey;
@@ -59,4 +48,22 @@ namespace RemoteCameraControl.Android
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
+
+    public class ActivityBase : AppCompatActivity
+    {
+        public static ActivityBase CurrentActivity { get; protected set; }
+
+
+        public string ActivityKey { get; protected set; }
+
+        public static string NextPageKey { get; set; }
+        public static void GoBack()
+        {
+            if (ActivityBase.CurrentActivity == null)
+                return;
+            ActivityBase.CurrentActivity.OnBackPressed();
+        }
+
+    }
+
 }

@@ -5,6 +5,7 @@ using Plugin.BLE.Abstractions.Contracts;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using RemoteCameraControl.Android.RemoteCameraControl.Permissions;
+using RemoteCameraControl.Android.SelectMode;
 using RemoteCameraControl.Blue;
 using RemoteCameraControl.Home;
 using RemoteCameraControl.IO;
@@ -33,10 +34,13 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
             RegisterType<IFileService, FileService>();
             RegisterType<IDialogs, Dialogs>();
             RegisterType<ILoadingIndicator, LoadingIndicator>();
-            
+
+            RegisterInstance<IAppContext>(new AppContext());
+
             RegisterViewModel<HomeViewModel>();
-    
-            
+            RegisterViewModel<ModeSelectViewModel>();
+
+
             RegisterPlatformSpecifics();
             
             RegisterInstance<IUserDialogs>(UserDialogs.Instance);

@@ -451,6 +451,8 @@
         <Compile Include="LinkerPleaseInclude.cs" />
         <Compile Include="Resources\Resource.designer.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="ModeSelectView.cs" />
+        <Compile Include="NavigationService.cs" />
     </ItemGroup>
     <ItemGroup>
         <None Include="packages.config" />
@@ -468,6 +470,10 @@
         <AndroidResource Include="Resources\layout\home_view.axml" />
         <AndroidResource Include="Resources\layout\loading_indicator.xml" />
         <AndroidResource Include="Resources\values\Strings.xml" />
+        <AndroidResource Include="Resources\layout\mode_select_view.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
     </ItemGroup>
     <ItemGroup>
       <AndroidAsset Include="Assets\loader.json">

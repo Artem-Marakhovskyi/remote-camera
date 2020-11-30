@@ -40,7 +40,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)Logger\LogMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Permissions\IPermissionsRequestor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Permissions\PermissionsRequestor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SelectMode\SelectModeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SelectMode\ModeSelectViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\ContractInitializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\NetworkService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EnvironmentService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\EndlessStreamReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\EnslessStreamWriter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\SignalStore.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Network\" />
   </ItemGroup>
 </Project>

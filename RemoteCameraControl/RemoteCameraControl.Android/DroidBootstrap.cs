@@ -4,6 +4,7 @@ using GalaSoft.MvvmLight.Views;
 using Plugin.CurrentActivity;
 using RemoteCameraControl.Android.Interaction;
 using RemoteCameraControl.Android.RemoteCameraControl;
+using RemoteCameraControl.Android.SelectMode;
 using RemoteCameraControl.Blue;
 using RemoteCameraControl.Home;
 using RemoteCameraControl.RemoteCameraControl.Interaction;
@@ -38,6 +39,7 @@ namespace RemoteCameraControl.Android
             var navigationService = new NavigationService();
             
             navigationService.Configure(nameof(HomeViewModel), typeof(HomeView));
+            navigationService.Configure(nameof(ModeSelectViewModel), typeof(ModeSelectView));
 
             return navigationService;
         }

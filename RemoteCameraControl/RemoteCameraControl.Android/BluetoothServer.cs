@@ -29,8 +29,8 @@ namespace RemoteCameraControl.Android
 
         public async Task ListenTo(IDevice pluginDevice, object nativeDevice)
         {
-            var bluetoothDevice = (BluetoothDevice) nativeDevice;
-            var uuids = bluetoothDevice.GetUuids();
+            var device = (BluetoothDevice) nativeDevice;
+            
             BluetoothAdapter adapter = BluetoothAdapter.DefaultAdapter;
             if (adapter == null)
             {
@@ -41,8 +41,6 @@ namespace RemoteCameraControl.Android
                 _logger.LogInfo("Bluetooth adapter is not enabled.");
             }
 
-            var device = adapter.GetRemoteDevice(bluetoothDevice.Address);
-
             if (device == null)
             {
                 _logger.LogInfo("Named device not found.");
@@ -52,7 +50,14 @@ namespace RemoteCameraControl.Android
                 _logger.LogInfo("Device has been found: " + device.Name + " " + device.Address + " " +
                               device.BondState.ToString());
             }
-            
+
+            var uuids = device.GetUuids();
+            if (uuids == null)
+            {
+                _logger.LogInfo("Device uuids is null.");
+                return;
+            }
+
             var serverSocket
                 = adapter.ListenUsingInsecureRfcommWithServiceRecord(device.Name, uuids.First().Uuid);
             

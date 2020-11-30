@@ -2,10 +2,8 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Plugin.BLE;
-using Plugin.BLE.Abstractions;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.EventArgs;
-using RemoteCameraControl.Android;
 using RemoteCameraControl.Logger;
 
 namespace RemoteCameraControl.Blue
@@ -93,6 +91,11 @@ namespace RemoteCameraControl.Blue
         private void OnDeviceDiscovered(object sender, DeviceEventArgs e)
         {
             _observer.OnDeviceDiscovered(e.Device);
+        }
+
+        public Task ConnectToDeviceAsync(Guid deviceId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

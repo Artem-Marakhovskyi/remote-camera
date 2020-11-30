@@ -9,7 +9,7 @@ using RemoteCameraControl.Home;
 
 namespace RemoteCameraControl.Android
 {
-    [Activity(Label = "View for HomeViewModel", MainLauncher = true)]
+    [Activity(Label = "View for HomeViewModel")]
     public class HomeView : ActivityBase<HomeViewModel>
     {
         private TextView? _bluetoothStateTextView;

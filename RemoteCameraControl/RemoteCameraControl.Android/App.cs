@@ -1,4 +1,7 @@
+using System.Net;
+using System.Net.Sockets;
 using Android.App;
+using RemoteCameraControl.Network;
 
 namespace RemoteCameraControl.Android
 {

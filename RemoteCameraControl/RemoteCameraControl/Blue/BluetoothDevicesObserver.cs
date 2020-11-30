@@ -28,7 +28,7 @@ namespace RemoteCameraControl.Blue
 
         private void AddDeviceAsDiscovered(IDevice device)
         {
-            if (DiscoveredDevices.All(x => x.Id != device.Id))
+            if (DiscoveredDevices.All(x => x.Id != device.Id) && !string.IsNullOrWhiteSpace(device.Name))
             {
                 DiscoveredDevices.Add(device);
             }
@@ -45,7 +45,7 @@ namespace RemoteCameraControl.Blue
 
         private void AddDeviceAsConnected(IDevice device)
         {
-            if (ConnectedDevices.All(x => x.Id != device.Id))
+            if (ConnectedDevices.All(x => x.Id != device.Id) && !string.IsNullOrWhiteSpace(device.Name))
             {
                 ConnectedDevices.Add(device);
             }
