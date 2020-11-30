@@ -11,6 +11,8 @@ using RemoteCameraControl.Home;
 using RemoteCameraControl.IO;
 using RemoteCameraControl.Ioc;
 using RemoteCameraControl.Logger;
+using RemoteCameraControl.Network;
+using RemoteCameraControl.Photo;
 using RemoteCameraControl.RemoteCameraControl.Interaction;
 
 namespace RemoteCameraControl.Android.RemoteCameraControl
@@ -28,17 +30,22 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
 
             RegisterType<IBluetooth, Bluetooth>();
     
-            RegisterType<ILogger, Logger.Logger>();
+            RegisterInstance<ILogger>(Logger);
             RegisterType<IPermissionsRequestor, PermissionsRequestor>();
             RegisterInstance<IPermissions>(PermissionsImplementation.Current);
             RegisterType<IFileService, FileService>();
+            RegisterType<ContractInitializer, ContractInitializer>();
             RegisterType<IDialogs, Dialogs>();
+            RegisterType<DataStreamManager, DataStreamManager>();
+            RegisterType<ControlStreamManager, ControlStreamManager>();
             RegisterType<ILoadingIndicator, LoadingIndicator>();
 
             RegisterInstance<IAppContext>(new AppContext());
 
             RegisterViewModel<HomeViewModel>();
             RegisterViewModel<ModeSelectViewModel>();
+            RegisterViewModel<PhotoViewModel>();
+            RegisterViewModel<PhotoMirrorViewModel>();
 
 
             RegisterPlatformSpecifics();
@@ -67,15 +74,10 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
         private void InitLogger()
         {
             var logger = new Logger.Logger();
-#if DEBUG
+
             logger.CurrentLevel = LogLevel.Debug;
             logger.AddSource(new ConsoleLogSource());
-#else
-            logger.CurrentLevel = LogLevel.Info;
-            logger.AddSource(new ServerLogSource());
-            logger.AddSource(new AppCenterLogSource(LogLevel.Warning));
-#endif
-            //logger.AddSource(new FileLogSource("Logs"));
+
             Logger = logger;
         }
     }

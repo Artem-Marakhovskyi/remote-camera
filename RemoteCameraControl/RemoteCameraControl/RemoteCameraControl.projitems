@@ -45,11 +45,21 @@
     <Compile Include="$(MSBuildThisFileDirectory)Network\ContractInitializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Network\NetworkService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EnvironmentService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Network\EndlessStreamReader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Network\EnslessStreamWriter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Network\SignalStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\Managers\ControlStreamManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\Managers\DataStreamManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\LowStreams\EndlessStreamReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\LowStreams\EndlessStreamWriter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\LowStreams\SignalStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\DataTransfer\ControlSignal.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Photo\PhotoViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Photo\PhotoMirrorViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\Managers\ReadingQueue.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Network\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Network\Managers\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Network\LowStreams\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Network\DataTransfer\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Photo\" />
   </ItemGroup>
 </Project>

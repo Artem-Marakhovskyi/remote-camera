@@ -5,13 +5,13 @@ using RemoteCameraControl.Logger;
 
 namespace RemoteCameraControl.Network
 {
-    public class EnslessStreamWriter
+    public class EndlessStreamWriter
     {
         private ILogger _logger;
         private Stream _writingStream;
         private bool _active;
 
-        public EnslessStreamWriter(
+        public EndlessStreamWriter(
             Stream writingStream,
             ILogger logger)
         {
@@ -24,11 +24,13 @@ namespace RemoteCameraControl.Network
             _active = true;
         }
 
-        public Task WriteControlSignalAsync(byte[] data)
+        public Task WriteControlSignalAsync(string json)
         {
-            var wrappedBytes = new byte[data.Length + 8];
+            var payload = EnvironmentService.GetBytes(json);
+            var wrappedBytes = new byte[json.Length + SignalStore.StartMark.Length + SignalStore.EndMark.Length];
+
             SignalStore.StartMark.CopyTo(wrappedBytes, 0);
-            data.CopyTo(wrappedBytes, 2);
+            payload.CopyTo(wrappedBytes, 2);
             SignalStore.EndMark.CopyTo(wrappedBytes, wrappedBytes.Length - SignalStore.EndMark.Length);
 
             return _writingStream.WriteAsync(wrappedBytes, 0, wrappedBytes.Length);

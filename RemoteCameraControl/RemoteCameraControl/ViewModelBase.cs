@@ -6,7 +6,7 @@ namespace RemoteCameraControl
 {
     public class ViewModelBase : GalaSoft.MvvmLight.ViewModelBase
     {
-        protected ILogger Logger { get; }
+        public ILogger Logger { get; }
         protected INavigationService NavigationService { get; }
         
         public ViewModelBase()

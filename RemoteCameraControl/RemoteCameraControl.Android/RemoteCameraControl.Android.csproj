@@ -431,6 +431,9 @@
           <HintPath>..\..\packages\XLabs.IoC.2.3.0-pre05\lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.IOC.dll</HintPath>
           <Private>True</Private>
         </Reference>
+        <Reference Include="Newtonsoft.Json">
+          <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
         <Compile Include="ActivityBase.cs" />
@@ -453,6 +456,8 @@
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="ModeSelectView.cs" />
         <Compile Include="NavigationService.cs" />
+        <Compile Include="PhotoMirrorView.cs" />
+        <Compile Include="PhotoView.cs" />
     </ItemGroup>
     <ItemGroup>
         <None Include="packages.config" />
@@ -471,6 +476,14 @@
         <AndroidResource Include="Resources\layout\loading_indicator.xml" />
         <AndroidResource Include="Resources\values\Strings.xml" />
         <AndroidResource Include="Resources\layout\mode_select_view.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\layout\photo_mirror_view.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\layout\photo_view.xml">
           <SubType></SubType>
           <Generator></Generator>
         </AndroidResource>

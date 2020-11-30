@@ -7,6 +7,7 @@ using RemoteCameraControl.Android.RemoteCameraControl;
 using RemoteCameraControl.Android.SelectMode;
 using RemoteCameraControl.Blue;
 using RemoteCameraControl.Home;
+using RemoteCameraControl.Photo;
 using RemoteCameraControl.RemoteCameraControl.Interaction;
 
 namespace RemoteCameraControl.Android
@@ -40,6 +41,8 @@ namespace RemoteCameraControl.Android
             
             navigationService.Configure(nameof(HomeViewModel), typeof(HomeView));
             navigationService.Configure(nameof(ModeSelectViewModel), typeof(ModeSelectView));
+            navigationService.Configure(nameof(PhotoViewModel), typeof(PhotoView));
+            navigationService.Configure(nameof(PhotoMirrorViewModel), typeof(PhotoMirrorView));
 
             return navigationService;
         }

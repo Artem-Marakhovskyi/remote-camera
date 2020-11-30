@@ -27,17 +27,11 @@ namespace RemoteCameraControl.Android
         private void RcButton_Click(object sender, System.EventArgs e)
         {
             ViewModel.BecomeRc();
-
-
-            new ContractInitializer().InitControlConnectionsAsync(isRc: true);
         }
 
         private void CameraButton_Click(object sender, System.EventArgs e)
         {
             ViewModel.BecomeCamera();
-
-
-            new ContractInitializer().InitControlConnectionsAsync(isRc: false);
         }
     }
 }
