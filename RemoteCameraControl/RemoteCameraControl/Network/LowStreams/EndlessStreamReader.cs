@@ -40,6 +40,7 @@ namespace RemoteCameraControl.Network
                     try
                     {
                         byte[] buffer = new byte[ChunkSize];
+                        _logger.LogInfo("Reading data from stream...");
                         var readCount = await _readingStream.ReadAsync(buffer, 0, ChunkSize);
                         _logger.LogInfo($"{readCount} bytes read");
 

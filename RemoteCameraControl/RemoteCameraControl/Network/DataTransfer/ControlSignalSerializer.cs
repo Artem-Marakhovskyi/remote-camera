@@ -12,8 +12,8 @@ namespace RemoteCameraControl.Network.DataTransfer
             var wrappedBytes = new byte[json.Length + SignalStore.StartMark.Length + SignalStore.EndMark.Length];
 
             SignalStore.StartMark.CopyTo(wrappedBytes, 0);
-            payload.CopyTo(wrappedBytes, 2);
-            SignalStore.EndMark.CopyTo(wrappedBytes, wrappedBytes.Length - SignalStore.EndMark.Length);
+            payload.CopyTo(wrappedBytes, SignalStore.StartMark.Length);
+            SignalStore.EndMark.CopyTo(wrappedBytes, SignalStore.StartMark.Length + payload.Length);
 
             return wrappedBytes;
         }
@@ -23,7 +23,8 @@ namespace RemoteCameraControl.Network.DataTransfer
             var wrapper = EnvironmentService.GetString(bytes);
 
             var payloadJson = wrapper.Substring(SignalStore.StartText.Length, wrapper.Length - SignalStore.StartText.Length - SignalStore.EndText.Length);
-            var controlSignal = (ControlSignal)JsonConvert.DeserializeObject(payloadJson);
+            var s = JsonConvert.DeserializeObject<ControlSignal>(payloadJson);
+            var controlSignal = JsonConvert.DeserializeObject<ControlSignal>(payloadJson);
 
             return controlSignal;
         }

@@ -37,11 +37,10 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
             RegisterType<IFileService, FileService>();
             RegisterType<ContractInitializer, ContractInitializer>();
             RegisterType<IDialogs, Dialogs>();
-            RegisterType<DataStreamManager, DataStreamManager>();
-            RegisterType<ControlStreamManager, ControlStreamManager>();
+
             RegisterType<ILoadingIndicator, LoadingIndicator>();
 
-            RegisterInstance<IAppContext>(new AppContext());
+            
             RegisterViewModel<HomeViewModel>();
             RegisterViewModel<ModeSelectViewModel>();
             RegisterViewModel<PhotoViewModel>();
@@ -51,6 +50,9 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
             RegisterInstance<IControlSignalPublisher>(controlSignalHub);
             RegisterInstance<IControlSignalHubManager>(controlSignalHub);
 
+            ContainerBuilder.RegisterType<AppContext>().As<IAppContext>().SingleInstance();
+            ContainerBuilder.Register(x => x.Resolve<IAppContext>().ControlStreamManager).As<ControlStreamManager>();
+            ContainerBuilder.Register(x => x.Resolve<IAppContext>().DataStreamManager).As<DataStreamManager>();
 
             RegisterPlatformSpecifics();
             
