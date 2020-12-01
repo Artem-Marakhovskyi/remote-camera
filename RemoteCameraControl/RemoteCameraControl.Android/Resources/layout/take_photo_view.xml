@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:id="@+id/rootLayout">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/camera_frame_layout" />
+    <ImageButton
+        android:background="@drawable/gray_roundedbg"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:alpha="0.6"
+        android:id="@+id/back_button"
+        android:src="@drawable/back_white" />
+    <Button
+        android:background="@drawable/gray_roundedbg"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:alpha="0.6"
+        android:id="@+id/skip_button"
+        android:textSize="16dp"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+    <Button
+        android:background="@drawable/take_photo"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:id="@+id/take_photo_button" />
+    <FFImageLoading.Views.ImageViewAsync
+        android:id="@+id/taken_photo_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:background="@color/black"
+        android:visibility="invisible" />
+    <RelativeLayout
+        android:id="@+id/taken_photo_buttons_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/black"
+        android:orientation="horizontal"
+        android:layout_alignBottom="@id/taken_photo_image_view"
+        android:visibility="invisible">
+        <Button
+            android:id="@+id/retake_photo_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_alignParentLeft="true"
+            android:text="Retake Photo"
+            android:background="@color/black"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="@android:color/white" />
+        <Button
+            android:id="@+id/use_photo_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_alignParentRight="true"
+            android:text="Use Photo"
+            android:background="@color/black"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressBar" />
+</RelativeLayout>

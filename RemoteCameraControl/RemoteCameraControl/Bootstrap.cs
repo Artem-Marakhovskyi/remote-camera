@@ -1,18 +1,14 @@
 using Acr.UserDialogs;
 using Autofac;
-using Plugin.BLE;
-using Plugin.BLE.Abstractions.Contracts;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
-using RemoteCameraControl.Android.RemoteCameraControl.Permissions;
 using RemoteCameraControl.Android.SelectMode;
-using RemoteCameraControl.Blue;
-using RemoteCameraControl.Home;
 using RemoteCameraControl.Hub;
 using RemoteCameraControl.IO;
 using RemoteCameraControl.Ioc;
 using RemoteCameraControl.Logger;
 using RemoteCameraControl.Network;
+using RemoteCameraControl.Permissions;
 using RemoteCameraControl.Photo;
 using RemoteCameraControl.RemoteCameraControl.Interaction;
 
@@ -28,22 +24,20 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
             Init();
             
             ContainerBuilder = new ContainerBuilder();
-
-            RegisterType<IBluetooth, Bluetooth>();
-    
+            
             RegisterInstance<ILogger>(Logger);
-            RegisterType<IPermissionsRequestor, PermissionsRequestor>();
+
             RegisterInstance<IPermissions>(PermissionsImplementation.Current);
             RegisterType<IFileService, FileService>();
             RegisterType<ContractInitializer, ContractInitializer>();
             RegisterType<IDialogs, Dialogs>();
-
+            RegisterType<IPermissionService, PermissionService>();
             RegisterType<ILoadingIndicator, LoadingIndicator>();
 
-            
-            RegisterViewModel<HomeViewModel>();
+           
             RegisterViewModel<ModeSelectViewModel>();
             RegisterViewModel<PhotoViewModel>();
+            RegisterViewModel<TakePhotoViewModel>();
             RegisterViewModel<PhotoMirrorViewModel>();
 
             var controlSignalHub = new ControlSignalHub();

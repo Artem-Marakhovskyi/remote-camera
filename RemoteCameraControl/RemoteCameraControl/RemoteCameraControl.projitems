@@ -10,14 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AppContext.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Blue\Bluetooth.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Blue\BluetoothDevicesObserver.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Blue\IBluetooth.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Blue\IBluetoothClient.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Blue\IBluetoothServer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Blue\IBluetoothObserver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Bootstrap.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Home\HomeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IAppContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interaction\ActionSheetButtonModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interaction\Dialogs.cs" />
@@ -38,8 +31,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Logger\Logger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logger\LogLevel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logger\LogMessage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Permissions\IPermissionsRequestor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Permissions\PermissionsRequestor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SelectMode\ModeSelectViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Network\ContractInitializer.cs" />
@@ -59,6 +50,23 @@
     <Compile Include="$(MSBuildThisFileDirectory)Hub\IControlSignalListener.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Hub\IControlSignalHubManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Hub\IControlSignalPublisher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Photo\View\ViewPhotoViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Photo\TakePhotoViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Photo\IPhotoService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Photo\PhotoService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Permissions\IPermissionsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Permissions\PermissionsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Permissions\PermissionStatus.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)File\IRelatedFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)File\LocalRelatedFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)File\FileTypeResolver.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Permissions\FeaturePermission.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AsyncCommands\AsyncRelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AsyncCommands\AsyncRelayCommand.Generic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Photo\PhotoResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Photo\TakePhotoResultType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Photo\PhotoSourceType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interaction\DialogsExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Network\" />
@@ -67,5 +75,8 @@
     <Folder Include="$(MSBuildThisFileDirectory)Network\DataTransfer\" />
     <Folder Include="$(MSBuildThisFileDirectory)Photo\" />
     <Folder Include="$(MSBuildThisFileDirectory)Hub\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Photo\View\" />
+    <Folder Include="$(MSBuildThisFileDirectory)File\" />
+    <Folder Include="$(MSBuildThisFileDirectory)AsyncCommands\" />
   </ItemGroup>
 </Project>

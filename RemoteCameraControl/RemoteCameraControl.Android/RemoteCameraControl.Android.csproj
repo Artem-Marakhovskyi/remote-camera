@@ -434,16 +434,19 @@
         <Reference Include="Newtonsoft.Json">
           <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
         </Reference>
+        <Reference Include="FFImageLoading">
+          <HintPath>..\..\packages\Xamarin.FFImageLoading.2.4.11.982\lib\MonoAndroid10\FFImageLoading.dll</HintPath>
+        </Reference>
+        <Reference Include="FFImageLoading.Platform">
+          <HintPath>..\..\packages\Xamarin.FFImageLoading.2.4.11.982\lib\MonoAndroid10\FFImageLoading.Platform.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
         <Compile Include="ActivityBase.cs" />
         <Compile Include="App.cs" />
-        <Compile Include="BluetoothClient.cs" />
-        <Compile Include="BluetoothServer.cs" />
         <Compile Include="ConnectedDevicesFragment.cs" />
         <Compile Include="DiscoveredDevicesFragment.cs" />
         <Compile Include="DroidBootstrap.cs" />
-        <Compile Include="HomeView.cs" />
         <Compile Include="HomeViewPagerAdapter.cs" />
         <Compile Include="Interaction\CancellableActionSheetFragment.cs" />
         <Compile Include="Interaction\CancellableActionSheetFragmentFactory.cs" />
@@ -457,6 +460,7 @@
         <Compile Include="ModeSelectView.cs" />
         <Compile Include="NavigationService.cs" />
         <Compile Include="PhotoMirrorView.cs" />
+        <Compile Include="TakePhotoView.cs" />
         <Compile Include="PhotoView.cs" />
     </ItemGroup>
     <ItemGroup>
@@ -487,11 +491,34 @@
           <SubType></SubType>
           <Generator></Generator>
         </AndroidResource>
+        <AndroidResource Include="Resources\layout\take_photo_view.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\values\colors.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\drawable\back_white.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\drawable\gray_roundedbg.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\drawable\take_photo.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
     </ItemGroup>
     <ItemGroup>
       <AndroidAsset Include="Assets\loader.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </AndroidAsset>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Resources\drawable\" />
     </ItemGroup>
     <Import Project="..\RemoteCameraControl\RemoteCameraControl.projitems" Label="Shared" Condition="Exists('..\RemoteCameraControl\RemoteCameraControl.projitems')" />
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

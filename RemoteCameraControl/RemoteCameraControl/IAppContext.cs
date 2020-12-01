@@ -1,3 +1,4 @@
+using RemoteCameraControl.File;
 using RemoteCameraControl.Network;
 
 namespace RemoteCameraControl.Android
@@ -10,8 +11,11 @@ namespace RemoteCameraControl.Android
 
         void SetMode(bool isRc);
 
+        IRelatedFile CurrentPhoto { get; set; }
+
         DataStreamManager DataStreamManager { get; set; }
 
         ControlStreamManager ControlStreamManager { get; set; }
+        object NavigationResult { get; set; }
     }
 }

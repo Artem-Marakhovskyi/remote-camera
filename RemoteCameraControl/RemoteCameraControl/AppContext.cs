@@ -1,3 +1,4 @@
+using RemoteCameraControl.File;
 using RemoteCameraControl.Hub;
 using RemoteCameraControl.Logger;
 using RemoteCameraControl.Network;
@@ -12,6 +13,8 @@ namespace RemoteCameraControl.Android
         public bool IsCamera { get; set; }
         public DataStreamManager DataStreamManager { get; set; }
         public ControlStreamManager ControlStreamManager { get; set; }
+        public IRelatedFile CurrentPhoto { get; set; }
+        public object NavigationResult { get; set; }
 
         public AppContext(IControlSignalPublisher publisher, ILogger logger)
         {
