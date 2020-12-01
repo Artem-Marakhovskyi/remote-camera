@@ -1,48 +1,9 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using RemoteCameraControl.Photo;
-
-namespace RemoteCameraControl.Android
-{
-    [Activity(Label = "Camera")]
-    public class PhotoView : ActivityBase<PhotoViewModel>
-    {
-        private Button _photoViewButton;
-
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-
-            SetTheme(Android.Resource.Style.Theme_AppCompat);
-
-            SetContentView(Resource.Layout.photo_view);
-
-            _photoViewButton = FindViewById<Button>(Resource.Id.take_photo_button);
-
-            _photoViewButton.Click += _photoViewButton_Click;
-        }
-
-        private async void _photoViewButton_Click(object sender, EventArgs e)
-        {
-            await ViewModel.StartStreamAsync();
-        }
-    }
-}
-
-
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Android.App;
@@ -52,22 +13,17 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Coins.Common.Droid.Camera;
-using Coins.Common.Droid.MvvmLight;
-using Coins.Common.Droid.Utils.Extensions;
-using Coins.Common.Logger;
-using Coins.Common.Photo.TakePhoto;
 using Com.Bumptech.Glide;
 using FFImageLoading;
 using FFImageLoading.Views;
 using GalaSoft.MvvmLight.Helpers;
-using Uri = Android.Net.Uri;
+using RemoteCameraControl.Logger;
+using RemoteCameraControl.Photo;
 
-namespace Coins.Common.Droid.Photo.TakePhoto
+namespace RemoteCameraControl.Android
 {
-    [Preserve(AllMembers = true)]
-    [Activity(Label = "TakePhotoView", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
-    public class TakePhotoView : ActivityBase<TakePhotoViewModel, IEnumerable<PhotoResult>>
+    [Activity(Label = "Camera")]
+    public class TakePhotoView : ActivityBase<TakePhotoViewModel>
     {
         private const int PickImageId = 1000;
 
@@ -78,7 +34,7 @@ namespace Coins.Common.Droid.Photo.TakePhoto
 
         // Camera2 API has more capabilities but is more complex to use and not needed for current requirements of Umbella modules
 #pragma warning disable 0618
-        private Android.Hardware.Camera _camera;
+        private global::Android.Hardware.Camera _camera;
         private CameraSurface _cameraSurface;
 
         private bool _isPhotoPicking;
@@ -103,7 +59,9 @@ namespace Coins.Common.Droid.Photo.TakePhoto
             Window.SetFlags(
                 WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
 
-            SetContentView(Resource.Layout.take_photo);
+            SetTheme(Android.Resource.Style.Theme_AppCompat);
+
+            SetContentView(Resource.Layout.take_photo_view);
 
             FindViews();
             ApplyBindings();
@@ -207,7 +165,7 @@ namespace Coins.Common.Droid.Photo.TakePhoto
             {
                 // Camera2 API has more capabilities but is more complex to use and not needed for current requirements of Umbella modules
 #pragma warning disable 0618
-                _camera = Android.Hardware.Camera.Open();
+                _camera = global::Android.Hardware.Camera.Open();
                 _cameraSurface.OpenCamera(_camera);
             }
             else
@@ -342,7 +300,7 @@ namespace Coins.Common.Droid.Photo.TakePhoto
             return Task.CompletedTask;
         }
 
-        private async Task PresentPhotoAsync(Uri uri)
+        private async Task PresentPhotoAsync(global::Android.Net.Uri uri)
         {
             Glide.With(this).AsBitmap().Load(uri).Into(_takenPhotoImageView);
 
@@ -390,10 +348,6 @@ namespace Coins.Common.Droid.Photo.TakePhoto
 
         private void ApplyFonts()
         {
-            var font = Typeface.CreateFromAsset(Assets, FontNames.LatoRegular);
-            _skipButton.Typeface = font;
-            _retakePhotoButton.Typeface = font;
-            _usePhotoButton.Typeface = font;
         }
 
         private void FindViews()
@@ -411,43 +365,43 @@ namespace Coins.Common.Droid.Photo.TakePhoto
 
         private void ApplyBindings()
         {
-            Bindings.Add(this.SetBinding(
+            this.SetBinding(
                 () => ViewModel.SkipText,
                 () => _skipButton.Text,
-                BindingMode.OneTime));
+                BindingMode.OneTime);
 
-            Bindings.Add(this.SetBinding(
+            this.SetBinding(
                     () => ViewModel.IsSkipVisible,
                     () => _skipButton.Visibility)
-                    .ConvertSourceToTarget(ConvertationSource.ConvertVisibility));
+                    .ConvertSourceToTarget(ConvertationSource.ConvertVisibility);
 
-            Bindings.Add(this.SetBinding(
+            this.SetBinding(
                 () => ViewModel.UsePhotoText,
-                () => _usePhotoButton.Text));
+                () => _usePhotoButton.Text);
 
-            Bindings.Add(this.SetBinding(
+            this.SetBinding(
                 () => ViewModel.RetakePhotoText,
-                () => _retakePhotoButton.Text));
+                () => _retakePhotoButton.Text);
 
-            Bindings.Add(this.SetBinding(
+            this.SetBinding(
                     () => ViewModel.IsPhotoConfirmationVisible,
                     () => _takenPhotoImageView.Visibility)
-                    .ConvertSourceToTarget(ConvertationSource.ConvertVisibility));
+                    .ConvertSourceToTarget(ConvertationSource.ConvertVisibility);
 
-            Bindings.Add(this.SetBinding(
+            this.SetBinding(
                     () => ViewModel.IsPhotoConfirmationVisible,
                     () => _takenPhotoButtonsBar.Visibility)
-                    .ConvertSourceToTarget(ConvertationSource.ConvertVisibility));
+                    .ConvertSourceToTarget(ConvertationSource.ConvertVisibility);
 
-            Bindings.Add(this.SetBinding(
+            this.SetBinding(
                     () => ViewModel.IsCameraOverlayVisible,
                     () => _takePhotoButton.Visibility)
-                    .ConvertSourceToTarget(ConvertationSource.ConvertVisibility));
+                    .ConvertSourceToTarget(ConvertationSource.ConvertVisibility);
 
-            Bindings.Add(this.SetBinding(
+            this.SetBinding(
                     () => ViewModel.IsCameraOverlayVisible,
                     () => _backButton.Visibility)
-                    .ConvertSourceToTarget(ConvertationSource.ConvertVisibility));
+                    .ConvertSourceToTarget(ConvertationSource.ConvertVisibility);
         }
 
         private void SetLoader(bool show)
@@ -551,12 +505,27 @@ namespace Coins.Common.Droid.Photo.TakePhoto
             }
         }
 
-        private async Task ProcessPickedPhotoAsync(Uri uri)
+        private async Task ProcessPickedPhotoAsync(global::Android.Net.Uri uri)
         {
             await PresentPhotoAsync(uri);
             ViewModel.TakeOrSelectPhotoCommand.Execute(_photoStream);
         }
 
         #endregion
+    }
+
+    public static class ConvertationSource
+    {
+        public static ViewStates ConvertVisibility(bool visible)
+        {
+            return visible
+                ? ViewStates.Visible
+                : ViewStates.Gone;
+        }
+
+        public static ViewStates ConvertVisibilityInverse(bool visible)
+        {
+            return ConvertVisibility(!visible);
+        }
     }
 }

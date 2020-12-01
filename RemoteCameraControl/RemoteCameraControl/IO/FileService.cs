@@ -20,11 +20,11 @@ namespace RemoteCameraControl.IO
 
         public static void Create(string path)
         {
-            if (!File.Exists(path))
+            if (!System.IO.File.Exists(path))
             {
                 // .Dispose() is called
                 // File.Create(path) returns FileStream which needs Disposing or Closing in order to release resource.
-                File.Create(path).Dispose();
+                System.IO.File.Create(path).Dispose();
             }
         }
 
@@ -73,7 +73,7 @@ namespace RemoteCameraControl.IO
         {
             try
             {
-                File.Delete(path);
+                System.IO.File.Delete(path);
             }
             catch (ArgumentNullException ex)
             {

@@ -118,7 +118,7 @@ namespace RemoteCameraControl.Logger
         {
             var timestamp = DateTime.UtcNow.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture);
             _currentLogFilePath = Path.Combine(_logFileDirectory, $"Log_{timestamp}.log");
-            File.Create(_currentLogFilePath).Dispose();
+            System.IO.File.Create(_currentLogFilePath).Dispose();
         }
 
         private void EnsureLogDirectory()

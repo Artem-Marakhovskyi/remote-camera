@@ -440,14 +440,14 @@
         <Reference Include="FFImageLoading.Platform">
           <HintPath>..\..\packages\Xamarin.FFImageLoading.2.4.11.982\lib\MonoAndroid10\FFImageLoading.Platform.dll</HintPath>
         </Reference>
+        <Reference Include="Glide">
+          <HintPath>..\..\packages\Glide.Xamarin.4.1.1\lib\MonoAndroid10\Glide.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
         <Compile Include="ActivityBase.cs" />
         <Compile Include="App.cs" />
-        <Compile Include="ConnectedDevicesFragment.cs" />
-        <Compile Include="DiscoveredDevicesFragment.cs" />
         <Compile Include="DroidBootstrap.cs" />
-        <Compile Include="HomeViewPagerAdapter.cs" />
         <Compile Include="Interaction\CancellableActionSheetFragment.cs" />
         <Compile Include="Interaction\CancellableActionSheetFragmentFactory.cs" />
         <Compile Include="Interaction\ILoadingIndicatorConfig.cs" />
@@ -462,6 +462,10 @@
         <Compile Include="PhotoMirrorView.cs" />
         <Compile Include="TakePhotoView.cs" />
         <Compile Include="PhotoView.cs" />
+        <Compile Include="CameraSurface.cs" />
+        <Compile Include="ImageRotationExtensions.cs" />
+        <Compile Include="ImageUtils.cs" />
+        <Compile Include="BitmapExtensions.cs" />
     </ItemGroup>
     <ItemGroup>
         <None Include="packages.config" />
@@ -470,13 +474,6 @@
         <None Include="Assets\AboutAssets.txt" />
     </ItemGroup>
     <ItemGroup>
-        <AndroidResource Include="Resources\layout\connected_devices_list.xml" />
-        <AndroidResource Include="Resources\layout\connected_device_cell.xml" />
-        <AndroidResource Include="Resources\layout\discovered_devices_list.xml">
-          <SubType>Designer</SubType>
-        </AndroidResource>
-        <AndroidResource Include="Resources\layout\discovered_device_cell.xml" />
-        <AndroidResource Include="Resources\layout\home_view.axml" />
         <AndroidResource Include="Resources\layout\loading_indicator.xml" />
         <AndroidResource Include="Resources\values\Strings.xml" />
         <AndroidResource Include="Resources\layout\mode_select_view.xml">

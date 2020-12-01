@@ -52,8 +52,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Hub\IControlSignalPublisher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Photo\View\ViewPhotoViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Photo\TakePhotoViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Photo\IPhotoService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Photo\PhotoService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Permissions\IPermissionsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Permissions\PermissionsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Permissions\PermissionStatus.cs" />

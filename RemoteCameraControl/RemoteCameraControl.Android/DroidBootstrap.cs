@@ -1,12 +1,10 @@
 using Acr.UserDialogs;
-using Android.Bluetooth;
+using Coins.Common.Droid.Photo;
 using GalaSoft.MvvmLight.Views;
 using Plugin.CurrentActivity;
 using RemoteCameraControl.Android.Interaction;
 using RemoteCameraControl.Android.RemoteCameraControl;
 using RemoteCameraControl.Android.SelectMode;
-using RemoteCameraControl.Blue;
-using RemoteCameraControl.Home;
 using RemoteCameraControl.Photo;
 using RemoteCameraControl.RemoteCameraControl.Interaction;
 
@@ -30,7 +28,6 @@ namespace RemoteCameraControl.Android
             RegisterType<IMultipleChoiceDialog, MultipleChoiceFragment>();
             RegisterType<IPlatformLoadingIndicator, PlatformLoadingIndicator>();
             RegisterType<ILoadingIndicatorConfig, LoadingIndicatorConfig>();
-            RegisterType<IBluetoothServer, BluetoothServer>();
             
             RegisterInstance<INavigationService>(GetConfiguredNavService());
         }
@@ -39,10 +36,10 @@ namespace RemoteCameraControl.Android
         {
             var navigationService = new NavigationService();
             
-            navigationService.Configure(nameof(HomeViewModel), typeof(HomeView));
             navigationService.Configure(nameof(ModeSelectViewModel), typeof(ModeSelectView));
             navigationService.Configure(nameof(PhotoViewModel), typeof(PhotoView));
             navigationService.Configure(nameof(PhotoMirrorViewModel), typeof(PhotoMirrorView));
+            navigationService.Configure(nameof(TakePhotoViewModel), typeof(TakePhotoView));
 
             return navigationService;
         }

@@ -13,7 +13,7 @@ namespace RemoteCameraControl.Android
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetTheme(Android.Resource.Style.Theme_AppCompat);
+            SetTheme(Resource.Style.Theme_AppCompat);
 
             SetContentView(Resource.Layout.mode_select_view);
 
