@@ -5,7 +5,7 @@ using RemoteCameraControl.Logger;
 
 namespace RemoteCameraControl.Network
 {
-    public class EndlessStreamWriter
+    public class EndlessStreamWriter : IDisposable
     {
         private ILogger _logger;
         private Stream _writingStream;
@@ -24,16 +24,14 @@ namespace RemoteCameraControl.Network
             _active = true;
         }
 
-        public Task WriteControlSignalAsync(string json)
+        public Task WriteControlSignalAsync(byte[] bytes)
         {
-            var payload = EnvironmentService.GetBytes(json);
-            var wrappedBytes = new byte[json.Length + SignalStore.StartMark.Length + SignalStore.EndMark.Length];
+            if (!_active)
+            {
+                _logger.LogInfo("Stream is not active anymore. Writing is not possible.");
+            }
 
-            SignalStore.StartMark.CopyTo(wrappedBytes, 0);
-            payload.CopyTo(wrappedBytes, 2);
-            SignalStore.EndMark.CopyTo(wrappedBytes, wrappedBytes.Length - SignalStore.EndMark.Length);
-
-            return _writingStream.WriteAsync(wrappedBytes, 0, wrappedBytes.Length);
+            return _writingStream.WriteAsync(bytes, 0, bytes.Length);
         }
     }
 }

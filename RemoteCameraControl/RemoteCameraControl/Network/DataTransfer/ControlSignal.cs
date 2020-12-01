@@ -7,5 +7,13 @@
         }
 
         public bool TakePhoto { get; set; }
+
+        internal static ControlSignal FromTakePhoto()
+        {
+            return new ControlSignal
+            {
+                TakePhoto = true
+            };
+        }
     }
 }

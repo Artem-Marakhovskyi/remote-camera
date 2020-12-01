@@ -23,10 +23,16 @@ namespace RemoteCameraControl.Network
         private ControlStreamManager _controlStreamManager;
 
         public ContractInitializer(
+            DataStreamManager dataStreamManager,
+            ControlStreamManager controlStreamManager,
             IAppContext appContext,
             ILogger logger)
         {
             _appContext = appContext;
+            _dataStreamManager = dataStreamManager;
+            _controlStreamManager = controlStreamManager;
+            _appContext.ControlStreamManager = _controlStreamManager;
+            _appContext.DataStreamManager = _dataStreamManager;
             _logger = logger;
         }
 
@@ -49,10 +55,7 @@ namespace RemoteCameraControl.Network
                 var (_dataClient, dataStream) = dataConnectionTask.Result;
                 var (_controlClient, controlStream) = controlConnectionTask.Result;
 
-                _appContext.DataStreamManager = new DataStreamManager(_logger);
-                _appContext.DataStreamManager.SetSource(dataStream);
-
-                _appContext.ControlStreamManager = new ControlStreamManager(_logger);
+                //_appContext.DataStreamManager.SetSource(dataStream);
                 _appContext.ControlStreamManager.SetSource(controlStream);
             }
             catch (Exception ex)

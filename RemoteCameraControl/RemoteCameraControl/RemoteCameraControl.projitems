@@ -53,7 +53,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Network\DataTransfer\ControlSignal.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Photo\PhotoViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Photo\PhotoMirrorViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Network\Managers\ReadingQueue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\Managers\ControlSignalReadingQueue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\DataTransfer\ControlSignalSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Hub\ControlSignalHub.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Hub\IControlSignalListener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Hub\IControlSignalHubManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Hub\IControlSignalPublisher.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Network\" />
@@ -61,5 +66,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Network\LowStreams\" />
     <Folder Include="$(MSBuildThisFileDirectory)Network\DataTransfer\" />
     <Folder Include="$(MSBuildThisFileDirectory)Photo\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Hub\" />
   </ItemGroup>
 </Project>

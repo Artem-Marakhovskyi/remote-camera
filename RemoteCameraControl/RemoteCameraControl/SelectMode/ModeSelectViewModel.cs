@@ -21,8 +21,8 @@ namespace RemoteCameraControl.Android.SelectMode
         {
             _appContext.SetMode(isRc: false);
 
-            //await _contractInitializer
-            //    .InitControlConnectionsAsync();
+            await _contractInitializer
+                .InitControlConnectionsAsync();
 
             NavigationService.NavigateTo(nameof(PhotoViewModel));
         }
@@ -31,8 +31,8 @@ namespace RemoteCameraControl.Android.SelectMode
         {
             _appContext.SetMode(isRc: true);
 
-            //await _contractInitializer
-            //    .InitControlConnectionsAsync();
+            await _contractInitializer
+                .InitControlConnectionsAsync();
 
             NavigationService.NavigateTo(nameof(PhotoMirrorViewModel));
         }

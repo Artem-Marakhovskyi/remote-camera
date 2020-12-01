@@ -8,6 +8,7 @@ using RemoteCameraControl.Android.RemoteCameraControl.Permissions;
 using RemoteCameraControl.Android.SelectMode;
 using RemoteCameraControl.Blue;
 using RemoteCameraControl.Home;
+using RemoteCameraControl.Hub;
 using RemoteCameraControl.IO;
 using RemoteCameraControl.Ioc;
 using RemoteCameraControl.Logger;
@@ -41,11 +42,14 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
             RegisterType<ILoadingIndicator, LoadingIndicator>();
 
             RegisterInstance<IAppContext>(new AppContext());
-
             RegisterViewModel<HomeViewModel>();
             RegisterViewModel<ModeSelectViewModel>();
             RegisterViewModel<PhotoViewModel>();
             RegisterViewModel<PhotoMirrorViewModel>();
+
+            var controlSignalHub = new ControlSignalHub();
+            RegisterInstance<IControlSignalPublisher>(controlSignalHub);
+            RegisterInstance<IControlSignalHubManager>(controlSignalHub);
 
 
             RegisterPlatformSpecifics();
