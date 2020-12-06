@@ -40,6 +40,7 @@ namespace RemoteCameraControl.Network
             else
             {
                 _endlessStreamReader = new EndlessStreamReader(
+                    4096,
                     _publisher,
                     stream,
                     _logger);

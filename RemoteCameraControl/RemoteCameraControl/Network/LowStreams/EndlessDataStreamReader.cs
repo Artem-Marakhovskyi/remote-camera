@@ -4,28 +4,25 @@ using System.Threading.Tasks;
 using RemoteCameraControl.Hub;
 using RemoteCameraControl.Logger;
 using RemoteCameraControl.Network.DataTransfer;
-using RemoteCameraControl.Network.Managers;
 
-namespace RemoteCameraControl.Network
+namespace RemoteCameraControl.Network.LowStreams
 {
-    public class EndlessStreamReader : IDisposable
+    public class EndlessDataStreamReader
     {
         private bool _active = true;
         private readonly ILogger _logger;
         private readonly Stream _readingStream;
-        private readonly IControlSignalPublisher _controlHubPuslisher;
-        public int ChunkSize = 4096;
+        private readonly IDataSignalPublisher _controlHubPuslisher;
+        public int ChunkSize = 4096 * 100;
 
-        public EndlessStreamReader(
-            int chunkSize,
-            IControlSignalPublisher controlHubPublisher,
+        public EndlessDataStreamReader(
+            IDataSignalPublisher dataHubPublisher,
             Stream readingStream,
             ILogger logger)
         {
-            ChunkSize = chunkSize;
             _logger = logger;
             _readingStream = readingStream;
-            _controlHubPuslisher = controlHubPublisher;
+            _controlHubPuslisher = dataHubPublisher;
         }
 
         public void Dispose()
@@ -48,8 +45,8 @@ namespace RemoteCameraControl.Network
 
                         byte[] res = new byte[readCount];
                         Array.Copy(buffer, res, readCount);
-                        var controlSignal = ControlSignalSerializer.ToSignal(res);
-                        _controlHubPuslisher.PublishControlSignal(controlSignal);
+                        var dataSignal = DataSignalSerializer.ToSignal(res);
+                        _controlHubPuslisher.PublishDataSignal(dataSignal);
                     }
                     catch (Exception ex)
                     {

@@ -26,8 +26,8 @@ namespace RemoteCameraControl.Android.SelectMode
             await _permissionService.RequestPermissionAsync(FeaturePermission.Camera);
             _appContext.SetMode(isRc: false);
 
-            //await _contractInitializer
-            //    .InitControlConnectionsAsync();
+            await _contractInitializer
+                .InitControlConnectionsAsync();
 
             NavigationService.NavigateTo(nameof(TakePhotoViewModel));
         }

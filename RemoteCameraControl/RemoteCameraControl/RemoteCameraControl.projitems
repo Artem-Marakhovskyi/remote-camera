@@ -65,6 +65,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Photo\TakePhotoResultType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Photo\PhotoSourceType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interaction\DialogsExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Hub\DataSignalHub.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Hub\IDataSignalHubManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Hub\IDataSignalPublisher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Hub\IDataSignalListener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\DataTransfer\DataSignal.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\DataTransfer\DataSignalSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Network\LowStreams\EndlessDataStreamReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Network\" />

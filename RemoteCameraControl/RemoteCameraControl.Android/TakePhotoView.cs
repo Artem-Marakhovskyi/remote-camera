@@ -17,8 +17,10 @@ using Com.Bumptech.Glide;
 using FFImageLoading;
 using FFImageLoading.Views;
 using GalaSoft.MvvmLight.Helpers;
+using Java.IO;
 using RemoteCameraControl.Logger;
 using RemoteCameraControl.Photo;
+using XLabs.Ioc;
 
 namespace RemoteCameraControl.Android
 {
@@ -27,6 +29,7 @@ namespace RemoteCameraControl.Android
     {
         private const int PickImageId = 1000;
 
+        private bool _working;
         private Button _skipButton;
         private ImageButton _backButton;
         private FrameLayout _cameraFrameLayout;
@@ -71,7 +74,7 @@ namespace RemoteCameraControl.Android
         protected override async void OnResume()
         {
             base.OnResume();
-
+            _working = true;
             if (ViewModel.IsCameraOverlayVisible)
             {
                 if (await ViewModel.CheckCameraPermissionStatusAsync())
@@ -102,7 +105,7 @@ namespace RemoteCameraControl.Android
         protected override async void OnPause()
         {
             base.OnPause();
-
+            _working = false;
             if (_camera != null && _cameraSurface != null)
             {
                 await _takePhotoLock.WaitAsync();
@@ -171,6 +174,34 @@ namespace RemoteCameraControl.Android
             else
             {
                 _camera.StartPreview();
+
+            }
+
+            _ = StartSendingPhotoAsync();
+        }
+
+        private async Task StartSendingPhotoAsync()
+        {
+            try
+            {
+                while (_working)
+                {
+                    await Task.Delay(3000);
+                    _cameraSurface.BuildDrawingCache();
+                    _cameraSurface.DrawingCacheEnabled = true;
+                    _cameraSurface.BuildDrawingCache(false);
+                    var bitmap = _cameraSurface.GetDrawingCache(false);
+                    var ms = new MemoryStream();
+                    bitmap.Compress(Bitmap.CompressFormat.Png, 100, ms);
+                    _cameraSurface.DrawingCacheEnabled = true;
+                    bitmap.Recycle();
+                    Resolver.Resolve<ILogger>().LogInfo($"Bytes received from camera: {ms.Length}");
+                    await ViewModel.SendPhotoAsync(ms);
+                }
+            }
+            catch (Exception ex)
+            {
+                Resolver.Resolve<ILogger>().LogError("Error during photo taking", ex);
             }
         }
 

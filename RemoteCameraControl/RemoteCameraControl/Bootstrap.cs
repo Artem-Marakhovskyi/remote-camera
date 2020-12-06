@@ -40,6 +40,10 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
             RegisterViewModel<TakePhotoViewModel>();
             RegisterViewModel<PhotoMirrorViewModel>();
 
+            var dataSignalHub = new DataSignalHub();
+            RegisterInstance<IDataSignalPublisher>(dataSignalHub);
+            RegisterInstance<IDataSignalHubManager>(dataSignalHub);
+
             var controlSignalHub = new ControlSignalHub();
             RegisterInstance<IControlSignalPublisher>(controlSignalHub);
             RegisterInstance<IControlSignalHubManager>(controlSignalHub);

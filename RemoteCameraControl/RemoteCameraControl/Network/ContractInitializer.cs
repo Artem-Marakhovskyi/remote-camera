@@ -41,11 +41,13 @@ namespace RemoteCameraControl.Network
             try
             {
                 _logger.LogInfo("Connection Init started");
-                _remoteAddress = await NetworkService.GetRemoteAddressAsync(_appContext.IsRc);
                 _localAddress = await NetworkService.GetLocalAddressAsync();
+                _logger.LogInfo($"Local address: {_localAddress}");
+
+                //_remoteAddress = IPAddress.Parse("192.168.0.100");
+                _remoteAddress = await NetworkService.GetRemoteAddressAsync(_appContext.IsRc);
 
                 _logger.LogInfo($"Remote address: {_remoteAddress}"); _logger.LogInfo($"Remote address: {_remoteAddress}");
-                _logger.LogInfo($"Local address: {_localAddress}");
 
                 var controlConnectionTask = InitControlConnectionAsync();
                 var dataConnectionTask = InitDataConnectionAsync();
@@ -55,7 +57,7 @@ namespace RemoteCameraControl.Network
                 var (_dataClient, dataStream) = dataConnectionTask.Result;
                 var (_controlClient, controlStream) = controlConnectionTask.Result;
 
-                //_appContext.DataStreamManager.SetSource(dataStream);
+                _appContext.DataStreamManager.SetSource(dataStream);
                 _appContext.ControlStreamManager.SetSource(controlStream);
             }
             catch (Exception ex)

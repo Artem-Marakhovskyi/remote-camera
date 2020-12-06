@@ -16,11 +16,13 @@ namespace RemoteCameraControl.Android
         public IRelatedFile CurrentPhoto { get; set; }
         public object NavigationResult { get; set; }
 
-        public AppContext(IControlSignalPublisher publisher, ILogger logger)
+        public AppContext(
+            IDataSignalPublisher dataSignalPublisher,
+            IControlSignalPublisher publisher, ILogger logger)
         {
             _logger = logger;
 
-            DataStreamManager = new DataStreamManager(this, _logger);
+            DataStreamManager = new DataStreamManager(dataSignalPublisher,this, _logger);
             ControlStreamManager = new ControlStreamManager(publisher, _logger, this);
         }
 
