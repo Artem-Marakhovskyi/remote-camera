@@ -4,10 +4,20 @@
     android:orientation  ="vertical"
     android:layout_width ="match_parent"
     android:layout_height="match_parent">
+     
+   <FFImageLoading.Views.ImageViewAsync
+            android:id="@+id/photo_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="15dp"
+            android:background = "@color/transclucent"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_margin="4dp"
         android:text="Take photo"
         android:id="@+id/take_photo_button"/>
+
 </LinearLayout>

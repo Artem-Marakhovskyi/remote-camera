@@ -13,7 +13,7 @@ namespace RemoteCameraControl.Network.LowStreams
         private readonly ILogger _logger;
         private readonly Stream _readingStream;
         private readonly IDataSignalPublisher _controlHubPuslisher;
-        public int ChunkSize = 4096 * 100;
+        public int ChunkSize = 4096 * 10000;
 
         public EndlessDataStreamReader(
             IDataSignalPublisher dataHubPublisher,
@@ -46,7 +46,10 @@ namespace RemoteCameraControl.Network.LowStreams
                         byte[] res = new byte[readCount];
                         Array.Copy(buffer, res, readCount);
                         var dataSignal = DataSignalSerializer.ToSignal(res);
-                        _controlHubPuslisher.PublishDataSignal(dataSignal);
+                        if (dataSignal != null)
+                        {
+                            _controlHubPuslisher.PublishDataSignal(dataSignal);
+                        }
                     }
                     catch (Exception ex)
                     {

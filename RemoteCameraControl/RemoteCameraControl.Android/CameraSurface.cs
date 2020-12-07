@@ -126,11 +126,13 @@ namespace RemoteCameraControl.Android
             var metrics = Resources.DisplayMetrics;
             var screenRatio = (float)metrics.WidthPixels / metrics.HeightPixels;
 
-            var bestPictureSize = cameraParams.SupportedPictureSizes
-                .Where(it => it.Width > MinPictureSize && it.Height > MinPictureSize)
-                .Where(it => it.Width < MinPictureSize * 2 || it.Height < MinPictureSize * 2)
-                .OrderBy(it => it.Width / it.Height - screenRatio)
-                .FirstOrDefault();
+            //var bestPictureSize = cameraParams.SupportedPictureSizes
+            //    .Where(it => it.Width > MinPictureSize && it.Height > MinPictureSize)
+            //    .Where(it => it.Width < MinPictureSize * 2 || it.Height < MinPictureSize * 2)
+            //    .OrderBy(it => it.Width / it.Height - screenRatio)
+            //    .FirstOrDefault();
+
+            var bestPictureSize = cameraParams.SupportedPictureSizes.Last();
 
             return bestPictureSize;
         }

@@ -18,14 +18,27 @@ namespace RemoteCameraControl.Network.DataTransfer
             return wrappedBytes;
         }
 
+        private static string Data = "";
+
         public static DataSignal ToSignal(byte[] bytes)
         {
             var wrapper = EnvironmentService.GetString(bytes);
 
-            var payloadJson = wrapper.Substring(SignalStore.StartText.Length, wrapper.Length - SignalStore.StartText.Length - SignalStore.EndText.Length);
-            var dataSignal = JsonConvert.DeserializeObject<DataSignal>(payloadJson);
+            if (wrapper.EndsWith(SignalStore.EndText))
+            {
+                wrapper = Data + wrapper;
+                Data = "";
 
-            return dataSignal;
+                var payloadJson = wrapper.Substring(SignalStore.StartText.Length, wrapper.Length - SignalStore.StartText.Length - SignalStore.EndText.Length);
+                var dataSignal = JsonConvert.DeserializeObject<DataSignal>(payloadJson);
+
+                return dataSignal;
+            }
+            else
+            {
+                Data += wrapper;
+                return null;
+            }
         }
     }
 }

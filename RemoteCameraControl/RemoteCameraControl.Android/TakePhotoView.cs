@@ -184,19 +184,16 @@ namespace RemoteCameraControl.Android
         {
             try
             {
+                await Task.Delay(3000);
                 while (_working)
                 {
                     await Task.Delay(3000);
-                    _cameraSurface.BuildDrawingCache();
-                    _cameraSurface.DrawingCacheEnabled = true;
-                    _cameraSurface.BuildDrawingCache(false);
-                    var bitmap = _cameraSurface.GetDrawingCache(false);
-                    var ms = new MemoryStream();
-                    bitmap.Compress(Bitmap.CompressFormat.Png, 100, ms);
-                    _cameraSurface.DrawingCacheEnabled = true;
-                    bitmap.Recycle();
-                    Resolver.Resolve<ILogger>().LogInfo($"Bytes received from camera: {ms.Length}");
-                    await ViewModel.SendPhotoAsync(ms);
+
+                    var bytes = await _cameraSurface.TakePhotoAsync();
+                    _camera.StartPreview();
+
+                    Resolver.Resolve<ILogger>().LogInfo($"Bytes received from camera: {bytes.Length}");
+                    await ViewModel.SendPhotoAsync(bytes);
                 }
             }
             catch (Exception ex)
@@ -392,6 +389,8 @@ namespace RemoteCameraControl.Android
             _takenPhotoButtonsBar = FindViewById<RelativeLayout>(Resource.Id.taken_photo_buttons_bar);
             _retakePhotoButton = FindViewById<Button>(Resource.Id.retake_photo_button);
             _usePhotoButton = FindViewById<Button>(Resource.Id.use_photo_button);
+
+            _takePhotoButton.Visibility = ViewStates.Gone;
         }
 
         private void ApplyBindings()

@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using RemoteCameraControl.Android;
 using RemoteCameraControl.Logger;
+using RemoteCameraControl.RemoteCameraControl.Interaction;
 
 namespace RemoteCameraControl.Network
 {
@@ -19,15 +20,18 @@ namespace RemoteCameraControl.Network
         private DataStreamManager _dataStreamManager;
         private IPAddress _remoteAddress;
         private IPAddress _localAddress;
+        private IDialogs _dialogs;
         private IAppContext _appContext;
         private ControlStreamManager _controlStreamManager;
 
         public ContractInitializer(
+            IDialogs dialogs,
             DataStreamManager dataStreamManager,
             ControlStreamManager controlStreamManager,
             IAppContext appContext,
             ILogger logger)
         {
+            _dialogs = dialogs;
             _appContext = appContext;
             _dataStreamManager = dataStreamManager;
             _controlStreamManager = controlStreamManager;
@@ -47,12 +51,16 @@ namespace RemoteCameraControl.Network
                 //_remoteAddress = IPAddress.Parse("192.168.0.100");
                 _remoteAddress = await NetworkService.GetRemoteAddressAsync(_appContext.IsRc);
 
+                _dialogs.ShowLoading("Remote address found");
+
                 _logger.LogInfo($"Remote address: {_remoteAddress}"); _logger.LogInfo($"Remote address: {_remoteAddress}");
 
                 var controlConnectionTask = InitControlConnectionAsync();
                 var dataConnectionTask = InitDataConnectionAsync();
 
                 await Task.WhenAll(controlConnectionTask, dataConnectionTask);
+
+                _dialogs.ShowLoading("Connection is established.");
 
                 var (_dataClient, dataStream) = dataConnectionTask.Result;
                 var (_controlClient, controlStream) = controlConnectionTask.Result;

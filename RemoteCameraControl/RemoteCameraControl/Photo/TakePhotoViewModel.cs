@@ -155,9 +155,9 @@ namespace RemoteCameraControl.Photo
             Cancel();
         }
 
-        internal async Task SendPhotoAsync(MemoryStream ms)
+        internal async Task SendPhotoAsync(byte[] bytes)
         {
-            await _dataStreamManager.SendDataSignalAsync(DataSignal.FromBytes(ms.ToArray()));
+            await _dataStreamManager.SendDataSignalAsync(DataSignal.FromBytes(bytes));
         }
 
         //private void FinishPhotoTaking(PhotoResult result)
