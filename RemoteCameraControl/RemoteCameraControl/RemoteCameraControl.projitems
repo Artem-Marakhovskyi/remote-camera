@@ -72,6 +72,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Network\DataTransfer\DataSignal.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Network\DataTransfer\DataSignalSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Network\LowStreams\EndlessDataStreamReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SplashViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Network\" />

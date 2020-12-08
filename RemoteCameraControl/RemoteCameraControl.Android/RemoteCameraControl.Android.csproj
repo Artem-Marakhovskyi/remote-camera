@@ -466,6 +466,7 @@
         <Compile Include="ImageRotationExtensions.cs" />
         <Compile Include="ImageUtils.cs" />
         <Compile Include="BitmapExtensions.cs" />
+        <Compile Include="SplashView.cs" />
     </ItemGroup>
     <ItemGroup>
         <None Include="packages.config" />
@@ -505,6 +506,30 @@
           <Generator></Generator>
         </AndroidResource>
         <AndroidResource Include="Resources\drawable\take_photo.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\layout\splash_view.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\drawable\rouded_button.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\drawable\rounded_btn.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\drawable\background_splash.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\values\styles.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\drawable\icon.png">
           <SubType></SubType>
           <Generator></Generator>
         </AndroidResource>

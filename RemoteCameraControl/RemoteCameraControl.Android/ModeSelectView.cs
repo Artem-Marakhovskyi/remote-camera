@@ -7,13 +7,13 @@ using RemoteCameraControl.Network;
 
 namespace RemoteCameraControl.Android
 {
-    [Activity(Label = "ModeSelectView", MainLauncher = true)]
+    [Activity(Label = "ModeSelectView")]
     public class ModeSelectView : ActivityBase<ModeSelectViewModel>
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetTheme(Resource.Style.Theme_AppCompat);
+            SetTheme(Resource.Style.Theme_AppCompat_Light);
 
             SetContentView(Resource.Layout.mode_select_view);
 

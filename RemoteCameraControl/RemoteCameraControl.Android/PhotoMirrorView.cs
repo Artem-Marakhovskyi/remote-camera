@@ -32,7 +32,7 @@ namespace RemoteCameraControl.Android
         {
             base.OnCreate(savedInstanceState);
 
-            SetTheme(Android.Resource.Style.Theme_AppCompat);
+            SetTheme(Resource.Style.Theme_AppCompat_Light);
 
             SetContentView(Resource.Layout.photo_mirror_view);
 

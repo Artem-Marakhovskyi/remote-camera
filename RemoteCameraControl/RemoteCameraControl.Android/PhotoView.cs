@@ -25,7 +25,7 @@ namespace Coins.Common.Droid.Photo
         {
             base.OnCreate(savedInstanceState);
 
-            SetTheme(Resource.Style.Theme_AppCompat);
+            SetTheme(Resource.Style.Theme_AppCompat_Light);
 
             RequestWindowFeature(WindowFeatures.NoTitle);
             Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);

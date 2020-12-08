@@ -40,6 +40,7 @@ namespace RemoteCameraControl.Android
             navigationService.Configure(nameof(PhotoViewModel), typeof(PhotoView));
             navigationService.Configure(nameof(PhotoMirrorViewModel), typeof(PhotoMirrorView));
             navigationService.Configure(nameof(TakePhotoViewModel), typeof(TakePhotoView));
+            navigationService.Configure(nameof(SplashViewModel), typeof(SplashView));
 
             return navigationService;
         }
