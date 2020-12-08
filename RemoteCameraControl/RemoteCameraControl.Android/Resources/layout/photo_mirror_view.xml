@@ -1,23 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android        ="http://schemas.android.com/apk/res/android"
-    android:orientation  ="vertical"
+    android:background="@color/black"
     android:layout_width ="match_parent"
     android:layout_height="match_parent">
-     
+        <ImageButton
+        android:background="@drawable/gray_roundedbg"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:alpha="0.6"
+        android:id="@+id/back_button"
+        android:src="@drawable/back_white" />
+         <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressBar" />
    <FFImageLoading.Views.ImageViewAsync
             android:id="@+id/photo_image_view"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:scaleType="fitCenter"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:layout_centerInParent="true"
             android:adjustViewBounds="true"
             android:layout_marginTop="15dp"
             android:background = "@color/transclucent"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_margin="4dp"
-        android:text="Take photo"
-        android:id="@+id/take_photo_button"/>
+    
 
-</LinearLayout>
+    <Button
+        android:background="@drawable/take_photo"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:id="@+id/take_photo_button" />
+
+        <Button
+        android:layout_alignRight="@id/take_photo_button"
+        android:background="@drawable/take_photo"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginRight="80dp"
+        android:text="Focus"
+        android:textSize="10sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/take_photo_button_focus" />
+
+        <Button
+        android:layout_alignLeft="@id/take_photo_button"
+        android:background="@drawable/take_photo"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="80dp"
+        android:text="3 sec"
+        android:textSize="10sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/take_photo_button_timer" />
+
+</RelativeLayout>

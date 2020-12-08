@@ -109,6 +109,7 @@ namespace RemoteCameraControl.Photo
         private void Cancel()
         {
             var result = new PhotoResult(canceled: true);
+            NavigationService.GoBack();
             //FinishPhotoTaking(result);
         }
 

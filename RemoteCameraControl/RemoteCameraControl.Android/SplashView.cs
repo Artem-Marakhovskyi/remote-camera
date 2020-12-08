@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace RemoteCameraControl.Android
 {
-    [Activity(Label = "SplashView", MainLauncher = true, Theme = "@style/SplashTheme")]
+    [Activity(Label = "Remote Camera", MainLauncher = true, Theme = "@style/SplashTheme")]
     public class SplashView : ActivityBase<SplashViewModel>
     {
         protected override void OnCreate(Bundle savedInstanceState)

@@ -25,6 +25,11 @@ namespace RemoteCameraControl.Photo
             _dataSignalHubManager.AddListener(this);
         }
 
+        public override void GoBack(object parameter = null)
+        {
+            NavigationService.GoBack();
+        }
+
         private DataSignal _dataSignal;
         public DataSignal DataSignal
         {
@@ -46,6 +51,16 @@ namespace RemoteCameraControl.Photo
         public void OnDataSignalReceived(DataSignal dataSignal)
         {
             DataSignal = dataSignal;
+        }
+
+        internal async void TimerClicked()
+        {
+            await _controlStreamManager.SendControlSignalAsync(ControlSignal.FromTimer());
+        }
+
+        internal async void FocusClicked()
+        {
+            await _controlStreamManager.SendControlSignalAsync(ControlSignal.FromFocus());
         }
     }
 }

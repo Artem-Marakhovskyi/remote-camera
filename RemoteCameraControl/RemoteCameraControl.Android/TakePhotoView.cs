@@ -24,7 +24,7 @@ using XLabs.Ioc;
 
 namespace RemoteCameraControl.Android
 {
-    [Activity(Label = "Camera")]
+    [Activity(Label = "Camera", Theme = "@style/AppTheme")]
     public class TakePhotoView : ActivityBase<TakePhotoViewModel>
     {
         private const int PickImageId = 1000;
@@ -61,8 +61,6 @@ namespace RemoteCameraControl.Android
             RequestWindowFeature(WindowFeatures.NoTitle);
             Window.SetFlags(
                 WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
-
-            SetTheme(Android.Resource.Style.Theme_AppCompat);
 
             SetContentView(Resource.Layout.take_photo_view);
 

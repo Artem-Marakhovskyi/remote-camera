@@ -26,9 +26,9 @@ namespace RemoteCameraControl.Android.SelectMode
             await _permissionService.RequestPermissionAsync(FeaturePermission.Camera);
             _appContext.SetMode(isRc: false);
 
-            DialogService.ShowLoading("Connection is being initialized...");
-            await _contractInitializer
-                .InitControlConnectionsAsync();
+            //DialogService.ShowLoading("Connection is being initialized...");
+            //await _contractInitializer
+            //    .InitControlConnectionsAsync();
 
             DialogService.HideLoading();
 
@@ -39,10 +39,10 @@ namespace RemoteCameraControl.Android.SelectMode
         {
             _appContext.SetMode(isRc: true);
 
-            DialogService.ShowLoading("Connection is being initialized...");
-            await _contractInitializer
-                .InitControlConnectionsAsync();
-            DialogService.HideLoading();
+            //DialogService.ShowLoading("Connection is being initialized...");
+            //await _contractInitializer
+            //    .InitControlConnectionsAsync();
+            //DialogService.HideLoading();
 
             NavigationService.NavigateTo(nameof(PhotoMirrorViewModel));
         }
