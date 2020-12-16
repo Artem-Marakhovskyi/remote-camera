@@ -27,7 +27,7 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
             
             RegisterInstance<ILogger>(Logger);
 
-            RegisterInstance<IPermissions>(PermissionsImplementation.Current);
+            RegisterInstance<IPermissions>(Plugin.Permissions.CrossPermissions.Current);
             RegisterType<IFileService, FileService>();
             RegisterType<ContractInitializer, ContractInitializer>();
             RegisterType<IDialogs, Dialogs>();
