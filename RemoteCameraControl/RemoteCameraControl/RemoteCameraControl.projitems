@@ -33,23 +33,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Logger\LogMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SelectMode\ModeSelectViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Network\ContractInitializer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Network\NetworkService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EnvironmentService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Network\Managers\ControlStreamManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Network\Managers\DataStreamManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Network\LowStreams\EndlessStreamReader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Network\LowStreams\EndlessStreamWriter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Network\LowStreams\SignalStore.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Network\DataTransfer\ControlSignal.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Photo\PhotoViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Photo\PhotoMirrorViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Network\Managers\ControlSignalReadingQueue.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Network\DataTransfer\ControlSignalSerializer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Hub\ControlSignalHub.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Hub\IControlSignalListener.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Hub\IControlSignalHubManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Hub\IControlSignalPublisher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Photo\View\ViewPhotoViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Photo\TakePhotoViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Permissions\IPermissionsService.cs" />
@@ -65,22 +51,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Photo\TakePhotoResultType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Photo\PhotoSourceType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interaction\DialogsExtensions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Hub\DataSignalHub.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Hub\IDataSignalHubManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Hub\IDataSignalPublisher.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Hub\IDataSignalListener.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Network\DataTransfer\DataSignal.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Network\DataTransfer\DataSignalSerializer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Network\LowStreams\EndlessDataStreamReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SplashViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Network\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Network\Managers\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Network\LowStreams\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Network\DataTransfer\" />
     <Folder Include="$(MSBuildThisFileDirectory)Photo\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Hub\" />
     <Folder Include="$(MSBuildThisFileDirectory)Photo\View\" />
     <Folder Include="$(MSBuildThisFileDirectory)File\" />
     <Folder Include="$(MSBuildThisFileDirectory)AsyncCommands\" />
