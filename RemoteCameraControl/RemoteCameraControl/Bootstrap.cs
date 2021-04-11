@@ -3,11 +3,9 @@ using Autofac;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using RemoteCameraControl.Android.SelectMode;
-using RemoteCameraControl.Hub;
 using RemoteCameraControl.IO;
 using RemoteCameraControl.Ioc;
 using RemoteCameraControl.Logger;
-using RemoteCameraControl.Network;
 using RemoteCameraControl.Permissions;
 using RemoteCameraControl.Photo;
 using RemoteCameraControl.RemoteCameraControl.Interaction;
@@ -29,7 +27,6 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
 
             RegisterInstance<IPermissions>(Plugin.Permissions.CrossPermissions.Current);
             RegisterType<IFileService, FileService>();
-            RegisterType<ContractInitializer, ContractInitializer>();
             RegisterType<IDialogs, Dialogs>();
             RegisterType<IPermissionService, PermissionService>();
             RegisterType<ILoadingIndicator, LoadingIndicator>();
@@ -41,17 +38,7 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
             RegisterViewModel<SplashViewModel>();
             RegisterViewModel<PhotoMirrorViewModel>();
 
-            var dataSignalHub = new DataSignalHub();
-            RegisterInstance<IDataSignalPublisher>(dataSignalHub);
-            RegisterInstance<IDataSignalHubManager>(dataSignalHub);
-
-            var controlSignalHub = new ControlSignalHub();
-            RegisterInstance<IControlSignalPublisher>(controlSignalHub);
-            RegisterInstance<IControlSignalHubManager>(controlSignalHub);
-
             ContainerBuilder.RegisterType<AppContext>().As<IAppContext>().SingleInstance();
-            ContainerBuilder.Register(x => x.Resolve<IAppContext>().ControlStreamManager).As<ControlStreamManager>();
-            ContainerBuilder.Register(x => x.Resolve<IAppContext>().DataStreamManager).As<DataStreamManager>();
 
             RegisterPlatformSpecifics();
             

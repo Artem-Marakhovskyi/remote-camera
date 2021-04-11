@@ -3,7 +3,6 @@ using Android.App;
 using Android.OS;
 using Android.Widget;
 using RemoteCameraControl.Android.SelectMode;
-using RemoteCameraControl.Network;
 
 namespace RemoteCameraControl.Android
 {

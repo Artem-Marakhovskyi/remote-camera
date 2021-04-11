@@ -1,4 +1,3 @@
-using RemoteCameraControl.Network;
 using RemoteCameraControl.Permissions;
 using RemoteCameraControl.Photo;
 
@@ -8,17 +7,14 @@ namespace RemoteCameraControl.Android.SelectMode
     {
         private IAppContext _appContext;
         private IPermissionService _permissionService;
-        private ContractInitializer _contractInitializer;
 
 
         public  ModeSelectViewModel(
             IAppContext appContext,
-            ContractInitializer contractInitializer,
             IPermissionService permissionService)
         {
             _appContext = appContext;
             _permissionService = permissionService;
-            _contractInitializer = contractInitializer;
         }
 
         public async void BecomeCamera()

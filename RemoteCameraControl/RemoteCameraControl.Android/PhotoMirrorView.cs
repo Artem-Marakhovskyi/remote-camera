@@ -17,7 +17,6 @@ using FFImageLoading.Work;
 using RemoteCameraControl.File;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Helpers;
-using RemoteCameraControl.Network.DataTransfer;
 using System.IO;
 
 namespace RemoteCameraControl.Android
@@ -74,20 +73,20 @@ namespace RemoteCameraControl.Android
 
         private void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(ViewModel.DataSignal))
-            {
-                OnDataSignal();
-            }
+            // if (e.PropertyName == nameof(ViewModel.DataSignal))
+            // {
+            //     OnDataSignal();
+            // }
         }
 
         private void OnDataSignal()
         {
-            if (ViewModel.DataSignal != null)
-            {
-                LoadSyncFile(ImageService.Instance, ViewModel.DataSignal).Into(_imageView);
-                _progressBar.Visibility = ViewStates.Invisible;
-                ViewModel.Logger.LogInfo("New photo is loaded");
-            }
+            // if (ViewModel.DataSignal != null)
+            // {
+            //     LoadSyncFile(ImageService.Instance, ViewModel.DataSignal).Into(_imageView);
+            //     _progressBar.Visibility = ViewStates.Invisible;
+            //     ViewModel.Logger.LogInfo("New photo is loaded");
+            // }
         }
 
         private async void _photoViewButton_Click(object sender, EventArgs e)
@@ -95,16 +94,16 @@ namespace RemoteCameraControl.Android
             await ViewModel.TakePhotoAsync();
         }
 
-        public static TaskParameter LoadSyncFile(IImageService imageService, DataSignal dataSignal, bool onlyCached = false)
+        public static TaskParameter LoadSyncFile(IImageService imageService, bool onlyCached = false)
         {
-            if (dataSignal == null)
-            {
-                return null;
-            }
+            // if (dataSignal == null)
+            // {
+            //     return null;
+            // }
 
             TaskParameter result;
 
-            result = imageService.LoadStream(cancellationToken => Task.FromResult<Stream>(new MemoryStream(dataSignal.Payload)));
+            result = imageService.LoadStream(cancellationToken => Task.FromResult<Stream>(new MemoryStream()));
 
             return result;
         }
