@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteCameraControl.iOS", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteCamera.Tests", "RemoteCamera.Tests\RemoteCamera.Tests.csproj", "{6FCEA816-DCCD-4257-BD38-A3398D8799B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteCamera.HubClient", "RemoteCamera.HubClient\RemoteCamera.HubClient.csproj", "{A0E3F095-D0F6-459B-B332-AB0D7CAF135F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteCamera.HubClient.Console", "RemoteCamera.HubClient.Console\RemoteCamera.HubClient.Console.csproj", "{CFD7342A-9B7A-4CF4-B155-080155DB4441}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger", "Logger\Logger.csproj", "{BC2216AC-C745-434F-B710-DCC3B65826E5}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		RemoteCameraControl\RemoteCameraControl\RemoteCameraControl.projitems*{3a78f884-1e5d-45d9-845e-481fba71baa9}*SharedItemsImports = 4
@@ -33,6 +39,18 @@ Global
 		{6FCEA816-DCCD-4257-BD38-A3398D8799B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6FCEA816-DCCD-4257-BD38-A3398D8799B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FCEA816-DCCD-4257-BD38-A3398D8799B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0E3F095-D0F6-459B-B332-AB0D7CAF135F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0E3F095-D0F6-459B-B332-AB0D7CAF135F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0E3F095-D0F6-459B-B332-AB0D7CAF135F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0E3F095-D0F6-459B-B332-AB0D7CAF135F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFD7342A-9B7A-4CF4-B155-080155DB4441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFD7342A-9B7A-4CF4-B155-080155DB4441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFD7342A-9B7A-4CF4-B155-080155DB4441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFD7342A-9B7A-4CF4-B155-080155DB4441}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC2216AC-C745-434F-B710-DCC3B65826E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC2216AC-C745-434F-B710-DCC3B65826E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC2216AC-C745-434F-B710-DCC3B65826E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC2216AC-C745-434F-B710-DCC3B65826E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
