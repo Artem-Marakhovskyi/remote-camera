@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using RemoteCameraControl.IO;
 
 namespace RemoteCameraControl.Logger
 {
@@ -143,7 +142,21 @@ namespace RemoteCameraControl.Logger
 
         private ICollection<FileInfo> GetOrderedLogFiles()
         {
-            return FileService.GetFilesOrderedByLastModified(_logFileDirectory).ToList();
+            return GetFilesOrderedByLastModified(_logFileDirectory).ToList();
+        }
+
+        private static IEnumerable<FileInfo> GetFilesOrderedByLastModified(string directoryPath)
+        {
+            var dir = new DirectoryInfo(directoryPath);
+            if (!dir.Exists)
+            {
+                return Array.Empty<FileInfo>();
+            }
+
+            var files = dir.GetFiles()
+                .OrderByDescending(f => f.LastWriteTimeUtc);
+
+            return files;
         }
     }
 }

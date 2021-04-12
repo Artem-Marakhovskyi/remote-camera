@@ -55,19 +55,7 @@ namespace RemoteCameraControl.IO
             return path;
         }
 
-        public static IEnumerable<FileInfo> GetFilesOrderedByLastModified(string directoryPath)
-        {
-            var dir = new DirectoryInfo(directoryPath);
-            if (!dir.Exists)
-            {
-                return Array.Empty<FileInfo>();
-            }
 
-            var files = dir.GetFiles()
-                .OrderByDescending(f => f.LastWriteTimeUtc);
-
-            return files;
-        }
 
         public void Delete(string path)
         {

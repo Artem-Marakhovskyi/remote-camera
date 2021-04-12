@@ -7,5 +7,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RemoteCamera.HubClient\RemoteCamera.HubClient.csproj" />
+    <ProjectReference Include="..\Logger\Logger.csproj" />
   </ItemGroup>
 </Project>
