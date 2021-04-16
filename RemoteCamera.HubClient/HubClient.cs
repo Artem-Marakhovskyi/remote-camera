@@ -24,10 +24,16 @@ namespace RemoteCamera.HubClient
 
         public bool IsConnected => _connection.State == HubConnectionState.Connected;
 
-        public async Task ConnectAsync()
+        public async Task ConnectAsync(IConnectionSignalsHandler handler)
         {
             await _connection.StartAsync();
             _logger.LogInfo($"Connected to a server: {_url}");
+
+            _connection.On("OnRcConnected", handler.OnRcConnected);
+            _connection.On("OnSessionFinished", handler.OnSessionFinished);
+            _connection.On<ControlMessage>("OnControlMessageReceived", handler.OnControlMessageReceived);
+            _connection.On<DataMessage>("OnDataMessageReceived", handler.OnDataMessageReceived);
+            _connection.On<string>("OnTextReceived", handler.OnTextReceived);
         }
 
         public async Task DisconnectAsync()
