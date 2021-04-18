@@ -18,6 +18,7 @@ using FFImageLoading;
 using FFImageLoading.Views;
 using GalaSoft.MvvmLight.Helpers;
 using Java.IO;
+using RemoteCamera.HubClient;
 using RemoteCameraControl.Logger;
 using RemoteCameraControl.Photo;
 using XLabs.Ioc;
@@ -430,6 +431,44 @@ namespace RemoteCameraControl.Android
                     () => ViewModel.IsCameraOverlayVisible,
                     () => _backButton.Visibility)
                     .ConvertSourceToTarget(ConvertationSource.ConvertVisibility);
+
+            this.SetBinding(
+                    () => ViewModel.ControlMessageKind)
+                .WhenSourceChanges(OnControlMessageKind);
+        }
+
+        private void OnControlMessageKind()
+        {
+            if (ViewModel.ControlMessageKind == ControlOperationKind.TakePhoto)
+            {
+                TakePhoto(this, EventArgs.Empty);
+            }
+            else if (ViewModel.ControlMessageKind == ControlOperationKind.TakePhoto3Delay1)
+            {
+                _ = TakePhotosAsync(3, 1);
+            }
+            else if (ViewModel.ControlMessageKind == ControlOperationKind.TakePhoto3Delay3)
+            {
+                _ = TakePhotosAsync(3, 3);
+            }
+            else if (ViewModel.ControlMessageKind == ControlOperationKind.Timer10)
+            {
+                _ = StartTimer(10);
+            }
+            else if (ViewModel.ControlMessageKind == ControlOperationKind.Timer3)
+            {
+                _ = StartTimer(3);
+            }
+        }
+
+        private object TakePhotosAsync(int v1, int v2)
+        {
+            throw new NotImplementedException();
+        }
+
+        private object StartTimer(int v)
+        {
+            throw new NotImplementedException();
         }
 
         private void SetLoader(bool show)

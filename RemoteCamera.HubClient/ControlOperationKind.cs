@@ -3,6 +3,7 @@ namespace RemoteCamera.HubClient
 {
     public enum ControlOperationKind
     {
+        None,
         TakePhoto,
         Focus,
         Timer3,
