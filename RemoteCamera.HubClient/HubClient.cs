@@ -33,6 +33,7 @@ namespace RemoteCamera.HubClient
             _connection.On("OnSessionFinished", handler.OnSessionFinished);
             _connection.On<ControlMessage>("OnControlMessageReceived", handler.OnControlMessageReceived);
             _connection.On<DataMessage>("OnDataMessageReceived", handler.OnDataMessageReceived);
+            _connection.On<PartialDataMessage>("OnPartialDataMessageReceived", handler.OnPartialDataMessageReceived);
             _connection.On<string>("OnTextReceived", handler.OnTextReceived);
         }
 
