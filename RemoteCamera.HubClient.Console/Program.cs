@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using RemoteCamera.HubClient.Console;
 using RemoteCameraControl.Logger;
@@ -73,9 +74,15 @@ namespace RemoteCamera.HubClient.Cnsl
             _actionsSwitch["rc"] = () => service.ConnectRcAsync(_paramsHolder[1]);
             _actionsSwitch["finish"] = () => service.FinishSessionAsync();
             _actionsSwitch["control"] = () => service.SendControlMessageAsync(new ControlMessage() { Kind = ControlOperationKind.TakePhoto });
-            _actionsSwitch["data"] = () => service.SendDataMessageAsync(new DataMessage() { Payload = new byte[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 } });
+            _actionsSwitch["data"] = () => service.SendDataMessageAsync(new DataMessage() { Payload = GetPayload(), CreatedAt = DateTime.Now });
             _actionsSwitch["text"] = () => service.SendMessageAsync(_paramsHolder[1]);
             _actionsSwitch["reset"] = () => service.Disconnect();
+        }
+
+        private byte[] GetPayload()
+        {
+            var bytes = File.ReadAllBytes("/Users/amara/Documents/GitHub/remote-camera/RemoteCamera.HubClient.Console/photo1.png");
+            return bytes;
         }
 
         private static string ReadLn() => System.Console.ReadLine();
