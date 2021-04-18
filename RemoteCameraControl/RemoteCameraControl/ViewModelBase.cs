@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Views;
+using RemoteCamera.HubClient;
 using RemoteCameraControl.Android;
 using RemoteCameraControl.AsyncCommands;
 using RemoteCameraControl.Interaction;
@@ -348,6 +349,31 @@ namespace RemoteCameraControl
         protected async Task<bool> ConfirmUnsavedDataAsync()
         {
             return IsModified && await DialogService.ConfirmOnUnsavedDataAsync();
+        }
+
+
+        public virtual void OnRcConnected()
+        {
+        }
+
+        public virtual void OnSessionFinished()
+        {
+        }
+
+        public virtual void OnControlMessageReceived(ControlMessage controlMessage)
+        {
+        }
+
+        public virtual void OnDataMessageReceived(DataMessage dataMessage)
+        {
+        }
+
+        public virtual void OnTextReceived(string text)
+        {
+        }
+
+        public virtual void SetInner(IConnectionSignalsHandler inner)
+        {
         }
     }
     public enum NavigationResult

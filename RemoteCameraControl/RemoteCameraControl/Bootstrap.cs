@@ -2,6 +2,7 @@ using Acr.UserDialogs;
 using Autofac;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
+using RemoteCamera.HubClient;
 using RemoteCameraControl.Android.SelectMode;
 using RemoteCameraControl.IO;
 using RemoteCameraControl.Ioc;
@@ -30,13 +31,20 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
             RegisterType<IDialogs, Dialogs>();
             RegisterType<IPermissionService, PermissionService>();
             RegisterType<ILoadingIndicator, LoadingIndicator>();
+            RegisterType<RemoteCameraService, RemoteCameraService>();
+            RegisterType<HubService, HubService>();
 
-           
             RegisterViewModel<ModeSelectViewModel>();
             RegisterViewModel<PhotoViewModel>();
             RegisterViewModel<TakePhotoViewModel>();
             RegisterViewModel<SplashViewModel>();
             RegisterViewModel<PhotoMirrorViewModel>();
+
+            var baseUrl = "https://remotecamera.azurewebsites.net/";
+            RegisterInstance(new SessionClient(baseUrl));
+            RegisterInstance(new HubClient(baseUrl + "/hub", Logger));
+            RegisterInstance<IConnectionSignalsHandler>(new ConnectionSignalsHandler());
+
 
             ContainerBuilder.RegisterType<AppContext>().As<IAppContext>().SingleInstance();
 

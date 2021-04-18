@@ -36,5 +36,10 @@ namespace RemoteCamera.HubClient
         {
             _logger.LogInfo($"Text received: {text}");
         }
+
+        public void SetInner(IConnectionSignalsHandler inner)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

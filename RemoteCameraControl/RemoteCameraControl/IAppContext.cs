@@ -6,6 +6,8 @@ namespace RemoteCameraControl.Android
     {
         bool IsRc { get; set; }
 
+        string SessionName { get; set; }
+
         bool IsCamera { get; set; }
 
         void SetMode(bool isRc);

@@ -2,6 +2,7 @@
 {
     public interface IConnectionSignalsHandler
     {
+        void SetInner(IConnectionSignalsHandler inner);
         void OnRcConnected();
         void OnSessionFinished();
         void OnControlMessageReceived(ControlMessage controlMessage);

@@ -11,6 +11,7 @@ namespace RemoteCameraControl.Android
         public bool IsCamera { get; set; }
         public IRelatedFile CurrentPhoto { get; set; }
         public object NavigationResult { get; set; }
+        public string SessionName { get; set; }
 
         public AppContext(ILogger logger)
         {

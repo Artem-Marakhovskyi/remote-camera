@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\PropertyChanged.Fody.3.3.3\build\PropertyChanged.Fody.props" Condition="Exists('..\..\packages\PropertyChanged.Fody.3.3.3\build\PropertyChanged.Fody.props')" />
     <Import Project="..\..\packages\Xamarin.AndroidX.Migration.1.0.8\build\monoandroid90\Xamarin.AndroidX.Migration.props" Condition="Exists('..\..\packages\Xamarin.AndroidX.Migration.1.0.8\build\monoandroid90\Xamarin.AndroidX.Migration.props')" />
     <Import Project="..\..\packages\Xamarin.Forms.4.5.0.657\build\Xamarin.Forms.props" Condition="Exists('..\..\packages\Xamarin.Forms.4.5.0.657\build\Xamarin.Forms.props')" />
     <PropertyGroup>
@@ -507,6 +508,9 @@
         <Reference Include="Microsoft.AspNetCore.SignalR.Client">
           <HintPath>..\..\packages\Microsoft.AspNetCore.SignalR.Client.5.0.5\lib\netstandard2.0\Microsoft.AspNetCore.SignalR.Client.dll</HintPath>
         </Reference>
+        <Reference Include="PropertyChanged">
+          <HintPath>..\..\packages\PropertyChanged.Fody.3.3.3\lib\netstandard2.1\PropertyChanged.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
         <Compile Include="ActivityBase.cs" />
@@ -537,6 +541,7 @@
         <None Include="Resources\AboutResources.txt" />
         <None Include="Properties\AndroidManifest.xml" />
         <None Include="Assets\AboutAssets.txt" />
+        <None Include="FodyWeavers.xml" />
     </ItemGroup>
     <ItemGroup>
         <AndroidResource Include="Resources\layout\loading_indicator.xml" />
@@ -766,4 +771,5 @@
     <Import Project="..\..\packages\Xamarin.AndroidX.SwipeRefreshLayout.1.0.0.5\build\monoandroid90\Xamarin.AndroidX.SwipeRefreshLayout.targets" Condition="Exists('..\..\packages\Xamarin.AndroidX.SwipeRefreshLayout.1.0.0.5\build\monoandroid90\Xamarin.AndroidX.SwipeRefreshLayout.targets')" />
     <Import Project="..\..\packages\Xamarin.AndroidX.Legacy.Support.Core.UI.1.0.0.5\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.UI.targets" Condition="Exists('..\..\packages\Xamarin.AndroidX.Legacy.Support.Core.UI.1.0.0.5\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.UI.targets')" />
     <Import Project="..\..\packages\Xamarin.AndroidX.Legacy.Support.V4.1.0.0.5\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.V4.targets" Condition="Exists('..\..\packages\Xamarin.AndroidX.Legacy.Support.V4.1.0.0.5\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.V4.targets')" />
+    <Import Project="..\..\packages\Fody.6.4.0\build\Fody.targets" Condition="Exists('..\..\packages\Fody.6.4.0\build\Fody.targets')" />
 </Project>

@@ -23,11 +23,13 @@ namespace RemoteCamera.HubClient
             _logger = logger;
         }
 
-        public async Task CreateSessionAndConnectAsync()
+        public async Task<string> CreateSessionAndConnectAsync()
         {
             var sessionName = await _sessionClient.CreateNewSessionAsync();
             await ConnectToSessionAsync(sessionName);
             await _hubService.StartCameraAwaitAsync();
+
+            return sessionName;
         }
 
         public async Task ConnectRcAsync(string sessionName)

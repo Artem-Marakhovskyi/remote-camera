@@ -2,6 +2,7 @@ using Acr.UserDialogs;
 using Coins.Common.Droid.Photo;
 using GalaSoft.MvvmLight.Views;
 using Plugin.CurrentActivity;
+using RemoteCamera.HubClient;
 using RemoteCameraControl.Android.Interaction;
 using RemoteCameraControl.Android.RemoteCameraControl;
 using RemoteCameraControl.Android.SelectMode;
@@ -28,7 +29,7 @@ namespace RemoteCameraControl.Android
             RegisterType<IMultipleChoiceDialog, MultipleChoiceFragment>();
             RegisterType<IPlatformLoadingIndicator, PlatformLoadingIndicator>();
             RegisterType<ILoadingIndicatorConfig, LoadingIndicatorConfig>();
-            
+
             RegisterInstance<INavigationService>(GetConfiguredNavService());
         }
 
