@@ -9,5 +9,10 @@ namespace RemoteCamera.HubClient
         {
             return $"{Kind}";
         }
+
+        public static ControlMessage From(ControlOperationKind kind)
+        {
+            return new ControlMessage { Kind = kind };
+        }
     }
 }
