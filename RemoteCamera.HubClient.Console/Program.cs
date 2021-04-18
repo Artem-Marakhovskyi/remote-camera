@@ -50,7 +50,7 @@ namespace RemoteCamera.HubClient.Cnsl
 
         private async Task RunCycleAsync()
         {
-            System.Console.WriteLine("Available commands: rc <session_name>, camera, finish, control, data, text <message>");
+            System.Console.WriteLine("Available commands: rc <session_name>, camera, finish, control, data, reset, text <message>");
             _paramsHolder.Update(ReadLn());
             while (_paramsHolder.Any() && _paramsHolder[0] != "END")
             {
@@ -75,6 +75,7 @@ namespace RemoteCamera.HubClient.Cnsl
             _actionsSwitch["control"] = () => service.SendControlMessageAsync(new ControlMessage() { Kind = ControlOperationKind.TakePhoto });
             _actionsSwitch["data"] = () => service.SendDataMessageAsync(new DataMessage() { Payload = new byte[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 } });
             _actionsSwitch["text"] = () => service.SendMessageAsync(_paramsHolder[1]);
+            _actionsSwitch["reset"] = () => service.Disconnect();
         }
 
         private static string ReadLn() => System.Console.ReadLine();

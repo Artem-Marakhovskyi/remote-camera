@@ -72,5 +72,16 @@ namespace RemoteCamera.HubClient
             }
         }
 
+        public async Task Disconnect()
+        {
+            try
+            {
+                await _hubService.DisconnectAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
     }
 }
