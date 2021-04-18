@@ -66,7 +66,7 @@ namespace RemoteCamera.HubClient
             {
                 var packagesSent = i;
                 var dst = new byte[
-                    bytes.Length / (packageSize * packagesSent) > 0
+                    i < partialTemplate.TotalPartsCount - 1
                         ? packageSize
                         : bytes.Length - (packageSize * packagesSent)];
                 Array.Copy(bytes, packageSize * packagesSent, dst, 0, dst.Length);
