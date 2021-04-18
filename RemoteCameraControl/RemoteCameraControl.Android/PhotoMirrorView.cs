@@ -73,20 +73,20 @@ namespace RemoteCameraControl.Android
 
         private void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            // if (e.PropertyName == nameof(ViewModel.DataSignal))
-            // {
-            //     OnDataSignal();
-            // }
+            if (e.PropertyName == nameof(ViewModel.Payload))
+            {
+                OnDataSignal();
+            }
         }
 
         private void OnDataSignal()
         {
-            // if (ViewModel.DataSignal != null)
-            // {
-            //     LoadSyncFile(ImageService.Instance, ViewModel.DataSignal).Into(_imageView);
-            //     _progressBar.Visibility = ViewStates.Invisible;
-            //     ViewModel.Logger.LogInfo("New photo is loaded");
-            // }
+            if (ViewModel.Payload != null)
+            {
+                LoadSyncFile(ImageService.Instance, ViewModel.Payload).Into(_imageView);
+                _progressBar.Visibility = ViewStates.Invisible;
+                ViewModel.Logger.LogInfo($"New photo is loaded, {ViewModel.LatestPhotoTime");
+            }
         }
 
         private async void _photoViewButton_Click(object sender, EventArgs e)
