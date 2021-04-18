@@ -48,8 +48,8 @@ namespace RemoteCameraControl.Photo
 
         public override void OnDataMessageReceived(DataMessage dataMessage)
         {
-            Payload = dataMessage.Payload;
             LatestPhotoTime = dataMessage.CreatedAt;
+            Payload = dataMessage.Payload;
         }
     }
 }

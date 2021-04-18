@@ -85,7 +85,7 @@ namespace RemoteCameraControl.Android
             {
                 LoadSyncFile(ImageService.Instance, ViewModel.Payload).Into(_imageView);
                 _progressBar.Visibility = ViewStates.Invisible;
-                ViewModel.Logger.LogInfo($"New photo is loaded, {ViewModel.LatestPhotoTime");
+                ViewModel.Logger.LogInfo($"New photo is loaded, {ViewModel.LatestPhotoTime}");
             }
         }
 
@@ -94,16 +94,11 @@ namespace RemoteCameraControl.Android
             await ViewModel.TakePhotoAsync();
         }
 
-        public static TaskParameter LoadSyncFile(IImageService imageService, bool onlyCached = false)
+        public static TaskParameter LoadSyncFile(IImageService imageService, byte[] data, bool onlyCached = false)
         {
-            // if (dataSignal == null)
-            // {
-            //     return null;
-            // }
-
             TaskParameter result;
 
-            result = imageService.LoadStream(cancellationToken => Task.FromResult<Stream>(new MemoryStream()));
+            result = imageService.LoadStream(cancellationToken => Task.FromResult<Stream>(new MemoryStream(data)));
 
             return result;
         }
