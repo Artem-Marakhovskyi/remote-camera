@@ -55,7 +55,7 @@ namespace RemoteCamera.HubClient
 
         public async Task SendPartialDataMessageAsync(byte[] bytes)
         {
-            var packageSize = 1024 * 512;
+            var packageSize = 30000;
             var partialTemplate = new PartialDataMessage
             {
                 PhotoId = Guid.NewGuid(),
