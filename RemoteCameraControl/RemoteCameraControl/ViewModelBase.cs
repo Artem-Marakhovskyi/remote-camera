@@ -11,7 +11,7 @@ using XLabs.Ioc;
 
 namespace RemoteCameraControl
 {
-    public class ViewModelBase : GalaSoft.MvvmLight.ViewModelBase
+    public class ViewModelBase : GalaSoft.MvvmLight.ViewModelBase, IConnectionSignalsHandler
     {
         public ILogger Logger { get; }
         public IDialogs DialogService { get; }
