@@ -1,9 +1,10 @@
 ﻿using System;
+using System.IO;
 using RemoteCameraControl.Logger;
 
 namespace RemoteCamera.HubClient
 {
-    public class NullConnectionSignalsHandler : IConnectionSignalsHandler
+    public class NullConnectionSignalsHandler : ConnectionSignalsHandlerBase
     {
         private readonly ILogger _logger;
 
@@ -25,6 +26,21 @@ namespace RemoteCamera.HubClient
         public void OnPartialDataMessageReceived(PartialDataMessage dataMessage)
         {
             _logger.LogInfo($"Partial data message received: {dataMessage}");
+        }
+
+        public async override void OnPartialDataMessageCompleted(byte[] bytes, string filename)
+        {
+            try
+            {
+                using (var f = File.Create(Path.Combine("/Users/amara/Desktop", filename + ".png")))
+                {
+                    await f.WriteAsync(bytes, 0, bytes.Length);
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         public void OnRcConnected()
