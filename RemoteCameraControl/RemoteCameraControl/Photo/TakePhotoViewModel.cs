@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
@@ -161,6 +162,7 @@ namespace RemoteCameraControl.Photo
 
         internal async Task SendPhotoAsync(byte[] bytes)
         {
+  
             await _remoteCameraService.SendDataMessageAsync(
                 new DataMessage() { CreatedAt = DateTime.Now, Payload = bytes });
         }

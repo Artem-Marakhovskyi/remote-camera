@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Linq;
 using Android.Graphics;
 using System.IO;
+using Android.Media;
+using RemoteCameraControl.Photo;
 
 namespace RemoteCameraControl.Android
 {
@@ -113,9 +115,10 @@ namespace RemoteCameraControl.Android
 
             var bitmap = BitmapFactory.DecodeByteArray(data, 0, data.Length);
             var ms = await bitmap.CompressAsync(50);
+            var resized = BitmapFactory.DecodeByteArray(ms.ToArray(), 0, ms.ToArray().Length);
+            resized = resized.Rotate(ms);
 
-
-            _tcs.SetResult(ms.ToArray());
+            _tcs.SetResult((await resized.CompressAsync(50)).ToArray());
             _safeToTakePicture = true;
         }
 

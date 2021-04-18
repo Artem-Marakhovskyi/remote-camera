@@ -182,10 +182,10 @@ namespace RemoteCameraControl.Android
         {
             try
             {
-                await Task.Delay(3000);
+                await Task.Delay(500);
                 while (_working)
                 {
-                    await Task.Delay(3000);
+                    await Task.Delay(500);
 
                     var bytes = await _cameraSurface.TakePhotoAsync();
                     _camera.StartPreview();
