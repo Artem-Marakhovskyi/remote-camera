@@ -1,11 +1,13 @@
 ﻿
 using System;
 using Android.App;
+using Android.Graphics;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 using RemoteCameraControl.Android.SelectMode;
+using ZXing;
 
 namespace RemoteCameraControl.Android
 {
@@ -54,6 +56,7 @@ namespace RemoteCameraControl.Android
         private void OnCameraAwaitSessionName()
         {
             _cameraConnect.Text = ViewModel.CameraAwaitSessionName;
+            
             if (string.IsNullOrWhiteSpace(ViewModel.CameraAwaitSessionName))
             {
                 _initialLayout.Visibility = ViewStates.Visible;

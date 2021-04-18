@@ -1,6 +1,7 @@
 using System.Net;
 using System.Net.Sockets;
 using Android.App;
+using ZXing.Mobile;
 
 namespace RemoteCameraControl.Android
 {
@@ -16,7 +17,8 @@ namespace RemoteCameraControl.Android
         public override void OnCreate()
         {
             base.OnCreate();
-            
+
+            MobileBarcodeScanner.Initialize(this);
             new DroidBootstrap(this).Execute();
         }
     }

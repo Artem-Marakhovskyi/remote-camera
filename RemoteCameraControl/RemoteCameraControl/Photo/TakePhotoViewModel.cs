@@ -11,7 +11,7 @@ using RemoteCameraControl.Permissions;
 
 namespace RemoteCameraControl.Photo
 {
-    public class TakePhotoViewModel : ViewModelBase
+    public class TakePhotoViewModel : ViewModelBase, IConnectionSignalsHandler
     {
         private readonly IConnectionSignalsHandler _connectionSignalsHandler;
         private readonly IPermissionService _permissionService;
@@ -41,6 +41,8 @@ namespace RemoteCameraControl.Photo
         public string RetakePhotoText { get; set; }
         public bool CanSkip { get; set; }
         public readonly float CompressQuality = 1;
+
+        public ControlOperationKind ControlMessageKind { get; set; }
 
         public PhotoSourceType SourceType { get; set; } = PhotoSourceType.Camera;
 
@@ -162,14 +164,13 @@ namespace RemoteCameraControl.Photo
 
         internal async Task SendPhotoAsync(byte[] bytes)
         {
-  
             await _remoteCameraService.SendDataMessageAsync(
-                new DataMessage() { CreatedAt = DateTime.Now, Payload = bytes });
+new DataMessage() { CreatedAt = DateTime.Now, Payload = bytes });
         }
 
-        public override void OnDataMessageReceived(DataMessage dataMessage)
+        public override void OnControlMessageReceived(ControlMessage controlMessage)
         {
-            Console.WriteLine("DATA MESSAGE");
+            ControlOperationKind = controlMessage.Kind;
         }
 
         //private void FinishPhotoTaking(PhotoResult result)
