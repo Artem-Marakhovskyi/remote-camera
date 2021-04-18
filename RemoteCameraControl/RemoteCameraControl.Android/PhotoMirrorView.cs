@@ -18,6 +18,7 @@ using RemoteCameraControl.File;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Helpers;
 using System.IO;
+using Android.Graphics;
 
 namespace RemoteCameraControl.Android
 {
@@ -79,11 +80,13 @@ namespace RemoteCameraControl.Android
             }
         }
 
-        private void OnDataSignal()
+        private async void OnDataSignal()
         {
             if (ViewModel.Payload != null)
             {
-                LoadSyncFile(ImageService.Instance, ViewModel.Payload).Into(_imageView);
+                _imageView.SetImageBitmap(await BitmapFactory.DecodeByteArrayAsync(ViewModel.Payload, 0, ViewModel.Payload.Length));
+
+                _imageView.Rotation = 0;
                 _progressBar.Visibility = ViewStates.Invisible;
                 ViewModel.Logger.LogInfo($"New photo is loaded, {ViewModel.LatestPhotoTime}");
             }
