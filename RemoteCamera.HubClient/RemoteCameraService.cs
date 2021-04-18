@@ -53,6 +53,36 @@ namespace RemoteCamera.HubClient
             await _hubService.SendDataMessageAsync(dataMessage);
         }
 
+        public async Task SendPartialDataMessageAsync(byte[] bytes)
+        {
+            var packageSize = 1024 * 512;
+            var partialTemplate = new PartialDataMessage
+            {
+                PhotoId = Guid.NewGuid(),
+                TotalPartsCount = bytes.Length / packageSize + (bytes.Length % packageSize > 0 ? 1 : 0)
+            };
+
+            for (var i = 0; i < partialTemplate.TotalPartsCount; i++)
+            {
+                var packagesSent = i;
+                var dst = new byte[
+                    bytes.Length / (packageSize * packagesSent) > 0
+                        ? packageSize
+                        : bytes.Length - (packageSize * packagesSent)];
+                Array.Copy(bytes, packageSize * packagesSent, dst, 0, dst.Length);
+
+                var dataMessage = new PartialDataMessage
+                {
+                    PhotoId = partialTemplate.PhotoId,
+                    TotalPartsCount = partialTemplate.TotalPartsCount,
+                    CurrentPartNumber = i,
+                    Payload = dst
+                };
+                await _hubService.SendPartialDataMessageAsync(dataMessage);
+            }
+
+        }
+
         public async Task SendMessageAsync(string text)
         {
             await _hubService.SendMessage(text);

@@ -59,5 +59,10 @@ namespace RemoteCamera.HubClient
         {
             await _hubClient.SendAsync(nameof(SendDataMessageAsync), dataMessage, _sessionName);
         }
+
+        public async Task SendPartialDataMessageAsync(PartialDataMessage dataMessage)
+        {
+            await _hubClient.SendAsync(nameof(SendPartialDataMessageAsync), dataMessage, _sessionName);
+        }
     }
 }

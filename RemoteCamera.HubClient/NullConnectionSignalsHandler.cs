@@ -22,6 +22,11 @@ namespace RemoteCamera.HubClient
             _logger.LogInfo($"Data message received: {dataMessage}");
         }
 
+        public void OnPartialDataMessageReceived(PartialDataMessage dataMessage)
+        {
+            _logger.LogInfo($"Partial data message received: {dataMessage}");
+        }
+
         public void OnRcConnected()
         {
             _logger.LogInfo($"RC connected");

@@ -77,11 +77,18 @@ namespace RemoteCamera.HubClient.Cnsl
             _actionsSwitch["data"] = () => service.SendDataMessageAsync(new DataMessage() { Payload = GetPayload(), CreatedAt = DateTime.Now });
             _actionsSwitch["text"] = () => service.SendMessageAsync(_paramsHolder[1]);
             _actionsSwitch["reset"] = () => service.Disconnect();
+            _actionsSwitch["partial_data"] = () => SendPartialAsync(service);
+        }
+
+        private async Task SendPartialAsync(RemoteCameraService service)
+        {
+            var bytes = GetPayload();
+            await service.SendPartialDataMessageAsync(bytes);
         }
 
         private byte[] GetPayload()
         {
-            var bytes = File.ReadAllBytes("/Users/amara/Documents/GitHub/remote-camera/RemoteCamera.HubClient.Console/photo1.png");
+            var bytes = File.ReadAllBytes("/Users/amara/Documents/GitHub/remote-camera/RemoteCamera.HubClient.Console/photo.png");
             return bytes;
         }
 
