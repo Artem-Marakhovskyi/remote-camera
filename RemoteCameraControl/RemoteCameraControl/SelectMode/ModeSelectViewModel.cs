@@ -9,7 +9,7 @@ namespace RemoteCameraControl.Android.SelectMode
         private IAppContext _appContext;
         private IPermissionService _permissionService;
         private readonly RemoteCameraService _remoteCameraService;
-
+        private readonly IConnectionSignalsHandler _connectionSignalsHandler;
         private string _cameraAwaitSessionName;
         public string CameraAwaitSessionName
         {
@@ -33,6 +33,7 @@ namespace RemoteCameraControl.Android.SelectMode
             _appContext = appContext;
             _permissionService = permissionService;
             _remoteCameraService = remoteCameraService;
+            _connectionSignalsHandler = connectionSignalsHandler;
             connectionSignalsHandler.SetInner(this);
 
         }
@@ -59,6 +60,13 @@ namespace RemoteCameraControl.Android.SelectMode
 
         }
 
+        public override void OnDataMessageReceived(DataMessage dataMessage)
+        {
+            DialogService.HideLoading();
+            _connectionSignalsHandler.SetInner(null);
+            NavigationService.NavigateTo(nameof(PhotoMirrorViewModel));
+        }
+
         public override void OnRcConnected()
         {
             if (_appContext.IsCamera)
@@ -67,8 +75,7 @@ namespace RemoteCameraControl.Android.SelectMode
             }
             else if (_appContext.IsRc)
             {
-                DialogService.HideLoading();
-                NavigationService.NavigateTo(nameof(PhotoMirrorViewModel));
+                DialogService.ShowLoading("Waiting for data to be sent...");
             }
         }
     }

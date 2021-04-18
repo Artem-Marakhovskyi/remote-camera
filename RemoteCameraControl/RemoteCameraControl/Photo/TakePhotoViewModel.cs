@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
+using RemoteCamera.HubClient;
 using RemoteCameraControl.AsyncCommands;
 using RemoteCameraControl.Permissions;
 
@@ -11,7 +12,9 @@ namespace RemoteCameraControl.Photo
 {
     public class TakePhotoViewModel : ViewModelBase
     {
+        private readonly IConnectionSignalsHandler _connectionSignalsHandler;
         private readonly IPermissionService _permissionService;
+        private readonly RemoteCameraService _remoteCameraService;
         private Type _navigationViewModelType;
         private ICommand _skipNavigationCommand;
         private AsyncRelayCommand<MemoryStream> _usePhotoCommand;
@@ -22,9 +25,14 @@ namespace RemoteCameraControl.Photo
         private bool _isPhotoConfirmationVisible = false;
 
         public TakePhotoViewModel(
-            IPermissionService permissionService)
+            IPermissionService permissionService,
+            RemoteCameraService remoteCameraService,
+            IConnectionSignalsHandler connectionSignalsHandler)
         {
+            _connectionSignalsHandler = connectionSignalsHandler;
             _permissionService = permissionService;
+            _remoteCameraService = remoteCameraService;
+            _connectionSignalsHandler.SetInner(this);
         }
 
         public string SkipText => "Skip";
@@ -153,7 +161,13 @@ namespace RemoteCameraControl.Photo
 
         internal async Task SendPhotoAsync(byte[] bytes)
         {
-            // await _dataStreamManager.SendDataSignalAsync();
+            await _remoteCameraService.SendDataMessageAsync(
+                new DataMessage() { CreatedAt = DateTime.Now, Payload = bytes });
+        }
+
+        public override void OnDataMessageReceived(DataMessage dataMessage)
+        {
+            Console.WriteLine("DATA MESSAGE");
         }
 
         //private void FinishPhotoTaking(PhotoResult result)

@@ -31,7 +31,7 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
             RegisterType<IDialogs, Dialogs>();
             RegisterType<IPermissionService, PermissionService>();
             RegisterType<ILoadingIndicator, LoadingIndicator>();
-            RegisterType<RemoteCameraService, RemoteCameraService>();
+            ContainerBuilder.RegisterType<RemoteCameraService>().AsSelf().SingleInstance();
             RegisterType<HubService, HubService>();
 
             RegisterViewModel<ModeSelectViewModel>();

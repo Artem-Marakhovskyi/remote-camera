@@ -6,6 +6,7 @@ using static Android.Hardware.Camera;
 using System.Threading.Tasks;
 using System.Linq;
 using Android.Graphics;
+using System.IO;
 
 namespace RemoteCameraControl.Android
 {
@@ -58,7 +59,7 @@ namespace RemoteCameraControl.Android
                 cameraParams.SetRotation(0);
             }
 
-            var bestPictureSize = GetBestPictureSize(cameraParams);
+            var bestPictureSize = GetWorstPictureSize(cameraParams);
             if (bestPictureSize != default(Size))
             {
                 cameraParams.SetPictureSize(bestPictureSize.Width, bestPictureSize.Height);
@@ -102,7 +103,7 @@ namespace RemoteCameraControl.Android
         {
         }
 
-        public void OnPictureTaken(byte[] data, global::Android.Hardware.Camera camera)
+        public async void OnPictureTaken(byte[] data, global::Android.Hardware.Camera camera)
         {
             if (data == null)
             {
@@ -110,8 +111,20 @@ namespace RemoteCameraControl.Android
                 return;
             }
 
-            _tcs.SetResult(data);
+            var bitmap = BitmapFactory.DecodeByteArray(data, 0, data.Length);
+            var ms = await bitmap.CompressAsync(50);
+
+
+            _tcs.SetResult(ms.ToArray());
             _safeToTakePicture = true;
+        }
+
+        private Bitmap GetResizedBitmap(Bitmap image)
+        {
+            int width = image.Width;
+            int height = image.Height;
+
+            return Bitmap.CreateScaledBitmap(image, image.Width/10, image.Height/10, true);
         }
 
         protected override void Dispose(bool disposing)
@@ -135,6 +148,14 @@ namespace RemoteCameraControl.Android
             var bestPictureSize = cameraParams.SupportedPictureSizes.Last();
 
             return bestPictureSize;
+        }
+
+        private Size GetWorstPictureSize(Parameters cameraParams)
+        {
+            var worstPictureSize = cameraParams.SupportedPictureSizes.First();
+
+            return worstPictureSize;
+
         }
     }
 }
