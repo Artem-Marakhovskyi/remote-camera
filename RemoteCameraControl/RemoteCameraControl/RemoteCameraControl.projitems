@@ -47,6 +47,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)SplashViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConnectionSignalsHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Photo\BitmapExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SessionPhotosViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Network\" />
