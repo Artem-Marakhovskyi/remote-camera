@@ -44,7 +44,7 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
             var baseUrl = "https://remotecamera.azurewebsites.net/";
             RegisterInstance(new SessionClient(baseUrl));
             RegisterInstance(new HubClient(baseUrl + "/hub", Logger));
-            RegisterInstance<IConnectionSignalsHandler>(new ConnectionSignalsHandler());
+            RegisterInstance<IConnectionSignalsHandler>(new ConnectionSignalsHandler(Logger));
 
 
             ContainerBuilder.RegisterType<AppContext>().As<IAppContext>().SingleInstance();
