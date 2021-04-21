@@ -8,7 +8,7 @@ namespace RemoteCameraControl
     {
         private IConnectionSignalsHandler _inner;
 
-        public void SetInner(IConnectionSignalsHandler connectionSignalsHandler)
+        public override void SetInner(IConnectionSignalsHandler connectionSignalsHandler)
         {
             _inner = connectionSignalsHandler;
         }

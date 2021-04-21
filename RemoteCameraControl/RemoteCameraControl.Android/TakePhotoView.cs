@@ -234,7 +234,7 @@ namespace RemoteCameraControl.Android
 
             }
 
-            _ = StartSendingPhotoAsync();
+            //_ = StartSendingPhotoAsync();
         }
 
         private async Task StartSendingPhotoAsync()
