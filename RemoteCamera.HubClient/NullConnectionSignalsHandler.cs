@@ -8,24 +8,23 @@ namespace RemoteCamera.HubClient
     {
         private readonly ILogger _logger;
 
-        public NullConnectionSignalsHandler(ILogger logger)
+        public NullConnectionSignalsHandler(ILogger logger) : base(logger)
         {
             _logger = logger;
         }
 
         public override void OnControlMessageReceived(ControlMessage controlMessage)
         {
-            _logger.LogInfo($"Control message received: {controlMessage}");
+            base.OnControlMessageReceived(controlMessage);
         }
 
         public override void OnDataMessageReceived(DataMessage dataMessage)
         {
-            _logger.LogInfo($"Data message received: {dataMessage}");
+            base.OnDataMessageReceived(dataMessage);
         }
 
         public override void OnPartialDataMessageReceived(PartialDataMessage dataMessage)
         {
-            _logger.LogInfo($"Partial data message received: {dataMessage}");
             base.OnPartialDataMessageReceived(dataMessage);
         }
 
@@ -44,24 +43,24 @@ namespace RemoteCamera.HubClient
             }
         }
 
-        public void OnRcConnected()
+        public override void OnRcConnected()
         {
-            _logger.LogInfo($"RC connected");
+            base.OnRcConnected();
         }
 
-        public void OnSessionFinished()
+        public override void OnSessionFinished()
         {
-            _logger.LogInfo($"Session finished");
+            base.OnSessionFinished();
         }
 
-        public void OnTextReceived(string text)
+        public override void OnTextReceived(string text)
         {
-            _logger.LogInfo($"Text received: {text}");
+            base.OnTextReceived(text);
         }
 
-        public void SetInner(IConnectionSignalsHandler inner)
+        public override void SetInner(IConnectionSignalsHandler inner)
         {
-            throw new NotImplementedException();
+            base.SetInner(inner);
         }
     }
 }
