@@ -1,5 +1,6 @@
 ﻿using System;
 using RemoteCamera.HubClient;
+using RemoteCameraControl.Logger;
 using RemoteCameraControl.RemoteCameraControl.Interaction;
 
 namespace RemoteCameraControl
@@ -8,7 +9,12 @@ namespace RemoteCameraControl
     {
         private IConnectionSignalsHandler _inner;
 
-        public void SetInner(IConnectionSignalsHandler connectionSignalsHandler)
+        public ConnectionSignalsHandler(ILogger logger) : base(logger)
+        {
+
+        }
+
+        public override void SetInner(IConnectionSignalsHandler connectionSignalsHandler)
         {
             _inner = connectionSignalsHandler;
         }
