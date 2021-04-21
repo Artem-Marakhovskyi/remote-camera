@@ -13,32 +13,32 @@ namespace RemoteCameraControl
             _inner = connectionSignalsHandler;
         }
 
-        public void OnControlMessageReceived(ControlMessage controlMessage)
+        public override void OnControlMessageReceived(ControlMessage controlMessage)
         {
             _inner?.OnControlMessageReceived(controlMessage);
         }
 
-        public void OnDataMessageReceived(DataMessage dataMessage)
+        public override void OnDataMessageReceived(DataMessage dataMessage)
         {
             _inner?.OnDataMessageReceived(dataMessage);
         }
 
-        public void OnRcConnected()
+        public override void OnRcConnected()
         {
             _inner?.OnRcConnected();
         }
 
-        public void OnSessionFinished()
+        public override void OnSessionFinished()
         {
             _inner?.OnSessionFinished();
         }
 
-        public void OnTextReceived(string text)
+        public override void OnTextReceived(string text)
         {
             _inner?.OnTextReceived(text);
         }
 
-        public void OnPartialDataMessageReceived(PartialDataMessage dataMessage)
+        public override void OnPartialDataMessageReceived(PartialDataMessage dataMessage)
         {
             base.OnPartialDataMessageReceived(dataMessage);
         }
