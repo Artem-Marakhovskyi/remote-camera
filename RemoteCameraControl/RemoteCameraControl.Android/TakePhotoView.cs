@@ -139,7 +139,7 @@ namespace RemoteCameraControl.Android
             var logger = Resolver.Resolve<ILogger>();
             for (var i = 0; i < photoCount; i++)
             {
-                if (photoCount == 0)
+                if (photoCount == 1 && delayInSeconds != 0)
                 {
                     await Task.Delay(delayInSeconds * 1000);
                 }
@@ -490,43 +490,6 @@ namespace RemoteCameraControl.Android
                     () => _backButton.Visibility)
                     .ConvertSourceToTarget(ConvertationSource.ConvertVisibility);
 
-            this.SetBinding(
-                    () => ViewModel.ControlMessageKind)
-                .WhenSourceChanges(OnControlMessageKind);
-        }
-
-        private void OnControlMessageKind()
-        {
-            if (ViewModel.ControlMessageKind == ControlOperationKind.TakePhoto)
-            {
-                TakePhoto(this, EventArgs.Empty);
-            }
-            else if (ViewModel.ControlMessageKind == ControlOperationKind.TakePhoto3Delay1)
-            {
-                _ = TakePhotosAsync(3, 1);
-            }
-            else if (ViewModel.ControlMessageKind == ControlOperationKind.TakePhoto3Delay3)
-            {
-                _ = TakePhotosAsync(3, 3);
-            }
-            else if (ViewModel.ControlMessageKind == ControlOperationKind.Timer10)
-            {
-                _ = StartTimer(10);
-            }
-            else if (ViewModel.ControlMessageKind == ControlOperationKind.Timer3)
-            {
-                _ = StartTimer(3);
-            }
-        }
-
-        private object TakePhotosAsync(int v1, int v2)
-        {
-            throw new NotImplementedException();
-        }
-
-        private object StartTimer(int v)
-        {
-            throw new NotImplementedException();
         }
 
         private void SetLoader(bool show)
