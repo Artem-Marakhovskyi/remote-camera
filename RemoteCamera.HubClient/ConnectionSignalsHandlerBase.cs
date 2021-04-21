@@ -27,6 +27,8 @@ namespace RemoteCamera.HubClient
 
         public virtual void OnPartialDataMessageReceived(PartialDataMessage dataMessage)
         {
+            _logger.LogInfo($"Partial data message received: {dataMessage}");
+
             if (_partialMesages.ContainsKey(dataMessage.PhotoId))
             {
                 _partialMesages[dataMessage.PhotoId].Add(dataMessage);
