@@ -375,6 +375,11 @@ namespace RemoteCameraControl
         public virtual void SetInner(IConnectionSignalsHandler inner)
         {
         }
+
+        public virtual void OnPartialDataMessageReceived(PartialDataMessage dataMessage)
+        {
+            
+        }
     }
     public enum NavigationResult
     {

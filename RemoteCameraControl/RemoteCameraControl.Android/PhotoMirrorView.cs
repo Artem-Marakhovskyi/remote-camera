@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Helpers;
 using System.IO;
 using Android.Graphics;
+using Android.Provider;
 
 namespace RemoteCameraControl.Android
 {
@@ -89,6 +90,14 @@ namespace RemoteCameraControl.Android
                 _imageView.Rotation = 0;
                 _progressBar.Visibility = ViewStates.Invisible;
                 ViewModel.Logger.LogInfo($"New photo is loaded, {ViewModel.LatestPhotoTime}");
+            }
+            else if (ViewModel.FullFileReceived)
+            {
+                MediaStore.Images.Media.InsertImage(
+                    ContentResolver,
+                    BitmapFactory.DecodeByteArray(ViewModel.Payload, 0 , ViewModel.Payload.Length),
+                    $"Photo_{ViewModel.SessionName}_{ViewModel.LatestPhotoTime.ToString("R")}",
+                    $"Photo from session {ViewModel.SessionName}");
             }
         }
 

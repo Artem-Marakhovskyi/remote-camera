@@ -11,5 +11,7 @@ namespace RemoteCamera.HubClient
         {
             return $"Created - {CreatedAt}, Payload - {Payload.Length} bytes";
         }
+
+        public bool IsFullFile { get; set; }
     }
 }

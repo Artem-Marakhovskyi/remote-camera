@@ -99,6 +99,62 @@ namespace RemoteCameraControl.Android
             {
                 SubscribeToEvents();
             }
+
+            ViewModel.PropertyChanged += ViewModel_PropertyChanged;
+        }
+
+        private async void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(ViewModel.ControlMessageKind))
+            {
+                if (ViewModel.ControlMessageKind == ControlOperationKind.Focus)
+                {
+                    FocusCamera(this, EventArgs.Empty);
+                }
+                else if (ViewModel.ControlMessageKind == ControlOperationKind.TakePhoto)
+                {
+                    TakePhotoSilently(1, 0);
+                }
+                else if (ViewModel.ControlMessageKind == ControlOperationKind.Timer3)
+                {
+                    TakePhotoSilently(1, 3);
+                }
+                else if (ViewModel.ControlMessageKind == ControlOperationKind.Timer10)
+                {
+                    TakePhotoSilently(1, 10);
+                }
+                else if (ViewModel.ControlMessageKind == ControlOperationKind.TakePhoto3Delay1)
+                {
+                    TakePhotoSilently(3, 1);
+                }
+                else if (ViewModel.ControlMessageKind == ControlOperationKind.TakePhoto3Delay3)
+                {
+                    TakePhotoSilently(3, 3);
+                }
+            }
+        }
+
+        private async void TakePhotoSilently(int photoCount, int delayInSeconds)
+        {
+            var logger = Resolver.Resolve<ILogger>();
+            for (var i = 0; i < photoCount; i++)
+            {
+                if (photoCount == 0)
+                {
+                    await Task.Delay(delayInSeconds * 1000);
+                }
+
+                var bytes = await _cameraSurface.TakePhotoAsync();
+                _camera.StartPreview();
+                logger.LogInfo($"Bytes received from camera: {bytes.Length}"); 
+
+                await ViewModel.SendPartialPhotoAsync(bytes);
+
+                if (photoCount != 0 && i < photoCount - 1)
+                {
+                    await Task.Delay(delayInSeconds * 1000);
+                }
+            }
         }
 
         protected override async void OnPause()
@@ -122,6 +178,8 @@ namespace RemoteCameraControl.Android
             {
                 UnsubscribeFromTakenPhotoButtonsBarEvents();
             }
+
+            ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
         }
 
         protected override void OnDestroy()

@@ -145,6 +145,11 @@ namespace RemoteCameraControl.Photo
             return isGranted;
         }
 
+        internal Task SendPartialPhotoAsync(byte[] bytes)
+        {
+            return _remoteCameraService.SendPartialDataMessageAsync(bytes);
+        }
+
         public async Task<bool> IsGalleryGrantedAsync()
         {
             var isGranted = await _permissionService.RequestPermissionAsync(FeaturePermission.Photos) == PermissionStatus.Granted;
@@ -170,7 +175,7 @@ new DataMessage() { CreatedAt = DateTime.Now, Payload = bytes });
 
         public override void OnControlMessageReceived(ControlMessage controlMessage)
         {
-            ControlOperationKind = controlMessage.Kind;
+            ControlMessageKind = controlMessage.Kind;
         }
 
         //private void FinishPhotoTaking(PhotoResult result)

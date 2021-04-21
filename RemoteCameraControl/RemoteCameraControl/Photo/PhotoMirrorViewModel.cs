@@ -13,6 +13,8 @@ namespace RemoteCameraControl.Photo
 
         public byte[] Payload { get; private set; }
         public DateTime LatestPhotoTime { get; private set; }
+        public bool FullFileReceived { get; set; }
+        public string SessionName => _appContext.SessionName;
 
         public PhotoMirrorViewModel(
             IAppContext appContext,
@@ -50,6 +52,11 @@ namespace RemoteCameraControl.Photo
         {
             LatestPhotoTime = dataMessage.CreatedAt;
             Payload = dataMessage.Payload;
+
+            if (dataMessage.IsFullFile)
+            {
+                RaisePropertyChanged(nameof(FullFileReceived));
+            }
         }
     }
 }

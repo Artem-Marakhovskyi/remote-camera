@@ -4,7 +4,7 @@ using RemoteCameraControl.RemoteCameraControl.Interaction;
 
 namespace RemoteCameraControl
 {
-    public class ConnectionSignalsHandler : IConnectionSignalsHandler
+    public class ConnectionSignalsHandler : ConnectionSignalsHandlerBase
     {
         private IConnectionSignalsHandler _inner;
 
@@ -36,6 +36,21 @@ namespace RemoteCameraControl
         public void OnTextReceived(string text)
         {
             _inner?.OnTextReceived(text);
+        }
+
+        public void OnPartialDataMessageReceived(PartialDataMessage dataMessage)
+        {
+            base.OnPartialDataMessageReceived(dataMessage);
+        }
+
+        public override void OnPartialDataMessageCompleted(byte[] bytes, string filename)
+        {
+            _inner?.OnDataMessageReceived(new DataMessage()
+            {
+                CreatedAt = DateTime.Now,
+                Payload = bytes,
+                IsFullFile = true
+            });
         }
     }
 }
