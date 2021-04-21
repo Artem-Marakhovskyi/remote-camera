@@ -13,19 +13,20 @@ namespace RemoteCamera.HubClient
             _logger = logger;
         }
 
-        public void OnControlMessageReceived(ControlMessage controlMessage)
+        public override void OnControlMessageReceived(ControlMessage controlMessage)
         {
             _logger.LogInfo($"Control message received: {controlMessage}");
         }
 
-        public void OnDataMessageReceived(DataMessage dataMessage)
+        public override void OnDataMessageReceived(DataMessage dataMessage)
         {
             _logger.LogInfo($"Data message received: {dataMessage}");
         }
 
-        public void OnPartialDataMessageReceived(PartialDataMessage dataMessage)
+        public override void OnPartialDataMessageReceived(PartialDataMessage dataMessage)
         {
             _logger.LogInfo($"Partial data message received: {dataMessage}");
+            base.OnPartialDataMessageReceived(dataMessage);
         }
 
         public async override void OnPartialDataMessageCompleted(byte[] bytes, string filename)
