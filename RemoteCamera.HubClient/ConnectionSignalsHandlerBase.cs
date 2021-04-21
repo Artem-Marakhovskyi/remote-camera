@@ -43,6 +43,7 @@ namespace RemoteCamera.HubClient
                 foreach (var item in list)
                 {
                     item.Payload.CopyTo(bytes, writeFrom);
+                    writeFrom += item.Payload.Length;
                 }
 
                 _partialMesages.Remove(dataMessage.PhotoId);
