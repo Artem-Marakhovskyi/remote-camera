@@ -89,6 +89,11 @@ namespace RemoteCamera.HubClient.Cnsl
         private byte[] GetPayload()
         {
             var bytes = File.ReadAllBytes("/Users/amara/Documents/GitHub/remote-camera/RemoteCamera.HubClient.Console/photo.png");
+
+            //var bytes = new byte[100];
+
+            //for (var i = 0; i < bytes.Length; i++) bytes[i] = (byte)i;
+
             return bytes;
         }
 
