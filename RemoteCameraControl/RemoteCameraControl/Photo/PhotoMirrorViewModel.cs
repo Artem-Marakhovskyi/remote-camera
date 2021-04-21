@@ -51,12 +51,14 @@ namespace RemoteCameraControl.Photo
         public override void OnDataMessageReceived(DataMessage dataMessage)
         {
             LatestPhotoTime = dataMessage.CreatedAt;
-            Payload = dataMessage.Payload;
 
             if (dataMessage.IsFullFile)
             {
+                FullFileReceived = dataMessage.IsFullFile;
                 RaisePropertyChanged(nameof(FullFileReceived));
             }
+            Payload = dataMessage.Payload;
+
         }
     }
 }
