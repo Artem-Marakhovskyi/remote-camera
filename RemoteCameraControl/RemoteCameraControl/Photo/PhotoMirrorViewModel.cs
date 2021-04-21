@@ -33,9 +33,16 @@ namespace RemoteCameraControl.Photo
         }
 
 
-        internal async Task TakePhotoAsync()
+        internal async Task TakePhotoAsync(int count = 1)
         {
-            await _remoteCameraService.SendControlMessageAsync(ControlMessage.From(ControlOperationKind.TakePhoto));
+            if (count != 3)
+            {
+                await _remoteCameraService.SendControlMessageAsync(ControlMessage.From(ControlOperationKind.TakePhoto));
+            }
+            else
+            {
+                await _remoteCameraService.SendControlMessageAsync(ControlMessage.From(ControlOperationKind.TakePhoto3Delay1));
+            }
         }
 
         internal async void TimerClicked()

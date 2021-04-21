@@ -13377,95 +13377,101 @@ namespace RemoteCameraControl.Android
 			// aapt resource value: 0x7F080126
 			public const int tag_unhandled_key_listeners = 2131231014;
 			
-			// aapt resource value: 0x7F08012A
-			public const int taken_photo_buttons_bar = 2131231018;
-			
-			// aapt resource value: 0x7F08012B
-			public const int taken_photo_image_view = 2131231019;
-			
-			// aapt resource value: 0x7F080127
-			public const int take_photo_button = 2131231015;
-			
-			// aapt resource value: 0x7F080128
-			public const int take_photo_button_focus = 2131231016;
-			
-			// aapt resource value: 0x7F080129
-			public const int take_photo_button_timer = 2131231017;
-			
 			// aapt resource value: 0x7F08012C
-			public const int test_checkbox_android_button_tint = 2131231020;
+			public const int taken_photo_buttons_bar = 2131231020;
 			
 			// aapt resource value: 0x7F08012D
-			public const int test_checkbox_app_button_tint = 2131231021;
+			public const int taken_photo_image_view = 2131231021;
+			
+			// aapt resource value: 0x7F080127
+			public const int take_3_fast_photo_button = 2131231015;
+			
+			// aapt resource value: 0x7F080128
+			public const int take_3_slow_photo_button = 2131231016;
+			
+			// aapt resource value: 0x7F080129
+			public const int take_photo_button = 2131231017;
+			
+			// aapt resource value: 0x7F08012A
+			public const int take_photo_button_focus = 2131231018;
+			
+			// aapt resource value: 0x7F08012B
+			public const int take_photo_button_timer = 2131231019;
 			
 			// aapt resource value: 0x7F08012E
-			public const int test_radiobutton_android_button_tint = 2131231022;
+			public const int test_checkbox_android_button_tint = 2131231022;
 			
 			// aapt resource value: 0x7F08012F
-			public const int test_radiobutton_app_button_tint = 2131231023;
+			public const int test_checkbox_app_button_tint = 2131231023;
 			
 			// aapt resource value: 0x7F080130
-			public const int text = 2131231024;
+			public const int test_radiobutton_android_button_tint = 2131231024;
 			
 			// aapt resource value: 0x7F080131
-			public const int text2 = 2131231025;
+			public const int test_radiobutton_app_button_tint = 2131231025;
 			
 			// aapt resource value: 0x7F080132
-			public const int textEnd = 2131231026;
-			
-			// aapt resource value: 0x7F080139
-			public const int textinput_counter = 2131231033;
-			
-			// aapt resource value: 0x7F08013A
-			public const int textinput_error = 2131231034;
-			
-			// aapt resource value: 0x7F08013B
-			public const int textinput_helper_text = 2131231035;
-			
-			// aapt resource value: 0x7F08013C
-			public const int textinput_placeholder = 2131231036;
-			
-			// aapt resource value: 0x7F08013D
-			public const int textinput_prefix_text = 2131231037;
-			
-			// aapt resource value: 0x7F08013E
-			public const int textinput_suffix_text = 2131231038;
+			public const int text = 2131231026;
 			
 			// aapt resource value: 0x7F080133
-			public const int textSpacerNoButtons = 2131231027;
+			public const int text2 = 2131231027;
 			
 			// aapt resource value: 0x7F080134
-			public const int textSpacerNoTitle = 2131231028;
+			public const int textEnd = 2131231028;
 			
-			// aapt resource value: 0x7F080135
-			public const int textStart = 2131231029;
+			// aapt resource value: 0x7F08013B
+			public const int textinput_counter = 2131231035;
 			
-			// aapt resource value: 0x7F080136
-			public const int textViewStatus = 2131231030;
+			// aapt resource value: 0x7F08013C
+			public const int textinput_error = 2131231036;
 			
-			// aapt resource value: 0x7F080137
-			public const int text_input_end_icon = 2131231031;
+			// aapt resource value: 0x7F08013D
+			public const int textinput_helper_text = 2131231037;
 			
-			// aapt resource value: 0x7F080138
-			public const int text_input_start_icon = 2131231032;
+			// aapt resource value: 0x7F08013E
+			public const int textinput_placeholder = 2131231038;
 			
 			// aapt resource value: 0x7F08013F
-			public const int time = 2131231039;
+			public const int textinput_prefix_text = 2131231039;
 			
 			// aapt resource value: 0x7F080140
-			public const int title = 2131231040;
+			public const int textinput_suffix_text = 2131231040;
+			
+			// aapt resource value: 0x7F080135
+			public const int textSpacerNoButtons = 2131231029;
+			
+			// aapt resource value: 0x7F080136
+			public const int textSpacerNoTitle = 2131231030;
+			
+			// aapt resource value: 0x7F080137
+			public const int textStart = 2131231031;
+			
+			// aapt resource value: 0x7F080138
+			public const int textViewStatus = 2131231032;
+			
+			// aapt resource value: 0x7F080139
+			public const int text_input_end_icon = 2131231033;
+			
+			// aapt resource value: 0x7F08013A
+			public const int text_input_start_icon = 2131231034;
 			
 			// aapt resource value: 0x7F080141
-			public const int titleDividerNoCustom = 2131231041;
+			public const int time = 2131231041;
 			
 			// aapt resource value: 0x7F080142
-			public const int title_template = 2131231042;
+			public const int title = 2131231042;
 			
 			// aapt resource value: 0x7F080143
-			public const int top = 2131231043;
+			public const int titleDividerNoCustom = 2131231043;
 			
 			// aapt resource value: 0x7F080144
-			public const int topPanel = 2131231044;
+			public const int title_template = 2131231044;
+			
+			// aapt resource value: 0x7F080145
+			public const int top = 2131231045;
+			
+			// aapt resource value: 0x7F080146
+			public const int topPanel = 2131231046;
 			
 			// aapt resource value: 0x7F080008
 			public const int TOP_END = 2131230728;
@@ -13473,65 +13479,65 @@ namespace RemoteCameraControl.Android
 			// aapt resource value: 0x7F080009
 			public const int TOP_START = 2131230729;
 			
-			// aapt resource value: 0x7F080145
-			public const int touch_outside = 2131231045;
-			
-			// aapt resource value: 0x7F080146
-			public const int transition_current_scene = 2131231046;
-			
 			// aapt resource value: 0x7F080147
-			public const int transition_layout_save = 2131231047;
+			public const int touch_outside = 2131231047;
 			
 			// aapt resource value: 0x7F080148
-			public const int transition_position = 2131231048;
+			public const int transition_current_scene = 2131231048;
 			
 			// aapt resource value: 0x7F080149
-			public const int transition_scene_layoutid_cache = 2131231049;
+			public const int transition_layout_save = 2131231049;
 			
 			// aapt resource value: 0x7F08014A
-			public const int transition_transform = 2131231050;
+			public const int transition_position = 2131231050;
 			
 			// aapt resource value: 0x7F08014B
-			public const int @unchecked = 2131231051;
+			public const int transition_scene_layoutid_cache = 2131231051;
 			
 			// aapt resource value: 0x7F08014C
-			public const int uniform = 2131231052;
+			public const int transition_transform = 2131231052;
 			
 			// aapt resource value: 0x7F08014D
-			public const int unlabeled = 2131231053;
+			public const int @unchecked = 2131231053;
 			
 			// aapt resource value: 0x7F08014E
-			public const int up = 2131231054;
+			public const int uniform = 2131231054;
 			
 			// aapt resource value: 0x7F08014F
-			public const int useLogo = 2131231055;
+			public const int unlabeled = 2131231055;
 			
 			// aapt resource value: 0x7F080150
-			public const int use_photo_button = 2131231056;
+			public const int up = 2131231056;
 			
 			// aapt resource value: 0x7F080151
-			public const int view_offset_helper = 2131231057;
+			public const int useLogo = 2131231057;
 			
 			// aapt resource value: 0x7F080152
-			public const int view_tree_saved_state_registry_owner = 2131231058;
+			public const int use_photo_button = 2131231058;
 			
 			// aapt resource value: 0x7F080153
-			public const int visible = 2131231059;
+			public const int view_offset_helper = 2131231059;
 			
 			// aapt resource value: 0x7F080154
-			public const int visible_removing_fragment_view_tag = 2131231060;
-			
-			// aapt resource value: 0x7F080156
-			public const int withinBounds = 2131231062;
+			public const int view_tree_saved_state_registry_owner = 2131231060;
 			
 			// aapt resource value: 0x7F080155
-			public const int withText = 2131231061;
+			public const int visible = 2131231061;
 			
-			// aapt resource value: 0x7F080157
-			public const int wrap_content = 2131231063;
+			// aapt resource value: 0x7F080156
+			public const int visible_removing_fragment_view_tag = 2131231062;
 			
 			// aapt resource value: 0x7F080158
-			public const int zero_corner_chip = 2131231064;
+			public const int withinBounds = 2131231064;
+			
+			// aapt resource value: 0x7F080157
+			public const int withText = 2131231063;
+			
+			// aapt resource value: 0x7F080159
+			public const int wrap_content = 2131231065;
+			
+			// aapt resource value: 0x7F08015A
+			public const int zero_corner_chip = 2131231066;
 			
 			static Id()
 			{

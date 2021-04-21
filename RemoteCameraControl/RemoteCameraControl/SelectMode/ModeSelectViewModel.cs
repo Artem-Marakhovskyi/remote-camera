@@ -38,6 +38,13 @@ namespace RemoteCameraControl.Android.SelectMode
 
         }
 
+        protected async override void OnResume()
+        {
+            base.OnResume();
+
+            await _permissionService.RequestPermissionAsync(FeaturePermission.Storage);
+        }
+
         public async void BecomeCamera()
         {
             await _permissionService.RequestPermissionAsync(FeaturePermission.Camera);

@@ -29,6 +29,7 @@ namespace RemoteCameraControl.Android
         private Button _photoViewButton;
         private Button _photoViewButtonFocus;
         private Button _photoViewButtonTimer;
+        private Button _take3PhotoButton;
         private ImageButton _back_button;
         private ImageViewAsync _imageView;
         private ProgressBar _progressBar;
@@ -43,6 +44,7 @@ namespace RemoteCameraControl.Android
                 WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
             SetContentView(Resource.Layout.photo_mirror_view);
 
+            _take3PhotoButton = FindViewById<Button>(Resource.Id.take_3_photo_button);
             _photoViewButton = FindViewById<Button>(Resource.Id.take_photo_button);
             _photoViewButtonFocus = FindViewById<Button>(Resource.Id.take_photo_button_focus);
             _photoViewButtonTimer = FindViewById<Button>(Resource.Id.take_photo_button_timer);
@@ -53,9 +55,15 @@ namespace RemoteCameraControl.Android
 
             ViewModel.PropertyChanged += ViewModel_PropertyChanged;
             _back_button.Click += _back_button_Click;
+            _take3PhotoButton.Click += _take3PhotoButton_Click;
             _photoViewButton.Click += _photoViewButton_Click;
             _photoViewButtonFocus.Click += _photoViewButtonFocus_Click;
             _photoViewButtonTimer.Click += _photoViewButtonTimer_Click;
+        }
+
+        private void _take3PhotoButton_Click(object sender, EventArgs e)
+        {
+            ViewModel.TakePhotoAsync(3);
         }
 
         private void _photoViewButtonTimer_Click(object sender, EventArgs e)
@@ -91,7 +99,7 @@ namespace RemoteCameraControl.Android
                 _progressBar.Visibility = ViewStates.Invisible;
                 ViewModel.Logger.LogInfo($"New photo is loaded, {ViewModel.LatestPhotoTime}");
             }
-            else if (ViewModel.FullFileReceived)
+            if (ViewModel.FullFileReceived)
             {
                 MediaStore.Images.Media.InsertImage(
                     ContentResolver,

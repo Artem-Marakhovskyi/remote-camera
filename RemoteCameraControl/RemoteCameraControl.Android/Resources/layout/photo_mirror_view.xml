@@ -41,6 +41,19 @@
         android:id="@+id/take_photo_button" />
 
         <Button
+        android:layout_alignRight="@id/take_photo_button_focus"
+        android:background="@drawable/take_photo"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginRight="80dp"
+        android:text="3 photo slow"
+        android:textSize="10sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/take_3_slow_photo_button" />
+
+        <Button
         android:layout_alignRight="@id/take_photo_button"
         android:background="@drawable/take_photo"
         android:layout_width="56dp"
@@ -52,7 +65,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/take_photo_button_focus" />
-
+    
         <Button
         android:layout_alignLeft="@id/take_photo_button"
         android:background="@drawable/take_photo"
@@ -65,5 +78,18 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/take_photo_button_timer" />
-
+    
+        <Button
+        android:layout_alignLeft="@id/take_photo_button_timer"
+        android:background="@drawable/take_photo"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="80dp"
+        android:text="3 photo fast"
+        android:textSize="10sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/take_3_fast_photo_button" />
+    
 </RelativeLayout>
