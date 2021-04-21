@@ -176,6 +176,7 @@ new DataMessage() { CreatedAt = DateTime.Now, Payload = bytes });
         public override void OnControlMessageReceived(ControlMessage controlMessage)
         {
             ControlMessageKind = controlMessage.Kind;
+            RaisePropertyChanged(nameof(ControlMessageKind));
         }
 
         //private void FinishPhotoTaking(PhotoResult result)
