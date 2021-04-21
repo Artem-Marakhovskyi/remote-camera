@@ -1,23 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using RemoteCameraControl.Logger;
 
 namespace RemoteCamera.HubClient
 {
     public class ConnectionSignalsHandlerBase : IConnectionSignalsHandler
     {
-        public ConnectionSignalsHandlerBase()
+        public ConnectionSignalsHandlerBase(ILogger logger)
         {
+            _logger = logger;
         }
 
         private Dictionary<Guid, List<PartialDataMessage>> _partialMesages = new Dictionary<Guid, List<PartialDataMessage>>();
+        private readonly ILogger _logger;
 
         public virtual void OnControlMessageReceived(ControlMessage controlMessage)
         {
+            _logger.LogInfo($"Control message received: {controlMessage}");
         }
 
         public virtual void OnDataMessageReceived(DataMessage dataMessage)
         {
+            _logger.LogInfo($"Data message received: {dataMessage}");
         }
 
         public virtual void OnPartialDataMessageReceived(PartialDataMessage dataMessage)
@@ -53,23 +58,27 @@ namespace RemoteCamera.HubClient
 
         public virtual void OnPartialDataMessageCompleted(byte[] bytes, string filename)
         {
-
+            _logger.LogInfo($"On partial data message completed: length - {bytes.Length}, filename: {filename}");
         }
 
         public virtual void OnRcConnected()
         {
+            _logger.LogInfo($"RC connected");
         }
 
         public virtual void OnSessionFinished()
         {
+            _logger.LogInfo($"Session finished");
         }
 
         public virtual void OnTextReceived(string text)
         {
+            _logger.LogInfo($"Text received: {text}");
         }
 
         public virtual void SetInner(IConnectionSignalsHandler inner)
         {
+            _logger.LogInfo($"Inner set");
         }
     }
 }
