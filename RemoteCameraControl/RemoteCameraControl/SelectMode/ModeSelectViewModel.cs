@@ -1,3 +1,4 @@
+using System;
 using RemoteCamera.HubClient;
 using RemoteCameraControl.Permissions;
 using RemoteCameraControl.Photo;
@@ -54,7 +55,8 @@ namespace RemoteCameraControl.Android.SelectMode
 
             var sessionName = await _remoteCameraService.CreateSessionAndConnectAsync();
             CameraAwaitSessionName = sessionName.ToUpperInvariant();
-
+            _appContext.SessionName = SessionName;
+            _appContext.SessionStart = DateTime.Now;
             DialogService.HideLoading();
         }
 
@@ -64,6 +66,8 @@ namespace RemoteCameraControl.Android.SelectMode
 
             DialogService.ShowLoading($"Connecting to a session \"{SessionName}\"...");
             await _remoteCameraService.ConnectRcAsync(SessionName);
+            _appContext.SessionName = SessionName.ToUpperInvariant();
+            _appContext.SessionStart = DateTime.Now;
 
         }
 

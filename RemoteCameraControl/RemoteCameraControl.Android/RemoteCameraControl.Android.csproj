@@ -619,6 +619,18 @@
           <SubType></SubType>
           <Generator></Generator>
         </AndroidResource>
+        <AndroidResource Include="Resources\layout\photo_item_view.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\drawable\share.png">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\xml\provider_paths.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
     </ItemGroup>
     <ItemGroup>
       <AndroidAsset Include="Assets\loader.json">
@@ -627,6 +639,7 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Resources\drawable\" />
+      <Folder Include="Resources\xml\" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\..\RemoteCamera.HubClient\RemoteCamera.HubClient.csproj">

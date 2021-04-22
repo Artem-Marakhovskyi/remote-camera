@@ -26,6 +26,7 @@ namespace RemoteCameraControl.Android
     [Activity(Label = "Remote control", Theme = "@style/AppTheme")]
     public class PhotoMirrorView : ActivityBase<PhotoMirrorViewModel>
     {
+        private Button _endSessionButton;
         private Button _photoViewButton;
         private Button _photoViewButtonFocus;
         private Button _photoViewButtonTimer;
@@ -44,7 +45,8 @@ namespace RemoteCameraControl.Android
                 WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
             SetContentView(Resource.Layout.photo_mirror_view);
 
-            _take3PhotoButton = FindViewById<Button>(Resource.Id.take_3_photo_button);
+            _endSessionButton = FindViewById<Button>(Resource.Id.end_sessionButton);
+            _take3PhotoButton = FindViewById<Button>(Resource.Id.take_3_slow_photo_button);
             _photoViewButton = FindViewById<Button>(Resource.Id.take_photo_button);
             _photoViewButtonFocus = FindViewById<Button>(Resource.Id.take_photo_button_focus);
             _photoViewButtonTimer = FindViewById<Button>(Resource.Id.take_photo_button_timer);
@@ -55,10 +57,26 @@ namespace RemoteCameraControl.Android
 
             ViewModel.PropertyChanged += ViewModel_PropertyChanged;
             _back_button.Click += _back_button_Click;
+            _endSessionButton.Click += _endSessionButton_Click;
             _take3PhotoButton.Click += _take3PhotoButton_Click;
             _photoViewButton.Click += _photoViewButton_Click;
             _photoViewButtonFocus.Click += _photoViewButtonFocus_Click;
             _photoViewButtonTimer.Click += _photoViewButtonTimer_Click;
+        }
+
+        private void _endSessionButton_Click(object sender, EventArgs e)
+        {
+                var launchPackage = PackageManager.GetLaunchIntentForPackage(BaseContext.PackageName);
+                launchPackage.AddFlags(ActivityFlags.ClearTask | ActivityFlags.NewTask | ActivityFlags.NoAnimation);
+                Finish();
+                OverridePendingTransition(0, 0); 
+                StartActivity(launchPackage);
+
+            // INFO: A more elegant and faster way would be to not kill the process,
+            //       but it will require preventing the execution to continue to the OnCreate()
+            //       of the callers - the children of this class - so they all will need code changes 
+            //       to check for IsFinishing and avoid execution
+            System.Environment.Exit(0);
         }
 
         private void _take3PhotoButton_Click(object sender, EventArgs e)

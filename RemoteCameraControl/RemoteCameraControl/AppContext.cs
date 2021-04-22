@@ -1,3 +1,4 @@
+using System;
 using RemoteCameraControl.File;
 using RemoteCameraControl.Logger;
 
@@ -12,6 +13,7 @@ namespace RemoteCameraControl.Android
         public IRelatedFile CurrentPhoto { get; set; }
         public object NavigationResult { get; set; }
         public string SessionName { get; set; }
+        public DateTime SessionStart { get; set; }
 
         public AppContext(ILogger logger)
         {

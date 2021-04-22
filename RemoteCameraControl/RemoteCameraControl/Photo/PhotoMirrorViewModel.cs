@@ -67,5 +67,11 @@ namespace RemoteCameraControl.Photo
             Payload = dataMessage.Payload;
 
         }
+
+        internal void EndSession()
+        {
+            _connectionSignalsHandler.SetInner(null);
+            NavigationService.NavigateTo(nameof(SessionPhotosViewModel));
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace RemoteCameraControl.Android
 {
     public class ActivityBase<T> : ActivityBase where T: ViewModelBase
     {
-        protected T ViewModel { get; private set; }
+        public T ViewModel { get; private set; }
         protected INavigationService NavigationService { get; private set; }
         
         /// <summary>

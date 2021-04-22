@@ -12,6 +12,7 @@ namespace RemoteCameraControl
         public void NavigateToSelectMode()
         {
             NavigationService.NavigateTo(nameof(ModeSelectViewModel));
+            //NavigationService.NavigateTo(nameof(SessionPhotosViewModel));
         }
     }
 }

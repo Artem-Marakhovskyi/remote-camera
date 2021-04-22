@@ -73,6 +73,7 @@ namespace RemoteCameraControl.Android
         protected override async void OnResume()
         {
             base.OnResume();
+            _takePhotoButton.Visibility = ViewStates.Invisible;
             _working = true;
             if (ViewModel.IsCameraOverlayVisible)
             {

@@ -1,3 +1,4 @@
+using System;
 using RemoteCameraControl.File;
 
 namespace RemoteCameraControl.Android
@@ -7,6 +8,8 @@ namespace RemoteCameraControl.Android
         bool IsRc { get; set; }
 
         string SessionName { get; set; }
+
+        DateTime SessionStart { get; set; }
 
         bool IsCamera { get; set; }
 

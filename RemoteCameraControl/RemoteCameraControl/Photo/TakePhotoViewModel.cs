@@ -61,7 +61,7 @@ namespace RemoteCameraControl.Photo
             }
         }
 
-        public bool IsSkipVisible => CanSkip && IsCameraOverlayVisible;
+        public bool IsSkipVisible => CanSkip && IsCameraOverlayVisible || true;
 
         public bool ConfirmPhotoAutomatically { get; private set; }
 
@@ -114,9 +114,7 @@ namespace RemoteCameraControl.Photo
 
         private void Cancel()
         {
-            var result = new PhotoResult(canceled: true);
-            NavigationService.GoBack();
-            //FinishPhotoTaking(result);
+            NavigationService.NavigateTo(nameof(SessionPhotosViewModel));
         }
 
         private Task UsePhoto(MemoryStream photoStream)
