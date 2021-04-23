@@ -66,17 +66,7 @@ namespace RemoteCameraControl.Android
 
         private void _endSessionButton_Click(object sender, EventArgs e)
         {
-                var launchPackage = PackageManager.GetLaunchIntentForPackage(BaseContext.PackageName);
-                launchPackage.AddFlags(ActivityFlags.ClearTask | ActivityFlags.NewTask | ActivityFlags.NoAnimation);
-                Finish();
-                OverridePendingTransition(0, 0); 
-                StartActivity(launchPackage);
-
-            // INFO: A more elegant and faster way would be to not kill the process,
-            //       but it will require preventing the execution to continue to the OnCreate()
-            //       of the callers - the children of this class - so they all will need code changes 
-            //       to check for IsFinishing and avoid execution
-            System.Environment.Exit(0);
+            ViewModel.EndSession();
         }
 
         private void _take3PhotoButton_Click(object sender, EventArgs e)

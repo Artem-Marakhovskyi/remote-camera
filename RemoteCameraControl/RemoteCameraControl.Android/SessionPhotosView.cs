@@ -41,7 +41,18 @@ namespace RemoteCameraControl.Android
 
         private void _anotherSessionButton_Click(object sender, EventArgs e)
         {
-            ViewModel.StartAnotherSession();
+
+            var launchPackage = PackageManager.GetLaunchIntentForPackage(BaseContext.PackageName);
+            launchPackage.AddFlags(ActivityFlags.ClearTask | ActivityFlags.NewTask | ActivityFlags.NoAnimation);
+            Finish();
+            OverridePendingTransition(0, 0);
+            StartActivity(launchPackage);
+
+            // INFO: A more elegant and faster way would be to not kill the process,
+            //       but it will require preventing the execution to continue to the OnCreate()
+            //       of the callers - the children of this class - so they all will need code changes 
+            //       to check for IsFinishing and avoid execution
+            System.Environment.Exit(0);
         }
     }
 
@@ -96,7 +107,7 @@ namespace RemoteCameraControl.Android
         {
             Intent share = new Intent(Intent.ActionSend);
             share.SetType("image/jpeg");
-            var uri =FileProvider.GetUriForFile(context, context.ApplicationContext.PackageName+".provider", new Java.IO.File((string)((ImageView)sender).Tag));
+            var uri =FileProvider.GetUriForFile(context, context.ApplicationContext.PackageName+".provider", new Java.IO.File((string)((Button)sender).Tag));
             ;
             share.PutExtra(Intent.ExtraStream, uri);
 

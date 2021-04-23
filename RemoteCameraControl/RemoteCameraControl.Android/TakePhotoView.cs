@@ -367,7 +367,7 @@ namespace RemoteCameraControl.Android
         {
             if (ViewModel.IsCameraOverlayVisible)
             {
-                _camera.AutoFocus(null);
+                //_camera.AutoFocus(null);
             }
         }
 
