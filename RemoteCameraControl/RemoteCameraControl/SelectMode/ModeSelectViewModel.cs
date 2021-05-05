@@ -39,6 +39,11 @@ namespace RemoteCameraControl.Android.SelectMode
 
         }
 
+        public void Back()
+        {
+            NavigationService.NavigateTo(nameof(ModeSelectViewModel));
+        }
+
         protected async override void OnResume()
         {
             base.OnResume();

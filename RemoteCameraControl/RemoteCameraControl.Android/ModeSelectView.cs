@@ -22,6 +22,7 @@ namespace RemoteCameraControl.Android
         private TextView _cameraConnect;
         private View _cameraAwaitLayout;
         private EditText _sessionNameEditText;
+        private global::Android.Support.V7.Widget.Toolbar _toolbar;
         private MobileBarcodeScanner _mobileBarcodeScanner;
         private Button _barcodeButton;
 
@@ -45,6 +46,10 @@ namespace RemoteCameraControl.Android
             _cameraConnect = FindViewById<TextView>(Resource.Id.camera_connect_to_a_session);
             _cameraAwaitLayout = FindViewById(Resource.Id.cameraIsWaitingLinearLayout);
             _sessionNameEditText = FindViewById<EditText>(Resource.Id.session_name);
+
+            _toolbar = FindViewById<global::Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(_toolbar);
+            Title = "Choose your device mode";
 
             this.SetBinding(
                 () => ViewModel.SessionName,
@@ -92,6 +97,7 @@ namespace RemoteCameraControl.Android
             {
                 _initialLayout.Visibility = ViewStates.Gone;
                 _cameraAwaitLayout.Visibility = ViewStates.Visible;
+                Title = "Connect RC to a session";
 
                 try
                 {

@@ -103,6 +103,7 @@ namespace RemoteCameraControl.Android
 
             var picturesView = convertView.FindViewById<ImageView>(Resource.Id.imageView);
             picturesView.TooltipText = images[position];
+            picturesView.Click -= PicturesView_Click;
             picturesView.Click += PicturesView_Click;
 
             picturesView.SetScaleType(ImageView.ScaleType.CenterCrop);

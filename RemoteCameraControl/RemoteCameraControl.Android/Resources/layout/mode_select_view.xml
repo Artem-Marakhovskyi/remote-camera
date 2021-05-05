@@ -25,7 +25,7 @@
                     android:textSize="28sp"
         android:fontFamily="Roboto"
         android:textStyle="bold"
-            android:text="Connect remote control device to a session:"/>
+            android:text="Session name:"/>
         <TextView
             android:id="@+id/camera_connect_to_a_session"
             android:layout_width="300dp"
@@ -54,18 +54,6 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-        android:layout_alignParentTop="true"
-        android:layout_height="wrap_content"
-        android:layout_width="300dp"
-        android:layout_marginTop="44dp"
-        android:gravity="center"
-        android:textSize="28sp"
-        android:fontFamily="Roboto"
-        android:textStyle="bold"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:text="Choose your device mode"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -94,6 +82,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:id="@+id/barcodeButton"
+                android:drawablePadding="10dp"
                 android:background="@drawable/qrcode"/>
             </LinearLayout>
 
@@ -114,10 +103,10 @@
                     android:layout_centerHorizontal="true"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
-                    android:padding="15dp"
-            
+                    android:padding="10dp"
                 android:textStyle="bold"
-                    android:text="Become remote control"
+            android:drawableEnd="@drawable/remote_control"
+                    android:text="Become RC  "
                     android:id="@+id/be_rc_button"
                     android:theme="@style/AppTheme.Button"/>
         <View
@@ -140,12 +129,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
         <Button
-            android:padding="20dp"
+            android:padding="10dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Become camera"
+            android:text="Become camera  "
+            android:drawableEnd="@drawable/camera"
             android:textSize="20sp"
             
                 android:textStyle="bold"

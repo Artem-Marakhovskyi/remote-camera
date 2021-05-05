@@ -33,9 +33,10 @@
     
     <Button
        android:background="@drawable/gray_roundedbg"
-        android:layout_width="80dp"
-        android:layout_height="56dp"
+        android:layout_width="110dp"
+        android:layout_height="90dp"
         android:alpha="0.3"
+        android:padding="10dp"
         android:text="Finish session"
         android:textColor="#ffffff"
         android:layout_alignParentRight="true"
