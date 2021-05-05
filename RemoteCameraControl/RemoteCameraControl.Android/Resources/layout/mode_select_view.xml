@@ -3,8 +3,10 @@
     xmlns:android        ="http://schemas.android.com/apk/res/android"
     android:layout_width ="match_parent"
     android:layout_height="match_parent">
-
-
+    <include
+        layout="@layout/toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/> 
     <LinearLayout
         android:gravity="center"
         android:layout_centerInParent="true"
@@ -35,6 +37,13 @@
         android:fontFamily="Roboto"
         android:textStyle="bold"
             android:text=""/>
+        
+        <ImageView  
+        android:layout_centerHorizontal="true"  
+        android:layout_marginTop="10dp"  
+        android:id="@+id/barcodeImage"   
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
@@ -75,13 +84,20 @@
                 android:textStyle="bold"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
-                android:text="Enter session name:"/>
+                android:text="Session name:"/>
                 <EditText
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/session_name"/>
-
+            
+            <Button
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:id="@+id/barcodeButton"
+                android:background="@drawable/qrcode"/>
             </LinearLayout>
+
+
                        <TextView
                 android:layout_alignParentTop="true"
                 android:layout_height="wrap_content"

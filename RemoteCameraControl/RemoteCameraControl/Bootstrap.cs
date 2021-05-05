@@ -40,6 +40,7 @@ namespace RemoteCameraControl.Android.RemoteCameraControl
             RegisterViewModel<SplashViewModel>();
             RegisterViewModel<SessionPhotosViewModel>();
             RegisterViewModel<PhotoMirrorViewModel>();
+            RegisterViewModel<GalleryImageViewModel>();
 
             var baseUrl = "https://remotecamera.azurewebsites.net/";
             RegisterInstance(new SessionClient(baseUrl));

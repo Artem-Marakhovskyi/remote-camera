@@ -548,6 +548,7 @@
         <Compile Include="BitmapExtensions.cs" />
         <Compile Include="SplashView.cs" />
         <Compile Include="SessionPhotosView.cs" />
+        <Compile Include="GalleryImageView.cs" />
     </ItemGroup>
     <ItemGroup>
         <None Include="packages.config" />
@@ -631,6 +632,26 @@
           <SubType></SubType>
           <Generator></Generator>
         </AndroidResource>
+        <AndroidResource Include="Resources\drawable\qrcode.png">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\layout\gallery_image_view.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\menu\toolbar_menu_gallery.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\menu\toolbar_menu_session.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\layout\toolbar_main.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
     </ItemGroup>
     <ItemGroup>
       <AndroidAsset Include="Assets\loader.json">
@@ -640,6 +661,7 @@
     <ItemGroup>
       <Folder Include="Resources\drawable\" />
       <Folder Include="Resources\xml\" />
+      <Folder Include="Resources\menu\" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\..\RemoteCamera.HubClient\RemoteCamera.HubClient.csproj">
@@ -802,4 +824,5 @@
     <Import Project="..\..\packages\Xamarin.AndroidX.Legacy.Support.Core.UI.1.0.0.5\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.UI.targets" Condition="Exists('..\..\packages\Xamarin.AndroidX.Legacy.Support.Core.UI.1.0.0.5\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.UI.targets')" />
     <Import Project="..\..\packages\Xamarin.AndroidX.Legacy.Support.V4.1.0.0.5\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.V4.targets" Condition="Exists('..\..\packages\Xamarin.AndroidX.Legacy.Support.V4.1.0.0.5\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.V4.targets')" />
     <Import Project="..\..\packages\Fody.6.4.0\build\Fody.targets" Condition="Exists('..\..\packages\Fody.6.4.0\build\Fody.targets')" />
+    <Import Project="..\..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />
 </Project>

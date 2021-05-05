@@ -1,5 +1,6 @@
 ﻿using System;
 using RemoteCameraControl.Android;
+using RemoteCameraControl.Android.SelectMode;
 
 namespace RemoteCameraControl
 {
@@ -13,6 +14,16 @@ namespace RemoteCameraControl
         {
             SessionName = appContext.SessionName;
             SessionStartTime = appContext.SessionStart;
+        }
+
+        public void NavigateToPreview(string absolutePath)
+        {
+            NavigationService.NavigateTo(nameof(GalleryImageViewModel), absolutePath);
+        }
+
+        internal void ToRoot()
+        {
+            NavigationService.NavigateTo(nameof(ModeSelectViewModel));
         }
     }
 }

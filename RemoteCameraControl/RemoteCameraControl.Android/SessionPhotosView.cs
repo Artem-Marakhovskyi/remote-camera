@@ -20,10 +20,12 @@ using static Android.Provider.MediaStore;
 
 namespace RemoteCameraControl.Android
 {
-    [Activity(Label = "SessionPhotosView")]
-    public class SessionPhotosView : ActivityBase<SessionPhotosViewModel>
+    [Activity]
+    public class SessionPhotosView : ActivityBase<SessionPhotosViewModel>, IMenuItemOnMenuItemClickListener
     {
         private Button _anotherSessionButton;
+        private global::Android.Support.V7.Widget.Toolbar _toolbar;
+        private IMenuItem _menuItem;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -31,35 +33,46 @@ namespace RemoteCameraControl.Android
 
             SetContentView(Resource.Layout.session_photos_view);
 
-            _anotherSessionButton = FindViewById<Button>(Resource.Id.start_another_session_button);
-            _anotherSessionButton.Click += _anotherSessionButton_Click;
             RecyclerView gallery = FindViewById<RecyclerView>(Resource.Id.galleryGridView);
+            _toolbar = FindViewById<global::Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
 
-            gallery.SetAdapter(new ImageAdapter(this));
-            gallery.SetLayoutManager(new LinearLayoutManager(this));
+            gallery.SetAdapter(new ImageAdapter(this, ViewModel.NavigateToPreview));
+            gallery.SetLayoutManager(new GridLayoutManager(this, 2));
+
+            SetSupportActionBar(_toolbar);
+            Title = "Share last session photos";
+
+
         }
 
-        private void _anotherSessionButton_Click(object sender, EventArgs e)
+        public override bool OnCreateOptionsMenu(IMenu menu)
         {
+            MenuInflater.Inflate(Resource.Menu.toolbar_menu_session, menu);
 
-            var launchPackage = PackageManager.GetLaunchIntentForPackage(BaseContext.PackageName);
-            launchPackage.AddFlags(ActivityFlags.ClearTask | ActivityFlags.NewTask | ActivityFlags.NoAnimation);
-            Finish();
-            OverridePendingTransition(0, 0);
-            StartActivity(launchPackage);
+            _menuItem = menu.FindItem(Resource.Id.miNew);
+            _menuItem.SetOnMenuItemClickListener(this);
 
-            // INFO: A more elegant and faster way would be to not kill the process,
-            //       but it will require preventing the execution to continue to the OnCreate()
-            //       of the callers - the children of this class - so they all will need code changes 
-            //       to check for IsFinishing and avoid execution
-            System.Environment.Exit(0);
+            return true;
+        }
+
+        public bool OnMenuItemClick(IMenuItem item)
+        {
+            if (_menuItem == item)
+            {
+                ViewModel.ToRoot();
+
+                return true;
+            }
+
+            return false;
         }
     }
 
     public class ImageAdapter : RecyclerView.Adapter
     {
         private List<string> images;
-
+        private Action<string> _onPictureClick;
+        private Dictionary<string, Action<string>> _actionsStorage = new Dictionary<string, Action<string>>();
         /** The context. */
         private SessionPhotosView context;
 
@@ -69,10 +82,11 @@ namespace RemoteCameraControl.Android
          * @param localContext
          *            the local context
          */
-        public ImageAdapter(SessionPhotosView localContext)
+        public ImageAdapter(SessionPhotosView localContext, Action<string> onPictureClick)
         {
             context = localContext;
             images = getAllShownImagesPath(context);
+            _onPictureClick = onPictureClick;
         }
 
         public override int ItemCount => images.Count;
@@ -86,16 +100,23 @@ namespace RemoteCameraControl.Android
         {
             var convertView = holder.ItemView;
             
-            var button = convertView.FindViewById<Button>(Resource.Id.share_btn);
-            button.Click -= Button_Click;
-            button.Click += Button_Click;
-            button.Tag = images[position];
 
             var picturesView = convertView.FindViewById<ImageView>(Resource.Id.imageView);
-            picturesView.SetScaleType(ImageView.ScaleType.FitCenter);
+            picturesView.TooltipText = images[position];
+            picturesView.Click += PicturesView_Click;
+
+            picturesView.SetScaleType(ImageView.ScaleType.CenterCrop);
 
             Glide.With(context).Load(images[position])
                     .Into(picturesView);
+        }
+
+        private void PicturesView_Click(object sender, EventArgs e)
+        {
+            View s = (View)sender;
+
+            GalleryImageView.Path = s.TooltipText;
+            _onPictureClick(s.TooltipText);
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

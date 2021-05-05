@@ -36,7 +36,8 @@ namespace RemoteCameraControl.Android
         private INavigationService GetConfiguredNavService()
         {
             var navigationService = new NavigationService();
-            
+
+            navigationService.Configure(nameof(GalleryImageViewModel), typeof(GalleryImageView));
             navigationService.Configure(nameof(ModeSelectViewModel), typeof(ModeSelectView));
             navigationService.Configure(nameof(PhotoViewModel), typeof(PhotoView));
             navigationService.Configure(nameof(PhotoMirrorViewModel), typeof(PhotoMirrorView));

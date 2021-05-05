@@ -18,6 +18,8 @@ namespace RemoteCameraControl.Android
         /// base.OnResume to allow the <see cref="T:GalaSoft.MvvmLight.Views.NavigationService" />
         /// to work properly.
         /// </summary>
+        ///
+
         protected override void OnResume()
         {
             ActivityBase.CurrentActivity = this;
